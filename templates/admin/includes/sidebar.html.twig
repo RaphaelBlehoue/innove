@@ -1,0 +1,33 @@
+<aside class="sidebar sidebar-icons-right sidebar-icons-boxed sidebar-expand-lg">
+    <header class="sidebar-header">
+        <a class="logo-icon" href="{{ path('admin') }}"><img src="{{ asset('build/global/assets/base/img/layout/logos/logo.png') }}" alt="Admin logo innove-it"></a>
+        <span class="logo">
+          <a href=""><h3>{{ 'Innove-it'|upper }}</h3></a>
+        </span>
+        <span class="sidebar-toggle-fold"></span>
+    </header>
+    <nav class="sidebar-navigation">
+        <div class="sidebar-profile">
+            <div class="dropdown">
+                <span class="dropdown-toggle no-caret" data-toggle="dropdown"><img class="avatar" src="{{ asset('build/back/static/avatar/1.jpg', 'back') }}" alt="{{ app.user ? app.user.username : ''}}"></span>
+                <div class="dropdown-menu open-top-center">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('security_logout') }}"><i class="ti-power-off"></i> {{ 'deconnexion'|capitalize }}</a>
+                </div>
+            </div>
+            <div class="profile-info">
+                <h4>{{ app.user ? app.user.lastname|capitalize : ''}} {{ app.user ? app.user.firstname|capitalize : '' }}</h4>
+            </div>
+        </div>
+        <ul class="menu menu-lg menu-bordery">
+            <li class="menu-item active">
+                <a class="menu-link" href="{{ path('admin') }}">
+                    <span class="icon ti-home"></span>
+                    <span class="title">
+                        <span>Dashboard</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>

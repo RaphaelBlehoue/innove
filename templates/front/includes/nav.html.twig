@@ -13,9 +13,13 @@
             <!-- BEGIN: INLINE NAV -->
             <nav class="c-top-menu c-pull-right">
                 <ul class="c-links c-theme-ul">
-                    <li>
-                        <a href="#" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i>{{ 'Connexion' }}</a>
-                    </li>
+                    {% if app.user %}
+                        <li><a href="{{ path('admin') }}">{{ 'Admin' }}</a></li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('signin_page') }}" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i>{{ 'Connexion' }}</a>
+                        </li>
+                    {% endif %}
                     <li><a href="#">{{ 'Aide' }}</a></li>
                     <li class="c-divider">|</li>
                     <li><a href="#">{{ 'Contact' }}</a></li>

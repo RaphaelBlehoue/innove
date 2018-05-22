@@ -27,3 +27,16 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\EventListener\Doctrine\HashPasswordListener:
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    App\EventListener\Kernel\RedirectUserListener:
+        arguments: ['@security.authorization_checker', '@router']
+        tags:
+        - { name: kernel.event_subscriber }
+
+    App\EventListener\Security\LoginListener:
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login }
