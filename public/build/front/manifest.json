@@ -1,6 +1,8 @@
 {
-  "build/front/css/components.css": "/build/front/css/components.css",
-  "build/front/css/plugins.css": "/build/front/css/plugins.css",
+  "build/front/css/components.css": "/build/front/css/components.d9aaca3c.css",
+  "build/front/css/components.css.map": "/build/front/css/components.d9aaca3c.css.map",
+  "build/front/css/plugins.css": "/build/front/css/plugins.ae362563.css",
+  "build/front/css/plugins.css.map": "/build/front/css/plugins.ae362563.css.map",
   "build/front/images/arrow-left.png": "/build/front/images/arrow-left.76a8ae25.png",
   "build/front/images/arrow-right.png": "/build/front/images/arrow-right.40d4629f.png",
   "build/front/images/arrow-right2.png": "/build/front/images/arrow-right2.c9420c16.png",
