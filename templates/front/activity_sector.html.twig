@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'Secteurs d\'activité | Intégrateur de solutions innovantes' }}
+{% endblock %}
+{% block base_nav %} {{ include('front/includes/nav.html.twig',{'nav_class':'c-layout-header-4 c-layout-header-default-mobile'}) }} {% endblock %}
+{% block slide %}
+    {{ include('front/includes/slide.html.twig') }}
+{% endblock %}
+{% block body %}
+    <!-- BEGIN: CONTENT/les secteurs dans lesquels nous intervenons -->
+    <div class="c-content-box c-size-md c-bg-grey-1">
+        <div class="container">
+            <div class="c-content-feature-10">
+                <!-- Begin: Title 1 component -->
+                <div class="c-content-title-1">
+                    <h3 class="c-font-uppercase c-center c-font-bold">{{ 'les secteurs dans lesquels nous intervenons' }}</h3>
+                    <div class="c-line-center c-theme-bg"></div>
+                    <p class="c-font-center">{{ 'Cliquez sur votre domaine d\'activité pour avoir plus d\'informations sur ce que nous pouvons vous offrir' }}</p>
+                </div>
+                <!-- End-->
+                <div class="row">
+                    <div class="c-content-blog-post-card-1-grid">
+                        <div class="row">
+                            {% for i in 1..8 %}
+                                <div class="col-md-4">
+                                    <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
+                                        <div class="c-media c-content-overlay">
+                                            <div class="c-overlay-wrapper">
+                                                <div class="c-overlay-content">
+                                                    <a href="#"><i class="icon-link"></i></a>
+                                                </div>
+                                            </div>
+                                            <img class="c-overlay-object img-responsive"  src="http://via.placeholder.com/500x350" alt="">
+                                        </div>
+                                        <div class="c-body">
+                                            <div class="c-title c-font-bold c-font-uppercase">
+                                                <a href="#">{{'Domaine activite'}}</a>
+                                            </div>
+                                            <div class="c-content-divider c-icon-bg">
+                                                <i class="icon-drop c-rounded c-font-white"></i>
+                                            </div>
+                                            <p>{{ 'petite descriptions de la solutions ici'|striptags('<a>')|truncate(110, true, '...')|raw }}</p>
+                                            <div class="c-center">
+                                                <a href="" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'plus de détail' }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/les secteurs dans lesquels nous intervenons -->
+    <!-- BEGIN: CONTENT/ACTU -->
+    <div class="c-content-box c-size-md c-bg-grey-1">
+        <div class="container">
+            <!-- Begin: Testimonals 1 component -->
+            <div class="c-content-blog-post-card-1-slider" data-slider="owl">
+                <!-- Begin: Title 1 component -->
+                <div class="c-content-title-1">
+                    <h3 class="c-center c-font-uppercase c-font-bold">{{ 'Profitez de nos conseils d\'expertises'|upper }}</h3>
+                    <div class="c-line-center c-theme-bg"></div>
+                </div>
+                <!-- End-->
+                <!-- Begin: Owlcarousel -->
+                <div class="owl-carousel owl-theme c-theme c-owl-nav-center" data-items="3" data-slide-speed="8000" data-rtl="false">
+                    {% for i in 1..8 %}
+                        <div class="item">
+                            <div class="c-content-blog-post-card-1 c-option-2">
+                                <div class="c-media c-content-overlay">
+                                    <div class="c-overlay-wrapper">
+                                        <div class="c-overlay-content">
+                                            <a href="#"><i class="icon-link"></i></a>
+                                            <a href="http://via.placeholder.com/400x300" data-lightbox="fancybox" data-fancybox-group="gallery">
+                                                <i class="icon-magnifier"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <img class="c-overlay-object img-responsive" src="http://via.placeholder.com/400x300" alt="">
+                                </div>
+                                <div class="c-body">
+                                    <div class="c-title c-font-uppercase c-font-bold">
+                                        <a href="#">Web & Mobile Development</a>
+                                    </div>
+                                    <div class="c-author">
+                                        By <a href="#"><span class="c-font-uppercase">Nick Strong</span></a>
+                                        on <span class="c-font-uppercase">20 May 2015, 10:30AM</span>
+                                    </div>
+
+                                    <div class="c-panel">
+                                        <ul class="c-tags c-theme-ul-bg">
+                                            <li>{{ 'Domaine activité' }}</li>
+                                        </ul>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, dolor adipisicing elit.
+                                        Nulla nemo ad sapiente officia amet.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- End-->
+            </div>
+            <!-- End-->
+        </div>
+    </div>
+    <!-- END: CONTENT/ACTU -->
+{% endblock %}
+{% block javascripts %}
+    <!-- BEGIN: PAGE SCRIPTS -->
+    <script src="{{ asset('build/layout/assets/plugins/revo-slider/js/extensions/revolution.extension.kenburn.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('build/layout/assets/plugins/revo-slider/js/extensions/revolution.extension.parallax.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('build/layout/assets/demos/default/js/scripts/revo-slider/slider-13.js') }}" type="text/javascript"></script>
+    <!-- END: PAGE SCRIPTS -->
+{% endblock %}
+

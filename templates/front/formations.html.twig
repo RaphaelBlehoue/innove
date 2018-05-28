@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'Nos Services | Intégrateur de solutions innovantes' }}
+{% endblock %}
+{% block base_nav %} {{ include('front/includes/nav.html.twig',{'nav_class':'c-layout-header-4 c-layout-header-default-mobile'}) }} {% endblock %}
+{% block slide %}
+    {{ include('front/includes/slide.html.twig') }}
+{% endblock %}
+{% block body %}
+<div class="c-content-box c-size-md c-bg-white">
+    <div class="container">
+        <div class="c-content-feature-2-grid" data-auto-height="true" data-mode="base-height">
+            <div class="c-content-title-1">
+                <h3 class="c-font-uppercase c-center c-font-bold">{{ 'Avec nos formations, maîtrise la gestion de votre entreprise' }}</h3>
+                <div class="c-line-center"></div>
+            </div>
+        </div>
+        {% for i in 1..6 %}
+        <div class="c-content-box c-overflow-hide {% if loop.index is odd %}c-bg-grey {% else %} c-bg-white {% endif %}">
+            <div class="c-content-product-3 c-bs-grid-reset-space">
+                <div class="row">
+                    {% if loop.index is odd %}
+                    <div class="col-md-7 col-sm-6 wow animated fadeInLeft">
+                        <div class="c-content-overlay">
+                            <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 350px; background-image: url(http://via.placeholder.com/450x350);"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 wow animated fadeInRight">
+                        <div class="c-wrapper c-bg-green-1" style="height: 350px;">
+                            <div class="c-content c-border c-border-padding c-border-padding-right">
+                                <h3 class="c-title c-font-25 c-font-white c-font-uppercase c-font-bold">{{ 'Titre de la formation' }}</h3>
+                                <p class="c-description c-font-17 c-font-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat.</p>
+                                <p class="c-description c-font-17 c-font-white">Dolor sit amet, consectetuer adipiscing elit sed diam nonummy</p>
+                                <a href="" class="btn btn-lg c-btn-white c-font-uppercase c-btn-square c-btn-border-1x">{{ 'cette formation m\'intéresse' }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                        <div class="col-md-5 col-sm-6 wow animated fadeInLeft">
+                            <div class="c-wrapper c-bg-green" style="height: 350px;">
+                                <div class="c-content c-border c-border-padding c-border-padding-right">
+                                    <h3 class="c-title c-font-25 c-font-white c-font-uppercase c-font-bold">{{ 'Titre de la formation' }}</h3>
+                                    <p class="c-description c-font-17 c-font-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat.</p>
+                                    <p class="c-description c-font-17 c-font-white">Dolor sit amet, consectetuer adipiscing elit sed diam nonummy</p>
+                                    <a href="" class="btn btn-lg c-btn-white c-font-uppercase c-btn-square c-btn-border-1x">{{ 'cette formation m\'intéresse' }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-6 wow animated fadeInRight">
+                            <div class="c-content-overlay">
+                                <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 350px; background-image: url(http://via.placeholder.com/450x350);"></div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+    <section id="about">
+        <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
+        <div class="c-content-box c-size-md c-bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 wow animated fadeInLeft">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-font-uppercase c-font-bold">{{ 'De quelle solutions parlons nous ?' }}</h3>
+                            <div class="c-line-left c-theme-bg"></div>
+                        </div>
+                        <!-- End-->
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy nibh euismod tincidunt ut laoreet dolore magna aluam erat volutpat. Ut wisi enim ad minim veniam quis nostrud exerci et tation diam nisl ut aliquip ex ea commodo consequat euismod tincidunt ut laoreet dolore magna aluam. </p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+                    </div>
+                    <div class="col-sm-6 wow animated fadeInRight">
+                        <div class="c-content-client-logos-1">
+                            <!-- Begin: Title 1 component -->
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold">{{ 'Partenaires certifiées' }}</h3>
+                                <div class="c-line-left c-theme-bg"></div>
+                            </div>
+                            <!-- End-->
+                            <div class="c-logos">
+                                <div class="row">
+                                    {% for i in 1..6 %}
+                                        <div class="col-md-4 col-xs-6 c-logo c-logo-1">
+                                            <a href="#"><img class="c-img-pos" src="http://via.placeholder.com/180x140" alt=""/></a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- END: CONTENT/MISC/ABOUT-1 -->
+    </section>
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+{% endblock %}
+
+{% block javascripts %}
+    <!-- BEGIN: PAGE SCRIPTS -->
+    <script src="{{ asset('build/layout/assets/plugins/revo-slider/js/extensions/revolution.extension.kenburn.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('build/layout/assets/plugins/revo-slider/js/extensions/revolution.extension.parallax.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('build/layout/assets/demos/default/js/scripts/revo-slider/slider-13.js') }}" type="text/javascript"></script>
+    <!-- END: PAGE SCRIPTS -->
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Formation index{% endblock %}
+
+{% block body %}
+    <h1>Formation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageSize</th>
+                <th>ImageName</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>SmallContent</th>
+                <th>Slug</th>
+                <th>Created</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.id }}</td>
+                <td>{{ formation.imageSize }}</td>
+                <td>{{ formation.imageName }}</td>
+                <td>{{ formation.title }}</td>
+                <td>{{ formation.content }}</td>
+                <td>{{ formation.smallContent }}</td>
+                <td>{{ formation.slug }}</td>
+                <td>{{ formation.created ? formation.created|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('formation_show', {'id': formation.id}) }}">show</a>
+                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('formation_new') }}">Create new</a>
+{% endblock %}

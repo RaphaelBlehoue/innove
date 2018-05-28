@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'Blog detail |Intégrateur de solutions innovantes' }}
+{% endblock %}
+{% block base_nav %} {{ include('front/includes/nav.html.twig',{'nav_class':'c-layout-header-4 c-layout-header-default-mobile'}) }} {% endblock %}
+{% block slide %}
+    <div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
+        <div class="container">
+            <div class="c-page-title c-pull-left">
+                <h3 class="c-font-uppercase c-font-sbold">Nos articles</h3>
+            </div>
+            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                <li><a href="{{ path('homepage') }}">{{ 'Accueil' }}</a></li>
+                <li>/</li>
+                <li class="c-state_active">Blog</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    <!-- BEGIN: BLOG LISTING -->
+    <div class="c-content-box c-size-md">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="c-content-blog-post-1-list">
+                            <div class="c-content-blog-post-1">
+                                <div class="c-media">
+                                    <div class="c-content-media-2-slider" data-slider="owl">
+                                        <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-auto-play="4000" data-rtl="false">
+                                            <div class="item">
+                                                <div class="c-content-media-2" style="background-image: url({{ asset('build/layout/assets/base/img/content/misc/latest-work-3.jpg') }}); min-height: 460px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-title c-font-bold c-font-uppercase">
+                                    <a href="#">UX Design Conference 2015</a>
+                                </div>
+                                <div class="c-desc">
+                                    Lorem ipsum dolor sit amet, coectetuer diam ipsum dolor sit amet nonummy  coectetuer diam ipsum dolor sit
+                                    coectetuer adipiscing elit adipiscing consectetuer ipsum dolor sit amipiscing elit sit amet, sit amet,
+                                    coectetuer adipiscing elit adipiscing consectetuer ipsum dolor sit amet diam nonummy adipiscing elit sit amet, sit ame.
+                                </div>
+                                <div class="c-panel">
+                                    <div class="c-author"><a href="#">By <span class="c-font-uppercase">Admin</span></a></div>
+                                    <div class="c-date">on <span class="c-font-uppercase">20 May 2015, 10:30AM</span></div>
+                                    <ul class="c-tags c-theme-ul-bg">
+                                        <li>{{ 'domaine' }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="c-content-ver-nav">
+                        <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
+                            <h3 class="c-font-bold c-font-uppercase">{{ 'Secteurs activité' }}</h3>
+                            <div class="c-line-left c-theme-bg"></div>
+                        </div>
+                        <ul class="c-menu c-arrow-dot1 c-theme">
+                            <li><a href="{{ path('blog_sector') }}">Web Development(2)</a></li>
+                            <li><a href="{{ path('blog_sector') }}">UX Design(12)</a></li>
+                            <li><a href="{{ path('blog_sector') }}">Mobile Development(5)</a></li>
+                            <li><a href="{{ path('blog_sector') }}">Internet Marketing(7)</a></li>
+                            <li><a href="{{ path('blog_sector') }}">Social Networks(11)</a></li>
+                            <li><a href="{{ path('blog_sector') }}">Web Design(18)</a></li>
+                        </ul>
+                    </div>
+                    <div class="c-content-tab-1 c-theme c-margin-t-30">
+                        <div class="nav-justified">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="active"><a href="#blog_recent_posts" data-toggle="tab">Recent Articles</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="blog_recent_posts">
+                                    <ul class="c-content-recent-posts-1">
+                                        {% for i in 1..4 %}
+                                            <li>
+                                                <div class="c-image">
+                                                    <img src="{{ asset('build/layout/assets/base/img/content/stock/09.jpg') }}" alt="" class="img-responsive">
+                                                </div>
+                                                <div class="c-post">
+                                                    <a href="" class="c-title">
+                                                        {{ 'Title ici' }}
+                                                    </a>
+                                                    <div class="c-date">27 Jan 2020</div>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: BLOG LISTING  -->
+{% endblock %}

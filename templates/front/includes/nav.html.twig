@@ -1,44 +1,14 @@
-<header class="c-layout-header c-layout-header-2 c-layout-header-dark-mobile c-header-transparent-dark" data-minimize-offset="80">
-    <div class="c-topbar c-topbar-dark">
-        <div class="container-fluid">
-            <!-- BEGIN: INLINE NAV -->
-            <nav class="c-top-menu c-pull-left">
-                <ul class="c-icons c-theme-ul">
-                    <li><a href="#"><i class="icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                    <li class="hide"><span>Phone: +99890345677</span></li>
-                </ul>
-            </nav>
-            <!-- END: INLINE NAV -->
-            <!-- BEGIN: INLINE NAV -->
-            <nav class="c-top-menu c-pull-right">
-                <ul class="c-links c-theme-ul">
-                    {% if app.user %}
-                        <li><a href="{{ path('admin') }}">{{ 'Admin' }}</a></li>
-                    {% else %}
-                        <li>
-                            <a href="{{ path('signin_page') }}" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i>{{ 'Connexion' }}</a>
-                        </li>
-                    {% endif %}
-                    <li><a href="#">{{ 'Aide' }}</a></li>
-                    <li class="c-divider">|</li>
-                    <li><a href="#">{{ 'Contact' }}</a></li>
-                    <li class="c-divider">|</li>
-                    <li><a href="#">{{ 'FAQ' }}</a></li>
-                </ul>
-            </nav>
-            <!-- END: INLINE NAV -->
-        </div>
-    </div>
+<!-- BEGIN: HEADER -->
+<header class="c-layout-header {{ nav_class|default('c-layout-header-2 c-layout-header-dark-mobile c-header-transparent-dark') }}" data-minimize-offset="80">
     <div class="c-navbar">
-        <div class="container-fluid">
+        <div class="container">
             <!-- BEGIN: BRAND -->
             <div class="c-navbar-wrapper clearfix">
                 <div class="c-brand c-pull-left">
                     <a href="{{ path('homepage') }}" class="c-logo">
-                        <img src="{{ asset('build/global/assets/base/img/layout/logos/logo_1.png') }}" alt="Innive-it" class="c-desktop-logo">
-                        <img src="{{ asset('build/global/assets/base/img/layout/logos/logo_2.png') }}" alt="Innove-it" class="c-desktop-logo-inverse">
-                        <img src="{{ asset('build/global/assets/base/img/layout/logos/logo.png') }}" alt="Innove-it" class="c-mobile-logo">
+                        <img src="{{ asset('build/web/static/logo-web-1.png') }}" alt="{{ 'Innove-it' }}" class="c-desktop-logo">
+                        <img src="{{ asset('build/web/static/logo-web-1.png') }}" alt="{{ 'Innove-it' }}" class="c-desktop-logo-inverse">
+                        <img src="{{ asset('build/web/static/logo-web-1.png') }}" alt="{{ 'Innove-it' }}" class="c-mobile-logo">
                     </a>
                     <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
                         <span class="c-line"></span>
@@ -50,63 +20,23 @@
                     </button>
                 </div>
                 <!-- END: BRAND -->
-
-                <!-- BEGIN: HOR NAV -->
-                <!-- BEGIN: LAYOUT/HEADERS/MEGA-MENU -->
-                <!-- BEGIN: MEGA MENU -->
                 <!-- Dropdown menu toggle on mobile: c-toggler class can be applied to the link arrow or link itself depending on toggle mode -->
-                <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-theme c-fonts-uppercase c-fonts-bold">
+                <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
                     <ul class="nav navbar-nav c-theme-nav">
-                        <!--c-active-->
                         <li class="c-menu-type-classic">
-                            <a href="#" class="c-link dropdown-toggle">{{ 'Le Cabinet' }}<span class="c-arrow c-toggler"></span></a>
-                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
-                                <li>
-                                    <a href="#">{{ 'Sous-menu 1' }}</a>
-                                </li>
-                            </ul>
+                            <a href="{{ path('secteurs_activity') }}" class="c-link dropdown-toggle" title="secteurs d'activité">{{ 'secteurs d\'activité' }}<span class="c-arrow c-toggler"></span></a>
                         </li>
                         <li class="c-menu-type-classic">
-                            <a href="#" class="c-link dropdown-toggle">{{ 'secteurs d\'activité' }}<span class="c-arrow c-toggler"></span></a>
-                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
-                                <li>
-                                    <a href="#">{{ 'Sous-menu 1' }}</a>
-                                </li>
-                            </ul>
+                            <a href="{{ path('solutions') }}" class="c-link dropdown-toggle" title="solution">{{ 'nos solutions'}}<span class="c-arrow c-toggler"></span></a>
                         </li>
                         <li class="c-menu-type-classic">
-                            <a href="#" class="c-link dropdown-toggle">{{ 'solutions' }}<span class="c-arrow c-toggler"></span></a>
-                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
-                                <li>
-                                    <a href="#">{{ 'Sous-menu 1' }}</a>
-                                </li>
-                            </ul>
+                            <a href="{{ path('services') }}" class="c-link dropdown-toggle" title="nos services">{{ 'nos services' }}<span class="c-arrow c-toggler"></span></a>
                         </li>
                         <li class="c-menu-type-classic">
-                            <a href="#" class="c-link dropdown-toggle">{{ 'services' }}<span class="c-arrow c-toggler"></span></a>
-                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
-                                <li>
-                                    <a href="#">{{ 'Sous-menu 1' }}</a>
-                                </li>
-                            </ul>
+                            <a href="{{ path('formations') }}" class="c-link" title="nos formations">{{ 'formations' }}</a>
                         </li>
                         <li class="c-menu-type-classic">
-                            <a href="#" class="c-link dropdown-toggle">{{ 'formations' }}<span class="c-arrow c-toggler"></span></a>
-                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
-                                <li>
-                                    <a href="#">{{ 'Sous-menu 1' }}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="c-menu-type-classic">
-                            <a href="#" class="c-link">{{ 'blog' }}<span class="c-arrow c-toggler"></span></a>
-                        </li>
-                        <li class="c-quick-sidebar-toggler-wrapper">
-                            <a href="#" class="c-quick-sidebar-toggler">
-                                <span class="c-line"></span>
-                                <span class="c-line"></span>
-                                <span class="c-line"></span>
-                            </a>
+                            <a href="{{ path('contact') }}" class="c-link" title="nous contactez">{{ 'Contacts' }}</a>
                         </li>
                     </ul>
                 </nav>
@@ -116,3 +46,4 @@
         </div>
     </div>
 </header>
+<!-- END: HEADER -->

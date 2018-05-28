@@ -20,6 +20,8 @@ framework:
                 json_manifest_path: '%kernel.project_dir%/public/build/front/manifest.json'
             back:
                 json_manifest_path: '%kernel.project_dir%/public/build/back/manifest.json'
+            web:
+                json_manifest_path: '%kernel.project_dir%/public/build/web/manifest.json'
     cache:
         # Put the unique name of your app here: the prefix seed
         # is used to compute stable namespaces for cache keys.

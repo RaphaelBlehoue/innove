@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'Nos Services | Intégrateur de solutions innovantes' }}
+{% endblock %}
+{% block class_header %}c-layout-header-fullscreen c-layout-header-topbar{% endblock %}
+{% block base_nav %} {{ include('front/includes/nav.html.twig') }} {% endblock %}
+{% block slide %}
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full c-fonts-uppercase c-fonts-bold   c-bg-img-center" style="background-image: url({{ asset('build/layout/assets/base/img/content/backgrounds/bg-18.jpg') }})">
+        <div class="c-breadcrumbs-wrapper">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Entrez en contact avec nous</h3>
+                    <h4 class="c-font-white c-font-thin c-opacity-09">vous pouvez nous ecrire, demander un devis ou nous appeler directement</h4>
+                </div>
+                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                    <li><a href="{{ path('homepage') }}" class="c-font-white">{{ 'Accueil' }}</a></li>
+                    <li class="c-font-white">/</li>
+                    <li>{{ 'Contact' }}</li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
+{% endblock %}
+{% block body %}
+    <!-- BEGIN: CONTENT/CONTACT/CONTACT-1 -->
+    <div class="c-content-box c-size-md c-bg-img-top c-no-padding c-pos-relative">
+        <div class="container">
+            <div class="c-content-contact-1 c-opt-1">
+                <div class="row" data-auto-height=".c-height">
+                    <div class="col-sm-8 c-desktop"></div>
+                    <div class="col-sm-4">
+                        <div class="c-body">
+                            <div class="c-section">
+                                <h3>INNOVE IT & CONSULTING</h3>
+                            </div>
+                            <div class="c-section">
+                                <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Adresse</div>
+                                <p>Adresse ici<br/>Ville ici<br/>Pays ici</p>
+                            </div>
+                            <div class="c-section">
+                                <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Téléphone</div>
+                                <p><strong>T</strong> +225 0000 0000<br/><strong>M</strong> +225 0000 0000</p>
+                            </div>
+                            <div class="c-section">
+                                <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Reseaux sociaux</div><br/>
+                                <ul class="c-content-iconlist-1 c-theme">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gmapbg" class="c-content-contact-1-gmap" style="height: 615px;"></div>
+    </div> <!-- END: CONTENT/CONTACT/CONTACT-1 -->
+
+    <!-- BEGIN: CONTENT/CONTACT/FEEDBACK-1 -->
+    <div class="c-content-box c-size-md c-bg-white">
+        <div class="container">
+            <div class="c-content-feedback-1 c-option-1">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="c-container c-bg-green c-bg-img-bottom-right" style="background-image:url({{ asset('build/layout/assets/base/img/content/misc/feedback_box_1.png') }})">
+                            <div class="c-content-title-1 c-inverse">
+                                <h3 class="c-font-uppercase c-font-bold">{{ 'Besoins d\'en savoir plus sur nous' }}</h3>
+                                <div class="c-line-left"></div>
+                                <p class="c-font-lowercase">{{ 'cliquez sur le bouton ci-dessous pour appeler via le net'|upper }}</p>
+                                <a href="#" class="btn btn-md c-btn-border-2x c-btn-white c-btn-uppercase c-btn-square c-btn-bold"> <i class="fa fa-phone"></i> {{ 'appelez-nous' }}</a>
+                            </div>
+                        </div>
+                        <div class="c-container c-bg-grey-1 c-bg-img-bottom-right" style="background-image:url({{ asset('build/layout/assets/base/img/content/misc/feedback_box_2.png') }})">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold">{{ 'Vous avez juste une question ?' }}</h3>
+                                <div class="c-line-left"></div>
+                                <form action="#">
+                                    <div class="input-group input-group-lg c-square">
+                                        <input type="text" class="form-control c-square" placeholder="Posez votre question ici"/>
+                                        <span class="input-group-btn">
+							        	<button class="btn c-theme-btn c-theme-on-hover c-btn-square c-btn-uppercase c-font-bold" type="button">{{ 'Demandez' }}</button>
+							      	</span>
+                                    </div>
+                                </form>
+                                <p>Ask your questions away and let our dedicated customer service help you look through our FAQs to get your questions answered!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="c-contact">
+                            <div class="c-content-title-1">
+                                <h3  class="c-font-uppercase c-font-bold">{{ 'Demande de devis' }}</h3>
+                                <div class="c-line-left"></div>
+                                <p class="c-font-lowercase">Our helpline is always open to receive any inquiry or feedback.
+                                    Please feel free to drop us an email from the form below and we will get back to you as soon as we can.</p>
+                            </div>
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Your Name" class="form-control c-square c-theme input-lg">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Your Email" class="form-control c-square c-theme input-lg">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Contact Phone" class="form-control c-square c-theme input-lg">
+                                </div>
+                                <div class="form-group">
+                                    <textarea rows="8" name="message" placeholder="Write comment here ..." class="form-control c-theme c-square input-lg"></textarea>
+                                </div>
+                                <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/CONTACT/FEEDBACK-1 -->
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+    <!-- BEGIN: PAGE SCRIPTS -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLPWnOu970nrxAY1eApfQb0UKBaxov3zg" type="text/javascript"></script>
+    <script src="{{ asset('build/layout/assets/plugins/gmaps/gmaps.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('build/layout/assets/demos/default/js/scripts/pages/contact.js') }}" type="text/javascript"></script>
+    <!-- END: PAGE SCRIPTS -->
+{% endblock %}

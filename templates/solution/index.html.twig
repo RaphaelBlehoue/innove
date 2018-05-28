@@ -1,0 +1,47 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Solution index{% endblock %}
+
+{% block body %}
+    <h1>Solution index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageSize</th>
+                <th>ImageName</th>
+                <th>Name</th>
+                <th>Content</th>
+                <th>Reader</th>
+                <th>Service_link</th>
+                <th>Created</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for solution in solutions %}
+            <tr>
+                <td>{{ solution.id }}</td>
+                <td>{{ solution.imageSize }}</td>
+                <td>{{ solution.imageName }}</td>
+                <td>{{ solution.name }}</td>
+                <td>{{ solution.content }}</td>
+                <td>{{ solution.reader }}</td>
+                <td>{{ solution.serviceLink }}</td>
+                <td>{{ solution.created ? solution.created|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('solution_show', {'id': solution.id}) }}">show</a>
+                    <a href="{{ path('solution_edit', {'id': solution.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('solution_new') }}">Create new</a>
+{% endblock %}
