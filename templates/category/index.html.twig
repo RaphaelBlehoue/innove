@@ -5,7 +5,7 @@
         <div class="card">
             <header class="card-header">
                 <h4 class="card-title">{{ 'Liste'|upper }}</h4>
-                <a class="btn btn-label btn-info" href="{{ path('category_index') }}">
+                <a class="btn btn-label btn-info" href="{{ path('category_new') }}">
                     <label><i class="ti-plus"></i></label>
                     {{ 'Ajouter un nouveau'}}
                 </a>
@@ -19,13 +19,13 @@
                         <th>actions</th>
                     </tr>
                     </thead>
-                    <thead>
+                    <tfoot>
                     <tr>
                         <th>{{ 'Nom ' }}</th>
                         <th>{{ 'Date de creation' }}</th>
                         <th>actions</th>
                     </tr>
-                    </thead>
+                    </tfoot>
                     <tbody>
                     {% for category in categories %}
                         <tr>
@@ -38,7 +38,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="5">no records found</td>
+                            <td colspan="7">no records found</td>
                         </tr>
                     {% endfor %}
                     </tbody>
