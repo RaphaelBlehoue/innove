@@ -38,7 +38,7 @@ Encore
     .setPublicPath('/build/back')
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
-    .addEntry('js/script/editor', './assets/back/js/editor.js')
+    .addEntry('js/script/editor', './assets/back/js/script/editor.js')
     /*.addEntry('js/app', [
         './assets/back/js/src/jquery-extends.js',
         './assets/back/js/src/app.js',

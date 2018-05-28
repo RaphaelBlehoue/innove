@@ -59,12 +59,6 @@ class Formation
     protected $content;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     * @Assert\NotNull(message="Veuillez entrez le sommaire de la formation")
-     */
-    protected $smallContent;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Gedmo\Slug(fields={"title", "id"}, separator="_", updatable=false)
      */
@@ -85,7 +79,7 @@ class Formation
 
     public function __construct()
     {
-        $this->created = new \DateTime('nom');
+        $this->created = new \DateTime('now');
     }
 
 
@@ -114,18 +108,6 @@ class Formation
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function getSmallContent(): ?string
-    {
-        return $this->smallContent;
-    }
-
-    public function setSmallContent(?string $smallContent): self
-    {
-        $this->smallContent = $smallContent;
 
         return $this;
     }

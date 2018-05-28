@@ -67,12 +67,6 @@ class Solution
      */
     protected $reader;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     * @Assert\NotBlank(message="Entrez les services liées")
-     */
-    protected $service_link;
-
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -128,18 +122,6 @@ class Solution
     public function setReader(string $reader): self
     {
         $this->reader = $reader;
-
-        return $this;
-    }
-
-    public function getServiceLink(): ?string
-    {
-        return $this->service_link;
-    }
-
-    public function setServiceLink(?string $service_link): self
-    {
-        $this->service_link = $service_link;
 
         return $this;
     }
