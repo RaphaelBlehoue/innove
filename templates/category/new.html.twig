@@ -1,11 +1,17 @@
 {% extends 'admin.html.twig' %}
-
-{% block title %}New Category{% endblock %}
-
+{% block title %} {{ 'Sous catégories solutions' }} {% endblock %}
 {% block body %}
-    <h1>Create new Category</h1>
-
-    {{ include('category/_form.html.twig') }}
-
-    <a href="{{ path('category_index') }}">back to list</a>
+    <div class="col-12">
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title">{{ 'Creér une sous catégories solutions'|upper }}</h4>
+                <a class="btn btn-square btn-outline-danger" href="{{ path('category_index') }}">
+                    <label><i class="ti-na"></i></label>
+                </a>
+            </header>
+            <div class="card-body center-vh">
+                {{ include('category/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
