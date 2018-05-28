@@ -1,13 +1,18 @@
 {% extends 'admin.html.twig' %}
-
-{% block title %}Edit Section{% endblock %}
-
+{% block title %} {{ 'Catégories des solutions' }} {% endblock %}
 {% block body %}
-    <h1>Edit Section</h1>
-
-    {{ include('section/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('section_index') }}">back to list</a>
-
-    {{ include('section/_delete_form.html.twig') }}
+    <div class="col-12">
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title">{{ 'Modifier catégories des solutions'|upper }}</h4>
+                {{ include('section/_delete_form.html.twig') }}
+            </header>
+            <div class="card-body center-vh">
+                {{ include('section/_form.html.twig', {
+                    'button_label': 'Mise à jour', 'button_class': 'btn-danger'
+                })
+                }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

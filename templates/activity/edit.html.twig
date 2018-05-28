@@ -1,13 +1,18 @@
 {% extends 'admin.html.twig' %}
-
-{% block title %}Edit Activity{% endblock %}
-
+{% block title %} {{ 'Domaine d\'activité' }} {% endblock %}
 {% block body %}
-    <h1>Edit Activity</h1>
-
-    {{ include('activity/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('activity_index') }}">back to list</a>
-
-    {{ include('activity/_delete_form.html.twig') }}
+    <div class="col-12">
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title">{{ 'Modifier Domaine Activité'|upper }}</h4>
+                {{ include('activity/_delete_form.html.twig') }}
+            </header>
+            <div class="card-body center-vh">
+                {{ include('activity/_form.html.twig', {
+                    'button_label': 'Mise à jour', 'button_class': 'btn-danger'
+                })
+                }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,39 +1,49 @@
 {% extends 'admin.html.twig' %}
-
-{% block title %}Section index{% endblock %}
-
+{% block title %} {{ 'Catégories des solutions' }} {% endblock %}
 {% block body %}
-    <h1>Section index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Content</th>
-                <th>Created</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for section in sections %}
-            <tr>
-                <td>{{ section.id }}</td>
-                <td>{{ section.name }}</td>
-                <td>{{ section.content }}</td>
-                <td>{{ section.created ? section.created|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('section_show', {'id': section.id}) }}">show</a>
-                    <a href="{{ path('section_edit', {'id': section.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('section_new') }}">Create new</a>
+    <div class="col-12">
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title">{{ 'Liste'|upper }}</h4>
+                <a class="btn btn-label btn-info" href="{{ path('section_new') }}">
+                    <label><i class="ti-plus"></i></label>
+                    {{ 'Ajouter un nouveau'}}
+                </a>
+            </header>
+            <div class="card-body">
+                <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables">
+                    <thead>
+                    <tr>
+                        <th>{{ 'Nom' }}</th>
+                        <th>{{ 'Date de création' }}</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>{{ 'Nom' }}</th>
+                        <th>{{ 'Date de création' }}</th>
+                        <th>actions</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for section in sections %}
+                        <tr>
+                            <td>{{ section.name }}</td>
+                            <td>{{ section.created ? section.created|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>
+                                <a href="{{ path('section_show', {'id': section.id}) }}" class="btn btn-primary">{{ 'Afficher' }}</a>
+                                <a href="{{ path('section_edit', {'id': section.id}) }}" class="btn btn-danger">{{ 'Modifier' }}</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
