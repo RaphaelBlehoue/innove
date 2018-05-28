@@ -1,50 +1,43 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Formation{% endblock %}
+ {% block title %} {{ 'Formation' }} {% endblock %}
 
 {% block body %}
-    <h1>Formation</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ formation.id }}</td>
-            </tr>
-            <tr>
-                <th>ImageSize</th>
-                <td>{{ formation.imageSize }}</td>
-            </tr>
-            <tr>
-                <th>ImageName</th>
-                <td>{{ formation.imageName }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ formation.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ formation.content }}</td>
-            </tr>
-            <tr>
-                <th>SmallContent</th>
-                <td>{{ formation.smallContent }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ formation.slug }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{{ formation.created ? formation.created|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('formation_index') }}">back to list</a>
-
-    <a href="{{ path('formation_edit', {'id': formation.id}) }}">edit</a>
-
-    {{ include('formation/_delete_form.html.twig') }}
+    <div class="col-6 col-md-offset-6">
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title">{{ 'Formation détail'|upper }}</h4>
+                {{ include('formation/_delete_form.html.twig') }}
+            </header>
+            <!--<img class="card-img-top" src="{# asset(post.assertPath) #}" alt="Card image cap">-->
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>{{ 'Titre formation' }}</th>
+                        <td>{{ formation.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'Sommaire Formation' }}</th>
+                        <td>{{ formation.smallContent }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'Contenu Formation' }}</th>
+                        <td>{{ formation.content|raw }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-label btn-dark" href="{{ path('formation_index') }}">
+                    <label><i class="ti-arrow-left"></i></label>
+                    {{ 'Retour à la liste'}}
+                </a>
+                <a class="btn btn-label btn-danger" href="{{ path('formation_edit', {'id': formation.id}) }}">
+                    <label><i class="ti-pencil-alt"></i></label>
+                    {{ 'Modifier' }}
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

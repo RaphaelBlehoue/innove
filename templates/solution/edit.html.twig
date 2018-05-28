@@ -1,13 +1,18 @@
 {% extends 'admin.html.twig' %}
-
-{% block title %}Edit Solution{% endblock %}
-
+{% block title %} {{ 'Solutions' }} {% endblock %}
 {% block body %}
-    <h1>Edit Solution</h1>
-
-    {{ include('solution/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('solution_index') }}">back to list</a>
-
-    {{ include('solution/_delete_form.html.twig') }}
+    <div class="col-12">
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title">{{ 'Modifier Solutions'|upper }}</h4>
+                {{ include('solution/_delete_form.html.twig') }}
+            </header>
+            <div class="card-body center-vh">
+                {{ include('solution/_form.html.twig', {
+                    'button_label': 'Mise à jour', 'button_class': 'btn-danger'
+                })
+                }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

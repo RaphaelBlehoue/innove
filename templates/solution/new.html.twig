@@ -1,11 +1,17 @@
 {% extends 'admin.html.twig' %}
-
-{% block title %}New Solution{% endblock %}
-
+{% block title %} {{ 'Solutions' }} {% endblock %}
 {% block body %}
-    <h1>Create new Solution</h1>
-
-    {{ include('solution/_form.html.twig') }}
-
-    <a href="{{ path('solution_index') }}">back to list</a>
+    <div class="col-12">
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title">{{ 'Creér une Solutions'|upper }}</h4>
+                <a class="btn btn-square btn-outline-danger" href="{{ path('solution_index') }}">
+                    <label><i class="ti-na"></i></label>
+                </a>
+            </header>
+            <div class="card-body center-vh">
+                {{ include('solution/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
