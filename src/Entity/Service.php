@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ServiceRepository")
@@ -31,6 +32,12 @@ class Service
      * @Assert\NotBlank(message="Description du service")
      */
     protected $content;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"title", "id"}, separator="_", updatable=false)
+     */
+    protected $slug;
 
     /**
      * @ORM\Column(type="datetime")
@@ -172,5 +179,17 @@ class Service
     public function getAssertPath()
     {
         return $this->getUploadDir().'/'.$this->imageName;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

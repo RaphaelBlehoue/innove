@@ -212,6 +212,7 @@ class Activity
         return $this->imageSize;
     }
 
+
     public function getUploadDir()
     {
         // On retourne le chemin relatif vers l'image pour un navigateur
@@ -222,5 +223,13 @@ class Activity
     {
         // On retourne le chemin relatif vers l'image pour notre code PHP
         return __DIR__.'/../../../../public/'.$this->getUploadDir();
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssertPath()
+    {
+        return $this->getUploadDir().'/'.$this->imageName;
     }
 }

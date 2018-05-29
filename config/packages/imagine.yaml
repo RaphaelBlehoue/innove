@@ -15,24 +15,34 @@ liip_imagine:
                     size:          [369, 220]
                     mode:          outbound
                     allow_upscale: true
-        thumb_partner:
+        thumb_180_140:
             jpeg_quality:          95
             png_compression_level: 8
             filters:
                 auto_rotate: ~
                 strip: ~
                 thumbnail:
-                    size:          [120, 120]
+                    size:          [180, 140]
                     mode:          outbound
                     allow_upscale: true
-        thumb_service:
+        thumb_530_330:
             jpeg_quality:          95
             png_compression_level: 8
             filters:
                 auto_rotate: ~
                 strip: ~
                 thumbnail:
-                    size:          [570, 388]
+                    size:          [530, 330]
+                    mode:          outbound
+                    allow_upscale: true
+        thumb_550_350:
+            jpeg_quality:          95
+            png_compression_level: 8
+            filters:
+                auto_rotate: ~
+                strip: ~
+                thumbnail:
+                    size:          [550, 350]
                     mode:          outbound
                     allow_upscale: true
         thumb_blog:

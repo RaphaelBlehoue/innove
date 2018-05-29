@@ -46,26 +46,28 @@
                 <div class="row">
                     <div class="c-content-blog-post-card-1-grid">
                         <div class="row">
-                            {% for i in 1..8 %}
-                                <div class="col-md-4">
-                                    <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
-                                        <div class="c-body c-bg-green-1 c-padding-20 c-center">
-                                            <h3 class="c-font-19 c-line-height-28 c-font-uppercase c-font-white c-font-bold">
-                                                comptablité & gestion
-                                            </h3>
-                                        </div>
-                                        <div class="c-body">
-                                            <p>{{ 'petite descriptions de la solutions ici'|striptags('<a>')|truncate(110, true, '...')|raw }}</p>
-                                            <div class="c-content-divider">
-                                                <i class="icon-dot"></i>
+                            {% if sections|length > 0 %}
+                                {% for section in sections %}
+                                    <div class="col-md-4">
+                                        <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
+                                            <div class="c-body c-bg-green-1 c-padding-20 c-center" style="height: 150px;">
+                                                <h3 class="c-font-19 c-line-height-28 c-font-uppercase c-font-white c-font-bold">
+                                                    {{ section.name }}
+                                                </h3>
                                             </div>
-                                            <div class="c-center">
-                                                <a href="" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'je suis intéressé' }}</a>
+                                            <div class="c-body">
+                                                <p>{{ section.content|striptags('<a>')|truncate(110, true, '...')|raw }}</p>
+                                                <div class="c-content-divider">
+                                                    <i class="icon-dot"></i>
+                                                </div>
+                                                <div class="c-center">
+                                                    <a href="{{ path('section_solution_page', {'slug': section.slug}) }}" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'je suis intéressé' }}</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -75,7 +77,7 @@
     <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
 
     <!-- BEGIN: CONTENT/SERVICE QUE NOUS OFFRONS -->
-    <div class="c-content-box c-size-md c-bg-white">
+    <div class="c-content-box c-size-md c-bg-white c-bg-parallax" style="background-image: url(http://via.placeholder.com/1920x1080)">
         <div class="container">
             <div class="c-content-feature-2-grid" data-auto-height="true" data-mode="base-height">
                 <div class="c-content-title-1">
@@ -85,14 +87,23 @@
                 <div class="row">
                     <div class="c-content-blog-post-card-1-grid">
                         <div class="row">
-                        {% for i in 1..8 %}
-                        <div class="col-md-4 col-sm-6">
-                            <div class="c-content-feature-2  c-shadow" data-height="height">
-                                <h3 class="c-font-uppercase c-font-bold c-theme-font c-center c-title">{{ 'service '~ loop.index }}</h3>
-                                <p>Lorem ipsum consectetuer dolore elit diam</p>
+                        {% if services|length > 0 %}
+                            {% for service in services %}
+                            <div class="col-md-4 col-sm-6">
+                                <div class="c-content-feature-2  c-shadow" data-height="height">
+                                    <div class="c-body">
+                                        <h3 class="c-font-uppercase c-font-bold c-theme-font c-center c-title">{{ service.title }}</h3>
+                                    </div>
+                                    <div class="c-body c-margin-b-50">
+                                        <p>{{ service.content|striptags('<a>')|truncate(160, true, '...')|raw }}</p>
+                                    </div>
+                                    <div class="c-center">
+                                        <a href="{{ path('service_page', {'slug': service.slug}) }}" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'J\'ai besoin de ce service' }}</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        {% endfor %}
+                            {% endfor %}
+                        {% endif %}
                         </div>
                     </div>
                 </div>
@@ -115,32 +126,34 @@
                 <div class="row">
                     <div class="c-content-blog-post-card-1-grid">
                         <div class="row">
-                            {% for i in 1..8 %}
-                                <div class="col-md-4">
-                                    <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
-                                        <div class="c-media c-content-overlay">
-                                            <div class="c-overlay-wrapper">
-                                                <div class="c-overlay-content">
-                                                    <a href="#"><i class="icon-link"></i></a>
+                            {% if activities|length > 0 %}
+                                {% for activity in activities %}
+                                    <div class="col-md-4">
+                                        <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
+                                            <div class="c-media c-content-overlay">
+                                                <div class="c-overlay-wrapper">
+                                                    <div class="c-overlay-content">
+                                                        <a href="{{ path('secteurs_activity_detail', {'slug': activity.slug }) }}" title="{{ activity.name }}"><i class="icon-link"></i></a>
+                                                    </div>
                                                 </div>
+                                                <img class="c-overlay-object img-responsive"  src="{{ activity.assertPath|imagine_filter('thumb_550_350') }}" alt="{{ activity.name }}">
                                             </div>
-                                            <img class="c-overlay-object img-responsive"  src="http://via.placeholder.com/500x350" alt="">
-                                        </div>
-                                        <div class="c-body">
-                                            <div class="c-title c-font-bold c-font-uppercase">
-                                                <a href="#">{{'Domaine activite'}}</a>
-                                            </div>
-                                            <div class="c-content-divider c-icon-bg">
-                                                <i class="icon-drop c-rounded c-font-white"></i>
-                                            </div>
-                                            <p>{{ 'petite descriptions de la solutions ici'|striptags('<a>')|truncate(110, true, '...')|raw }}</p>
-                                            <div class="c-center">
-                                                <a href="" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'plus de détail' }}</a>
+                                            <div class="c-body">
+                                                <div class="c-title c-font-bold c-font-uppercase c-center">
+                                                    <a href="{{ path('secteurs_activity_detail', {'slug': activity.slug }) }}">{{ activity.name }}</a>
+                                                </div>
+                                                <div class="c-content-divider c-icon-bg">
+                                                    <i class="icon-drop c-rounded c-font-white"></i>
+                                                </div>
+                                                <p>{{ activity.content |striptags('<a>')|truncate(150, true, '...')|raw }}</p>
+                                                <div class="c-center">
+                                                    <a href="{{ path('secteurs_activity_detail', {'slug': activity.slug }) }}" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'plus de détail' }}</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -154,7 +167,7 @@
             <div class="c-content-bar-4">
                 <h3 class="c-font-uppercase c-font-bold">{{ 'Nous avons la solution qu\'il vous faut' }}</h3>
                 <div class="c-actions">
-                    <a href="#" class="btn btn-md c-btn-green-1 c-btn-uppercase c-btn-square c-btn-bold c-margin-b-100">{{ 'j\'ai besoins d\'un devis' }}</a>
+                    <a href="{{ path('contact') }}" class="btn btn-md c-btn-green-1 c-btn-uppercase c-btn-square c-btn-bold c-margin-b-100">{{ 'j\'ai besoins d\'un devis' }}</a>
                 </div>
             </div>
         </div>
@@ -170,12 +183,11 @@
                     <div class="col-sm-6 wow animated fadeInLeft">
                         <!-- Begin: Title 1 component -->
                         <div class="c-content-title-1">
-                            <h3 class="c-font-uppercase c-font-bold">{{ 'De quelle solutions parlons nous ?' }}</h3>
+                            <h3 class="c-font-uppercase c-font-bold">{{ 'La solution de l’envisageable à l’indispensable' }}</h3>
                             <div class="c-line-left c-theme-bg"></div>
                         </div>
                         <!-- End-->
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy nibh euismod tincidunt ut laoreet dolore magna aluam erat volutpat. Ut wisi enim ad minim veniam quis nostrud exerci et tation diam nisl ut aliquip ex ea commodo consequat euismod tincidunt ut laoreet dolore magna aluam. </p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+                        <p>Intégrateur Sage, EBP, Ciel et diverses solutions informatiques Audit-Evolution-Conseils-Paramétrage-Formation-Assistance</p>
                     </div>
                     <div class="col-sm-6 wow animated fadeInRight">
                         <div class="c-content-client-logos-1">
@@ -187,11 +199,13 @@
                             <!-- End-->
                             <div class="c-logos">
                                 <div class="row">
-                                    {% for i in 1..6 %}
-                                    <div class="col-md-4 col-xs-6 c-logo c-logo-1">
-                                        <a href="#"><img class="c-img-pos" src="http://via.placeholder.com/180x140" alt=""/></a>
-                                    </div>
-                                    {% endfor %}
+                                    {% if partners|length > 0 %}
+                                        {% for partner in partners %}
+                                        <div class="col-md-4 col-xs-6 c-logo c-logo-1">
+                                            <a href="#"><img class="c-img-pos" src="{{ partner.assertPath|imagine_filter('thumb_180_140') }}" alt="{{ partner.name }}"/></a>
+                                        </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

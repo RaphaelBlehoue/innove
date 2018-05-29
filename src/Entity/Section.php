@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints AS Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SectionRepository")
@@ -24,6 +25,13 @@ class Section
      * @Assert\NotBlank(message="Entrez le nom de la section globale svp")
      */
     protected $name;
+
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"name", "id"}, separator="_", updatable=false)
+     */
+    protected $slug;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -118,6 +126,18 @@ class Section
                 $category->setSection(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

@@ -17,6 +17,8 @@ class SectionController extends Controller
 {
     /**
      * @Route("/", name="section_index", methods="GET")
+     * @param SectionRepository $sectionRepository
+     * @return Response
      */
     public function index(SectionRepository $sectionRepository): Response
     {
@@ -25,6 +27,8 @@ class SectionController extends Controller
 
     /**
      * @Route("/new", name="section_new", methods="GET|POST")
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
