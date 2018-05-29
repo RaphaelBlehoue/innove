@@ -27,6 +27,14 @@ class indexController extends AbstractController
     }
 
     /**
+     * @Route("/about-us", name="about", methods={"GET"}, schemes={"%secure_channel%"})
+     */
+    public function about()
+    {
+        return $this->render('front/about.html.twig');
+    }
+
+    /**
      * @Route("/secteurs-dactivite", name="secteurs_activity", methods={"GET"}, schemes={"%secure_channel%"})
      */
     public function activitySector()

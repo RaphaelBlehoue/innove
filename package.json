@@ -16,6 +16,7 @@
         "@ckeditor/ckeditor5-paragraph": "^10.0.0",
         "@symfony/webpack-encore": "^0.17.0",
         "copy-webpack-plugin": "^4.5.1",
+        "imagemin-webpack-plugin": "^2.1.5",
         "jquery": "3.1.1",
         "less": "^3.0.4",
         "less-loader": "^4.1.0",

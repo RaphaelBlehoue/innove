@@ -10,7 +10,7 @@
     <!-- BEGIN: CONTENT/CABINET -->
     <div class="c-content-box c-size-md c-no-padding c-bg-white">
         <div class="c-content-feature-4">
-            <div class="c-bg-parallax c-feature-bg c-content-right c-arrow c-border-left-white" style="background-image: url(http://via.placeholder.com/1920x1080)"></div>
+            <div class="c-bg-parallax c-feature-bg c-content-right c-arrow c-border-left-white" style="background-image: url({{ asset('build/web/static/home_about.jpg') }})"></div>
             <div class="c-content-area c-content-left"></div>
             <div class="container">
                 <div class="c-feature-content c-left">
@@ -18,15 +18,14 @@
                         <div class="c-wrapper">
                             <div class="c-body">
                                 <div class="c-content-title-1 animated wow fadeInDown" data-wow-delay="0.2s">
-                                    <h3 class="c-font-uppercase c-font-bold c-left">{{ 'Le cabinet innove-it'|upper }}</h3>
+                                    <h3 class="c-font-uppercase c-font-bold c-left">{{ 'La société INNOVE-IT & CONSULTING'|upper }}</h3>
                                     <div class="c-line-left"></div>
                                 </div>
                                 <div class="c-content animated wow fadeInDown" data-wow-delay="0.7s">
                                     <p class="c-margin-b-30 c-left">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy tincidunt
-                                        ut laoreet dolore magna aluam erat volutpat. Ut wisi enim ad minim veniam quis nostrud.
+                                        {{ 'Est une équipe innovante avec des talents, des compétences, de l\'expérience des savoir-faire et des savoirs-être engagés à réussir vos projets à court et à long termes dans le domaine des TIC. Elle est spécialisée dans les environnements systèmes: système d’information, systèmes de gestion informatisée, réseau & télécoms.' }}
                                     </p>
-                                    <button class="btn btn-lg c-btn-green c-btn-border-2x c-btn-square c-btn-bold wow animated fadeIn" data-wow-delay="1s">{{ 'découvrir qui nous sommes en détail'|upper }}</button>
+                                    <a href="{{ path('about') }}" class="btn btn-lg c-btn-green c-btn-border-2x c-btn-square c-btn-bold wow animated fadeIn" data-wow-delay="1s">{{ 'découvrir qui nous sommes en détail'|upper }}</a>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +41,7 @@
     <div class="c-content-box c-size-md c-bg-img-center c-bg-grey-1">
         <div class="container">
             <div class="c-content-title-1 wow animated fadeIn">
-                <h3 class="c-center c-font-uppercase c-font-bold">{{ 'les solutions que nous offrons'|upper }}</h3>
+                <h3 class="c-center c-font-uppercase c-font-bold">{{ 'les solutions que nous offrons par domaine de gestion'|upper }}</h3>
                 <div class="c-line-center c-theme-bg"></div>
                 <div class="row">
                     <div class="c-content-blog-post-card-1-grid">
