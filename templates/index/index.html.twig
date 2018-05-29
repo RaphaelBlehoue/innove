@@ -49,18 +49,12 @@
                             {% for i in 1..8 %}
                                 <div class="col-md-4">
                                     <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
-                                        <div class="c-media c-content-overlay">
-                                            <div class="c-overlay-wrapper">
-                                                <div class="c-overlay-content">
-                                                    <a href="#"><i class="icon-link"></i></a>
-                                                </div>
-                                            </div>
-                                            <img class="c-overlay-object img-responsive"  src="http://via.placeholder.com/500x350" alt="">
+                                        <div class="c-body c-bg-green-1 c-padding-20 c-center">
+                                            <h3 class="c-font-19 c-line-height-28 c-font-uppercase c-font-white c-font-bold">
+                                                comptablité & gestion
+                                            </h3>
                                         </div>
                                         <div class="c-body">
-                                            <div class="c-title c-font-bold c-font-uppercase">
-                                                <a href="#">{{'Titre de la solutions ici'}}</a>
-                                            </div>
                                             <p>{{ 'petite descriptions de la solutions ici'|striptags('<a>')|truncate(110, true, '...')|raw }}</p>
                                             <div class="c-content-divider">
                                                 <i class="icon-dot"></i>
