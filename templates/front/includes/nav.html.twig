@@ -28,8 +28,8 @@
                             <ul class="dropdown-menu c-menu-type-classic c-pull-left">
                                 {% if activities|length > 0 %}
                                     {% for activity in activities %}
-                                        <li class="dropdown-submenu">
-                                            <a href="{{ path('secteurs_activity_detail', { 'slug': activity.slug }) }}">{{ activity.name }}<span class="c-arrow c-toggler"></span></a>
+                                        <li class="dropdown-submenu c-font-white-hover">
+                                            <a class="c-font-white" href="{{ path('secteurs_activity_detail', { 'slug': activity.slug }) }}">{{ activity.name }}<span class="c-arrow c-toggler"></span></a>
                                         </li>
                                     {% endfor %}
                                 {% endif %}
