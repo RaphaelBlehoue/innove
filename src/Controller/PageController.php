@@ -54,10 +54,14 @@ class PageController extends AbstractController
 
     /**
      * @Route("/about-us", name="about", methods={"GET"}, schemes={"%secure_channel%"})
+     * @param PartnerRepository $partnerRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function about()
+    public function about(PartnerRepository $partnerRepository)
     {
-        return $this->render('front/about.html.twig');
+        return $this->render('front/about.html.twig',[
+            'partners'  => $partnerRepository->findAll()
+        ]);
     }
 
     /**

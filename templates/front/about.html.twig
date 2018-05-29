@@ -1,10 +1,137 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}
+    {{  'Nos formations | Intégrateur de solutions innovantes' }}
+{% endblock %}
+{% block slide %}
+    <div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold">
+        <div class="container">
+            <div class="c-page-title c-pull-left">
+                <h3 class="c-font-uppercase c-font-sbold">{{ 'Qui sommes nous' }}</h3>
+            </div>
+            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                <li><a href="{{ path('homepage') }}">{{ 'Accueil' }}</a></li>
+                <li>/</li>
+                <li class="c-state_active">{{ 'La société' }}</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
 {% block body %}
+    <div class="c-content-box c-size-md c-no-padding c-bg-white">
+        <div class="c-content-feature-4">
+            <div class="c-bg-parallax c-feature-bg c-content-right c-arrow c-border-left-white" style="background-image: url({{ asset('build/web/static/home_about.jpg') }})"></div>
+            <div class="c-content-area c-content-left"></div>
+            <div class="container">
+                <div class="c-feature-content c-left">
+                    <div class="c-content-v-center">
+                        <div class="c-wrapper">
+                            <div class="c-body">
+                                <div class="c-content-title-1 wow animate fadeInDown">
+                                    <h3 class="c-font-uppercase c-font-bold c-left">{{ 'La société' }}</h3>
+                                    <div class="c-line-left"></div>
+                                </div>
+                                <div class="c-content">
+                                    <p class="c-margin-b-30 c-left wow animate fadeInDown" style="text-align: justify">
+                                        La société INNOVE-IT&CONSULTING, est une équipe innovante avec des talents, des compétences, de l'expérience des savoir-faire et des savoirs-être engagés à réussir vos projets à court et à long termes dans le domaine des TIC. Elle est spécialisée dans les environnements systèmes: système d’information, systèmes de gestion informatisée, réseau & télécoms.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="c-content-box c-size-md c-no-padding c-bg-dark">
+        <div class="c-content-feature-4">
+            <div class="c-bg-parallax c-feature-bg c-content-left c-arrow c-border-right-dark" style="background-image: url({{ asset('build/web/static/home_about.jpg') }})"></div>
+            <div class="c-content-area c-content-right"></div>
+            <div class="container">
+                <div class="c-feature-content c-right">
+                    <div class="c-content-v-center">
+                        <div class="c-wrapper">
+                            <div class="c-body">
+                                <div class="c-content-title-1 wow animate fadeInDown">
+                                    <h3 class="c-font-uppercase c-font-bold c-right c-font-white">{{ 'L\'équipe' }}</h3>
+                                    <div class="c-line-right"></div>
+                                </div>
+                                <div class="c-content">
+                                    <p class="c-margin-b-30 c-right wow animate fadeInDown c-font-white" style="text-align: justify">
+                                        Elle regroupe aussi tous les acteurs des NTIC: développeurs, webdesigners, intégrateurs, administrateur système, tous encadrés par des chefs de projets diplômés d'enseignement supérieur (Ingénieurs, DESS, MBA...) vous proposant des prestations de services différenciées tout en  mettant les Hommes au centre de son modèle économique
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="c-content-box c-size-md c-no-padding c-bg-white">
+        <div class="c-content-feature-4">
+            <div class="c-bg-parallax c-feature-bg c-content-right c-arrow c-border-left-white" style="background-image: url({{ asset('build/web/static/home_about.jpg') }})"></div>
+            <div class="c-content-area c-content-left"></div>
+            <div class="container">
+                <div class="c-feature-content c-left">
+                    <div class="c-content-v-center">
+                        <div class="c-wrapper">
+                            <div class="c-body">
+                                <div class="c-content-title-1 wow animate fadeInDown">
+                                    <h3 class="c-font-uppercase c-font-bold c-left">{{ 'Notre Objectif' }}</h3>
+                                    <div class="c-line-left"></div>
+                                </div>
+                                <div class="c-content">
+                                    <p class="c-margin-b-30 c-left wow animate fadeInDown" style="text-align: justify">
+                                        Cette équipe plurielle vous propose ainsi de combiner le professionnaliste et l'originalité avec l'intégration de solutions informatiques pour optimiser et rendre fluide votre gestion ; l’audit et le conseil en informatique et télécom pour vous guider ;  la création de site  internet pour votre communication et votre visibilité et la conception d'applications orientées web extranets, intranets, aux applications métiers souples et évolutifs, pour optimiser votre productivité
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+    <section id="about">
+        <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
+        <div class="c-content-box c-size-md c-bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 wow animated fadeInLeft">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-font-uppercase c-font-bold">{{ 'La solution de l’envisageable à l’indispensable' }}</h3>
+                            <div class="c-line-left c-theme-bg"></div>
+                        </div>
+                        <!-- End-->
+                        <p>Intégrateur Sage, EBP, Ciel et diverses solutions informatiques Audit-Evolution-Conseils-Paramétrage-Formation-Assistance</p>
+                    </div>
+                    <div class="col-sm-6 wow animated fadeInRight">
+                        <div class="c-content-client-logos-1">
+                            <!-- Begin: Title 1 component -->
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold">{{ 'Partenaires certifiées' }}</h3>
+                                <div class="c-line-left c-theme-bg"></div>
+                            </div>
+                            <!-- End-->
+                            <div class="c-logos">
+                                <div class="row">
+                                    {% if partners|length > 0 %}
+                                        {% for partner in partners %}
+                                            <div class="col-md-4 col-xs-6 c-logo c-logo-1">
+                                                <a href="#"><img class="c-img-pos" src="{{ partner.assertPath|imagine_filter('thumb_180_140') }}" alt="{{ partner.name }}"/></a>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- END: CONTENT/MISC/ABOUT-1 -->
+    </section>
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
 {% endblock %}
-
-{% block base_nav %}
-
-{% endblock %}
-
