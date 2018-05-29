@@ -22,8 +22,8 @@ class PostRepository extends ServiceEntityRepository
     public function getPostLimited($int)
     {
         return $this->createQueryBuilder('p')
-            ->leftJoin('p.subject', 's')
-            ->addSelect('s')
+            ->leftJoin('p.activity', 'a')
+            ->addSelect('a')
             ->orderBy('p.created', 'DESC')
             ->setMaxResults($int)
             ->getQuery()

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
+use App\Entity\Activity;
 use App\Entity\Post;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -18,11 +18,11 @@ class PostType extends AbstractType
     {
         $builder
             ->add('activity', EntityType::class, [
-                'class' => Category::class,
+                'class' => Activity::class,
                 'choice_label' => 'name',
-                'label' => 'Choix de la Sous-Catégorie',
+                'label' => 'Choix du secteur d\'activité',
                 'required' => true,
-                'attr' => ['placeholder' => 'Choix de la Sous-Catégorie', 'class' => 'col-md-6']
+                'attr' => ['placeholder' => 'Choix du secteur d\'activité', 'class' => 'col-md-6']
             ])
             ->add('imageFile', VichImageType::class, [
                 'attr'  => ['data-provide' => 'dropify'],

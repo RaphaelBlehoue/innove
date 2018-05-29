@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Entity\Activity;
+use App\Entity\Post;
 use App\Entity\Section;
 use App\Entity\Service;
 use App\Repository\ActivityRepository;
@@ -52,7 +53,7 @@ class PageController extends AbstractController
            'services' => $serviceRepository->findAll(),
            'activities' => $activityRepository->findAll(),
            'partners'  => $partnerRepository->findAll(),
-           'posts'     => //$partnerRepository->
+           'posts'     => $postRepository->getPostLimited(8)
        ]);
     }
 
@@ -170,17 +171,22 @@ class PageController extends AbstractController
 
     /**
      * @Route("/blog-secteurs", name="blog_sector", methods={"GET"}, schemes={"%secure_channel%"})
+     * @param PostRepository $postRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function blogSector()
+    public function blogSector(PostRepository $postRepository)
     {
         return $this->render('front/blog_sector.html.twig');
     }
 
     /**
-     * @Route("/blog/detail", name="detail_blog", methods={"GET"}, schemes={"%secure_channel%"})
+     * @Route("/blog/detail/{slug}", name="detail_blog", methods={"GET"}, schemes={"%secure_channel%"})
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function blog_detail()
+    public function blog_detail(Post $post)
     {
+        dump($post);
         return $this->render('front/blog_detail.html.twig');
     }
 }
