@@ -19,6 +19,18 @@ class SectionRepository extends ServiceEntityRepository
         parent::__construct($registry, Section::class);
     }
 
+    public function getRecursiveData()
+    {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.categories', 'c')
+            ->addSelect('c')
+            ->leftJoin('c.solutions', 'p')
+            ->addSelect('p')
+            ->orderBy('s.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Section[] Returns an array of Section objects
 //     */

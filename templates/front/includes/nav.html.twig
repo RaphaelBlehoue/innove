@@ -1,5 +1,5 @@
 <!-- BEGIN: HEADER -->
-<header class="c-layout-header {{ nav_class|default('c-layout-header-2 c-layout-header-dark-mobile c-header-transparent-dark') }}" data-minimize-offset="80">
+<header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">
     <div class="c-navbar">
         <div class="container">
             <!-- BEGIN: BRAND -->
@@ -24,13 +24,93 @@
                 <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
                     <ul class="nav navbar-nav c-theme-nav">
                         <li class="c-menu-type-classic">
-                            <a href="{{ path('secteurs_activity') }}" class="c-link dropdown-toggle" title="secteurs d'activité">{{ 'secteurs d\'activité' }}<span class="c-arrow c-toggler"></span></a>
+                            <a href="{{ path('secteurs_activity') }}" class="c-link dropdown-toggle">{{ 'secteurs d\'activité' }}<span class="c-arrow c-toggler"></span></a>
+                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
+                                {% if activities|length > 0 %}
+                                    {% for activity in activities %}
+                                        <li class="dropdown-submenu">
+                                            <a href="{{ path('secteurs_activity_detail', { 'slug': activity.slug }) }}">{{ activity.name }}<span class="c-arrow c-toggler"></span></a>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </li>
+                        <li >
+                            <a href="{{ path('solutions') }}" class="c-link dropdown-toggle">{{ 'Solutions' }}<span class="c-arrow c-toggler"></span></a>
+                            <!-- BEGIN: DESKTOP VERSION OF THE TAB MEGA MENU -->
+                            {% if sections|length > 0 %}
+                            <div class="dropdown-menu c-menu-type-mega c-visible-desktop c-pull-right c-menu-type-fullwidth" style="min-width: auto">
+                                <ul class="nav nav-tabs c-theme-nav">
+                                    {% for sectiondestop in sections %}
+                                        <li {% if loop.first %} class="active" {% endif %}>
+                                            <a href="#m{{ sectiondestop.id }}"  data-toggle="tab">{{ sectiondestop.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <div class="tab-content">
+                                    {% for sectiontab in sections %}
+                                        <div class="tab-pane active" id="m{{ sectiontab.id }}">
+                                            <div class="row">
+                                                {% for cat in sectiontab.categories %}
+                                                <div class="col-md-3">
+                                                    <ul class="dropdown-menu c-menu-type-inline">
+                                                        <li>
+                                                            <h3>{{ cat.name }}</h3>
+                                                        </li>
+                                                        {% for solution in cat.solutions %}
+                                                        <li>
+                                                            <a href="{{ path('solution_detail', {'slug': solution.slug }) }}">{{ solution.name }}</a>
+                                                        </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <!-- BEGIN: DESKTOP VERSION OF THE TAB MEGA MENU -->
+                            <!-- BEGIN: MOBILE VERSION OF THE TAB MEGA MENU -->
+                            <ul class="dropdown-menu c-menu-type-mega c-visible-mobile">
+                                {% for sectionMobile in sections %}
+                                <li class="dropdown-submenu">
+                                    <a href="">{{ sectionMobile.name }}<span class="c-arrow c-toggler"></span></a>
+                                    <div class="dropdown-menu">
+                                        <div class="row">
+                                            {% for catMobile in sectionMobile.categories %}
+                                                <div class="col-md-3">
+                                                    <ul class="dropdown-menu c-menu-type-inline">
+                                                        <li>
+                                                            <h3>{{ catMobile.name }}</h3>
+                                                        </li>
+                                                        {% for solutionMobile in catMobile.solutions %}
+                                                            <li>
+                                                                <a href="{{ path('solution_detail', {'slug': solutionMobile.slug }) }}">{{ solutionMobile.name }}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <!-- END: MOBILE VERSION OF THE TAB MEGA MENU -->
+                            {% endif %}
                         </li>
                         <li class="c-menu-type-classic">
-                            <a href="{{ path('solutions') }}" class="c-link dropdown-toggle" title="solution">{{ 'nos solutions'}}<span class="c-arrow c-toggler"></span></a>
-                        </li>
-                        <li class="c-menu-type-classic">
-                            <a href="{{ path('services') }}" class="c-link dropdown-toggle" title="nos services">{{ 'nos services' }}<span class="c-arrow c-toggler"></span></a>
+                            <a href="{{ path('services') }}" class="c-link dropdown-toggle">{{ 'nos services' }}<span class="c-arrow c-toggler"></span></a>
+                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
+                                {% if services|length > 0 %}
+                                    {% for service in services %}
+                                        <li class="dropdown-submenu">
+                                            <a href="{{ path('service_page', { 'slug': service.slug }) }}">{{ service.title }}<span class="c-arrow c-toggler"></span></a>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
                         </li>
                         <li class="c-menu-type-classic">
                             <a href="{{ path('formations') }}" class="c-link" title="nos formations">{{ 'formations' }}</a>

@@ -40,8 +40,8 @@
     {% block stylesheets %}{% endblock %}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
 </head>
-<body class="c-layout-header-fixed c-layout-header-mobile-fixed {% block class_header %}{% endblock %}">
-{% block base_nav %}{% endblock %}
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+{{ render(controller('App\\Controller\\PageController::renderNav')) }}
 <!-- BEGIN: PAGE CONTAINER -->
 <div class="c-layout-page">
     <!-- BEGIN: PAGE CONTENT -->

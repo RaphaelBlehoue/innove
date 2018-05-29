@@ -10,14 +10,17 @@ namespace App\Controller;
 
 
 use App\Entity\Activity;
+use App\Entity\Category;
 use App\Entity\Post;
 use App\Entity\Section;
 use App\Entity\Service;
+use App\Entity\Solution;
 use App\Repository\ActivityRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\PostRepository;
 use App\Repository\SectionRepository;
 use App\Repository\ServiceRepository;
+use App\Repository\SolutionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -80,14 +83,27 @@ class PageController extends AbstractController
 
     /**
      * Page pour voir la liste des sous-catégories d'une section
-     * @Route("/page/section/{slug}", name="section_solution_page", methods={"GET"}, schemes={"%secure_channel%"})
-     * @param Section $section
+     * @Route("/page/section/categories/{slug}", name="section_category_solution_page", methods={"GET"}, schemes={"%secure_channel%"})
+     * @param Category $category
+     * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sectionSolutionPage(Section $section, $slug)
+    public function sectionSolutionPage(Category $category, $slug)
     {
-        dump($section);
-        return $this->render('front/section_page.html.twig');
+        dump($category);
+        return $this->render('front/section_category_page.html.twig');
+    }
+
+    /**
+     * @param Solution $solution
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/page/solutions/{slug}", name="solution_detail", methods={"GET"}, schemes={"%secure_channel%"})
+     */
+    public function solutionDetail(Solution $solution, $slug)
+    {
+        dump($solution);
+        return $this->render('front/solutions_detail_page.html.twig');
     }
 
 
@@ -188,5 +204,14 @@ class PageController extends AbstractController
     {
         dump($post);
         return $this->render('front/blog_detail.html.twig');
+    }
+
+    public function renderNav(ActivityRepository $activityRepository, SectionRepository $sectionRepository, ServiceRepository $serviceRepository)
+    {
+        return $this->render('front/includes/nav.html.twig',[
+            'activities' => $activityRepository->findAll(),
+            'sections'  => $sectionRepository->getRecursiveData(),
+            'services'  => $serviceRepository->findAll()
+        ]);
     }
 }

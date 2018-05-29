@@ -19,6 +19,7 @@ class SolutionRepository extends ServiceEntityRepository
         parent::__construct($registry, Solution::class);
     }
 
+
 //    /**
 //     * @return Solution[] Returns an array of Solution objects
 //     */
