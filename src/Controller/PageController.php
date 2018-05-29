@@ -31,15 +31,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
 
-    /**
-     * @var SectionRepository
-     */
-    private $sectionRepository;
-
-    public function __construct(SectionRepository $sectionRepository)
-    {
-        $this->sectionRepository = $sectionRepository;
-    }
 
     /**
      * @Route("/", name="homepage", methods={"GET"}, schemes={"%secure_channel%"})
@@ -49,10 +40,10 @@ class PageController extends AbstractController
      * @param PostRepository $postRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(ServiceRepository $serviceRepository, ActivityRepository $activityRepository, PartnerRepository $partnerRepository, PostRepository $postRepository)
+    public function index(ServiceRepository $serviceRepository, ActivityRepository $activityRepository, PartnerRepository $partnerRepository, PostRepository $postRepository, SectionRepository $sectionRepository)
     {
        return $this->render('index/index.html.twig',[
-           'sections' => $this->sectionRepository->findAll(),
+           'sections' => $sectionRepository->findAll(),
            'services' => $serviceRepository->findAll(),
            'activities' => $activityRepository->findAll(),
            'partners'  => $partnerRepository->findAll(),
@@ -72,26 +63,46 @@ class PageController extends AbstractController
      * Page pour voir toute les Categories de solution
      * @Route("/nos-solutions", name="solutions", methods={"GET"}, schemes={"%secure_channel%"})
      * @param SectionRepository $sectionRepository
+     * @param PartnerRepository $partnerRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function solution(SectionRepository $sectionRepository)
+    public function solution(SectionRepository $sectionRepository, PartnerRepository $partnerRepository)
     {
         return $this->render('front/solutions.html.twig',[
-            'sections' => $sectionRepository->findAll()
+            'sections' => $sectionRepository->findAll(),
+            'partners'  => $partnerRepository->findAll()
         ]);
     }
 
     /**
      * Page pour voir la liste des sous-catégories d'une section
      * @Route("/page/section/categories/{slug}", name="section_category_solution_page", methods={"GET"}, schemes={"%secure_channel%"})
-     * @param Category $category
+     * @param Section $section
      * @param $slug
+     * @param PartnerRepository $partnerRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sectionSolutionPage(Category $category, $slug)
+    public function sectionSolutionPage(Section $section, $slug, PartnerRepository $partnerRepository)
     {
-        dump($category);
-        return $this->render('front/section_category_page.html.twig');
+        return $this->render('front/section_category_page.html.twig',[
+            'section' => $section,
+            'partners'  => $partnerRepository->findAll()
+        ]);
+    }
+
+    /**
+     * @param Category $category
+     * @param $slug
+     * @param PostRepository $postRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/page/categories/solutions/{slug}", name="solution_page", methods={"GET"}, schemes={"%secure_channel%"})
+     */
+    public function solutionPage(Category $category, $slug, PostRepository $postRepository)
+    {
+        return $this->render('front/solution__page.html.twig',[
+            'category' => $category,
+            'posts'    => $postRepository->getPostLimited(8)
+        ]);
     }
 
     /**
@@ -100,10 +111,12 @@ class PageController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/page/solutions/{slug}", name="solution_detail", methods={"GET"}, schemes={"%secure_channel%"})
      */
-    public function solutionDetail(Solution $solution, $slug)
+    public function solutionDetail(Solution $solution, $slug, PartnerRepository $partnerRepository)
     {
-        dump($solution);
-        return $this->render('front/solutions_detail_page.html.twig');
+        return $this->render('front/solutions_detail_page.html.twig',[
+            'solution' => $solution,
+            'partners'  => $partnerRepository->findAll()
+        ]);
     }
 
 

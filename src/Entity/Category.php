@@ -29,7 +29,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"name", "id"}, separator="_", updatable=false)
+     * @Gedmo\Slug(fields={"name", "id"}, separator="_", updatable=true)
      */
     protected $slug;
 

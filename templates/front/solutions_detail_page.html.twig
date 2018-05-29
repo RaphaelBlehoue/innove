@@ -1,10 +1,117 @@
 {% extends 'base.html.twig' %}
-
-{% block body %}
-
-{% endblock %}
-
 {% block title %}
-
+    {{  solution.name ~ '| Intégrateur de solutions innovantes' }}
 {% endblock %}
+{% block slide %}
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{ asset('build/web/static/slides/slide_solutions.jpg') }})">
+        <div class="c-breadcrumbs-wrapper">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Nos solutions</h3>
+                </div>
+                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                    <li><a href="{{ path('homepage') }}" class="c-font-white">{{ 'Accueil' }}</a></li>
+                    <li class="c-font-white">/</li>
+                    <li class="c-font-white">{{ solution.name }}</li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
+{% endblock %}
+{% block body %}
+    <div class="c-content-box c-no-padding c-overflow-hide c-bs-grid-reset-space c-theme-bg">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="c-content-product-4">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="c-content c-align-right c-font-white">
+                            <h3 class="c-title c-font-bold c-font-35 c-font-white">{{ solution.name }}</h3>
+                            <p class="c-description c-font-20 c-font-white">{{ solution.content|truncate(700, true, '...')|raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="c-content-product-4">
+                    <div class="c-side-image" style="background-image: url({{ solution.assertPath|imagine_filter('thumb_530_330') }});"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BEGIN: CONTENT/les secteurs dans lesquels nous intervenons -->
+    <div class="c-content-box c-size-md c-bg-grey-1">
+        <div class="container">
+            <div class="c-content-feature-10">
+                <!-- Begin: Title 1 component -->
+                <div class="c-content-title-1">
+                    <h3 class="c-font-uppercase c-center c-font-bold">{{ 'Documentation' }}</h3>
+                    <div class="c-line-center c-theme-bg"></div>
+                </div>
+                <!-- End-->
+                <div class="row">
+                    <div class="c-content-blog-post-card-1-grid">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-6 col-md-offset-4">
+                                {{ solution.reader|raw }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BEGIN: CONTENT/DEVIS -->
+    <div class="c-content-box c-size-md c-bg-parallax" style="background-image: url({{ asset('build/web/static/contact_bg.jpg') }})">
+        <div class="container">
+            <div class="c-content-bar-4">
+                <h3 class="c-font-uppercase c-font-bold">{{ 'Cette solution m\'intéresse' }}</h3>
+                <div class="c-actions">
+                    <a href="{{ path('contact') }}" class="btn btn-md c-btn-green-1 c-btn-uppercase c-btn-square c-btn-bold c-margin-b-100">{{ 'Demandez un devis' }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/BARS/BAR-5 -->
 
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+    <section id="about">
+        <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
+        <div class="c-content-box c-size-md c-bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 wow animated fadeInLeft">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-font-uppercase c-font-bold">{{ 'La solution de l’envisageable à l’indispensable' }}</h3>
+                            <div class="c-line-left c-theme-bg"></div>
+                        </div>
+                        <!-- End-->
+                        <p>Intégrateur Sage, EBP, Ciel et diverses solutions informatiques Audit-Evolution-Conseils-Paramétrage-Formation-Assistance</p>
+                    </div>
+                    <div class="col-sm-6 wow animated fadeInRight">
+                        <div class="c-content-client-logos-1">
+                            <!-- Begin: Title 1 component -->
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold">{{ 'Partenaires certifiées' }}</h3>
+                                <div class="c-line-left c-theme-bg"></div>
+                            </div>
+                            <!-- End-->
+                            <div class="c-logos">
+                                <div class="row">
+                                    {% if partners|length > 0 %}
+                                        {% for partner in partners %}
+                                            <div class="col-md-4 col-xs-6 c-logo c-logo-1">
+                                                <a href="#"><img class="c-img-pos" src="{{ partner.assertPath|imagine_filter('thumb_180_140') }}" alt="{{ partner.name }}"/></a>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- END: CONTENT/MISC/ABOUT-1 -->
+    </section>
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+{% endblock %}
