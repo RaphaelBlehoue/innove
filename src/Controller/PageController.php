@@ -119,6 +119,36 @@ class PageController extends AbstractController
         ]);
     }
 
+    /**
+     * Page pour voir tout les secteurs d'activité
+     * @Route("/secteurs-dactivite", name="secteurs_activity", methods={"GET"}, schemes={"%secure_channel%"})
+     * @param ActivityRepository $activityRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function activitySector(ActivityRepository $activityRepository, PostRepository $postRepository)
+    {
+        return $this->render('front/activity_sector.html.twig',[
+            'activities' => $activityRepository->findAll(),
+            'posts'    => $postRepository->getPostLimited(8)
+        ]);
+    }
+
+    /**
+     * Page pour voir le détail d'un secteur d'activité
+     * @Route("/secteurs-dactivite/{slug}", name="secteurs_activity_detail", methods={"GET"}, schemes={"%secure_channel%"})
+     * @param ActivityRepository $activityRepository
+     * @param Activity $activity
+     * @param PartnerRepository $partnerRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function activityPage(ActivityRepository $activityRepository, Activity $activity, PartnerRepository $partnerRepository)
+    {
+        return $this->render('front/activity_page.html.twig',[
+            'activity' => $activity,
+            'partners'  => $partnerRepository->findAll()
+        ]);
+    }
+
 
     /**
      * Page pour voir tout les services
@@ -144,33 +174,6 @@ class PageController extends AbstractController
     {
         dump($service);
         return $this->render('front/service_page.html.twig');
-    }
-
-
-    /**
-     * Page pour voir tout les secteurs d'activité
-     * @Route("/secteurs-dactivite", name="secteurs_activity", methods={"GET"}, schemes={"%secure_channel%"})
-     * @param ActivityRepository $activityRepository
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function activitySector(ActivityRepository $activityRepository)
-    {
-        return $this->render('front/activity_sector.html.twig',[
-            'activities' => $activityRepository->findAll()
-        ]);
-    }
-
-    /**
-     * Page pour voir le détail d'un secteur d'activité
-     * @Route("/secteurs-dactivite/{slug}", name="secteurs_activity_detail", methods={"GET"}, schemes={"%secure_channel%"})
-     * @param ActivityRepository $activityRepository
-     * @param Activity $activity
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function activityPage(ActivityRepository $activityRepository, Activity $activity)
-    {
-        dump($activity);
-        return $this->render('front/activity_page.html.twig');
     }
 
 

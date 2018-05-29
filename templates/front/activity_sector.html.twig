@@ -1,9 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    {{ 'Secteurs d\'activité | Intégrateur de solutions innovantes' }}
+    {{  'Secteurs d\'activité | Intégrateur de solutions innovantes' }}
 {% endblock %}
 {% block slide %}
-    {{ include('front/includes/slide.html.twig') }}
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{ asset('build/web/static/slides/slide-sector.jpg') }})">
+        <div class="c-breadcrumbs-wrapper">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Nos Secteurs d'interventions</h3>
+                </div>
+                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                    <li><a href="{{ path('homepage') }}" class="c-font-white">{{ 'Accueil' }}</a></li>
+                    <li class="c-font-white">/</li>
+                    <li class="c-font-white">{{ 'Secteurs d\'activité' }}</li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
 {% endblock %}
 {% block body %}
     <!-- BEGIN: CONTENT/les secteurs dans lesquels nous intervenons -->
@@ -20,32 +33,34 @@
                 <div class="row">
                     <div class="c-content-blog-post-card-1-grid">
                         <div class="row">
-                            {% for i in 1..8 %}
-                                <div class="col-md-4">
-                                    <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
-                                        <div class="c-media c-content-overlay">
-                                            <div class="c-overlay-wrapper">
-                                                <div class="c-overlay-content">
-                                                    <a href="#"><i class="icon-link"></i></a>
+                            {% if activities|length > 0 %}
+                                {% for activity in activities %}
+                                    <div class="col-md-6">
+                                        <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
+                                            <div class="c-media c-content-overlay">
+                                                <div class="c-overlay-wrapper">
+                                                    <div class="c-overlay-content">
+                                                        <a href="{{ path('secteurs_activity_detail', {'slug': activity.slug }) }}"><i class="icon-link"></i></a>
+                                                    </div>
                                                 </div>
+                                                <img class="c-overlay-object img-responsive"  src="{{ activity.assertPath|imagine_filter('thumb_530_330') }}" alt="{{ activity.name }}">
                                             </div>
-                                            <img class="c-overlay-object img-responsive"  src="http://via.placeholder.com/500x350" alt="">
-                                        </div>
-                                        <div class="c-body">
-                                            <div class="c-title c-font-bold c-font-uppercase">
-                                                <a href="#">{{'Domaine activite'}}</a>
-                                            </div>
-                                            <div class="c-content-divider c-icon-bg">
-                                                <i class="icon-drop c-rounded c-font-white"></i>
-                                            </div>
-                                            <p>{{ 'petite descriptions de la solutions ici'|striptags('<a>')|truncate(110, true, '...')|raw }}</p>
-                                            <div class="c-center">
-                                                <a href="" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'plus de détail' }}</a>
+                                            <div class="c-body">
+                                                <div class="c-title c-font-bold c-font-uppercase c-center">
+                                                    <a href="{{ path('secteurs_activity_detail', {'slug': activity.slug }) }}">{{ activity.name }}</a>
+                                                </div>
+                                                <div class="c-content-divider c-icon-bg">
+                                                    <i class="icon-drop c-rounded c-font-white"></i>
+                                                </div>
+                                                <p>{{ activity.content|striptags('<a>')|truncate(110, true, '...')|raw }}</p>
+                                                <div class="c-center">
+                                                    <a href="{{ path('secteurs_activity_detail', {'slug': activity.slug }) }}" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'plus de détail' }}</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -54,7 +69,7 @@
     </div>
     <!-- END: CONTENT/les secteurs dans lesquels nous intervenons -->
     <!-- BEGIN: CONTENT/ACTU -->
-    <div class="c-content-box c-size-md c-bg-grey-1">
+    <div class="c-content-box c-size-md c-bg-white">
         <div class="container">
             <!-- Begin: Testimonals 1 component -->
             <div class="c-content-blog-post-card-1-slider" data-slider="owl">
@@ -66,42 +81,44 @@
                 <!-- End-->
                 <!-- Begin: Owlcarousel -->
                 <div class="owl-carousel owl-theme c-theme c-owl-nav-center" data-items="3" data-slide-speed="8000" data-rtl="false">
-                    {% for i in 1..8 %}
-                        <div class="item">
-                            <div class="c-content-blog-post-card-1 c-option-2">
-                                <div class="c-media c-content-overlay">
-                                    <div class="c-overlay-wrapper">
-                                        <div class="c-overlay-content">
-                                            <a href="#"><i class="icon-link"></i></a>
-                                            <a href="http://via.placeholder.com/400x300" data-lightbox="fancybox" data-fancybox-group="gallery">
-                                                <i class="icon-magnifier"></i>
-                                            </a>
+                    {% if posts|length > 0 %}
+                        {% for post in posts %}
+                            <div class="item c-shadow">
+                                <div class="c-content-blog-post-card-1 c-option-2">
+                                    <div class="c-media c-content-overlay">
+                                        <div class="c-overlay-wrapper">
+                                            <div class="c-overlay-content">
+                                                <a href="{{ path('detail_blog', {'slug': post.slug}) }}"><i class="icon-link"></i></a>
+                                                <a href="{{ post.assertPath|imagine_filter('thumb_590_300') }}" data-lightbox="fancybox" data-fancybox-group="gallery">
+                                                    <i class="icon-magnifier"></i>
+                                                </a>
+                                            </div>
                                         </div>
+                                        <img class="c-overlay-object img-responsive" src="{{ post.assertPath|imagine_filter('thumb_590_300') }}" alt="">
                                     </div>
-                                    <img class="c-overlay-object img-responsive" src="http://via.placeholder.com/400x300" alt="">
-                                </div>
-                                <div class="c-body">
-                                    <div class="c-title c-font-uppercase c-font-bold">
-                                        <a href="#">Web & Mobile Development</a>
-                                    </div>
-                                    <div class="c-author">
-                                        By <a href="#"><span class="c-font-uppercase">Nick Strong</span></a>
-                                        on <span class="c-font-uppercase">20 May 2015, 10:30AM</span>
-                                    </div>
+                                    <div class="c-body">
+                                        <div class="c-title c-font-uppercase c-font-bold">
+                                            <a href="{{ path('detail_blog', {'slug': post.slug}) }}">{{ post.title }}</a>
+                                        </div>
+                                        <div class="c-author">
+                                            Par <a href="{{ path('detail_blog', {'slug': post.slug}) }}"><span class="c-font-uppercase">{{ 'Admin' }}</span></a>
+                                            Le <span class="c-font-uppercase">{{ post.created|date('d m Y') }}</span>
+                                        </div>
 
-                                    <div class="c-panel">
-                                        <ul class="c-tags c-theme-ul-bg">
-                                            <li>{{ 'Domaine activité' }}</li>
-                                        </ul>
+                                        <div class="c-panel">
+                                            <ul class="c-tags c-theme-ul-bg">
+                                                <li>{{ post.activity.name }}</li>
+                                            </ul>
+                                        </div>
+                                        <p>{{ post.content |striptags('<a>')|truncate(150, true, '...')|raw }}</p>
                                     </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, dolor adipisicing elit.
-                                        Nulla nemo ad sapiente officia amet.
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="c-center">
+                    <a href="{{ path('blog') }}" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{'Consultez tous nos articles' }}</a>
                 </div>
                 <!-- End-->
             </div>

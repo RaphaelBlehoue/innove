@@ -1,10 +1,101 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}
+    {{  'Secteurs d\'activité | Intégrateur de solutions innovantes' }}
+{% endblock %}
+{% block slide %}
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{ asset('build/web/static/slides/slide-sector.jpg') }})">
+        <div class="c-breadcrumbs-wrapper">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Nos Secteurs d'interventions</h3>
+                </div>
+                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                    <li><a href="{{ path('homepage') }}" class="c-font-white">{{ 'Accueil' }}</a></li>
+                    <li class="c-font-white">/</li>
+                    <li class="c-font-white">{{ 'Secteurs d\'activité' }}</li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
+{% endblock %}
 {% block body %}
-
+    <!-- BEGIN: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+    <div class="c-content-box c-size-md c-bg-img-center c-bg-white">
+        <div class="container">
+            <div class="c-content-title-1 wow animated fadeIn">
+                <h3 class="c-center c-font-uppercase c-font-bold">{{ activity.name|upper }}</h3>
+                <div class="c-line-center c-theme-bg"></div>
+                <div class="row">
+                    <div class="c-content-blog-post-card-1-grid">
+                        <div class="row featurette">
+                            <div class="col-md-7">
+                                <div class="c-content-blog-post-card-1 c-option-2 c-bordered box-shadow c-shadow">
+                                    <div class="c-body" style="width: 550px; height: 350px;">
+                                        <p style="text-align: justify">{{ activity.content|striptags('<a>')|truncate(6100, true, '...')|raw }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid mx-auto" src="{{ activity.assertPath|imagine_filter('thumb_550_350') }}" alt="550x350" style="width: 550px; height: 350px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+    <!-- BEGIN: CONTENT/DEVIS -->
+    <div class="c-content-box c-size-md c-bg-parallax" style="background-image: url({{ asset('build/web/static/contact_bg.jpg') }})">
+        <div class="container">
+            <div class="c-content-bar-4">
+                <h3 class="c-font-uppercase c-font-bold">{{ 'Besoin d\'un devis pour votre entreprise ?' }}</h3>
+                <div class="c-actions">
+                    <a href="{{ path('contact') }}" class="btn btn-md c-btn-green-1 c-btn-uppercase c-btn-square c-btn-bold c-margin-b-100">{{ 'cliquez ici' }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/BARS/BAR-5 -->
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+    <section id="about">
+        <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
+        <div class="c-content-box c-size-md c-bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 wow animated fadeInLeft">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-font-uppercase c-font-bold">{{ 'La solution de l’envisageable à l’indispensable' }}</h3>
+                            <div class="c-line-left c-theme-bg"></div>
+                        </div>
+                        <!-- End-->
+                        <p>Intégrateur Sage, EBP, Ciel et diverses solutions informatiques Audit-Evolution-Conseils-Paramétrage-Formation-Assistance</p>
+                    </div>
+                    <div class="col-sm-6 wow animated fadeInRight">
+                        <div class="c-content-client-logos-1">
+                            <!-- Begin: Title 1 component -->
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold">{{ 'Partenaires certifiées' }}</h3>
+                                <div class="c-line-left c-theme-bg"></div>
+                            </div>
+                            <!-- End-->
+                            <div class="c-logos">
+                                <div class="row">
+                                    {% if partners|length > 0 %}
+                                        {% for partner in partners %}
+                                            <div class="col-md-4 col-xs-6 c-logo c-logo-1">
+                                                <a href="#"><img class="c-img-pos" src="{{ partner.assertPath|imagine_filter('thumb_180_140') }}" alt="{{ partner.name }}"/></a>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- END: CONTENT/MISC/ABOUT-1 -->
+    </section>
+    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
 {% endblock %}
-
-{% block base_nav %}
-
-{% endblock %}
-
