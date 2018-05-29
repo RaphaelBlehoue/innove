@@ -30,7 +30,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -98,7 +97,7 @@
                                         <p>{{ service.content|striptags('<a>')|truncate(160, true, '...')|raw }}</p>
                                     </div>
                                     <div class="c-center">
-                                        <a href="{{ path('service_page', {'slug': service.slug}) }}" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'J\'ai besoin de ce service' }}</a>
+                                        <a href="{{ path('services') }}#s{{ service.slug }}" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'Plus de détail' }}</a>
                                     </div>
                                 </div>
                             </div>

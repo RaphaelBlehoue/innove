@@ -1,9 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    {{ 'Nos Services | Intégrateur de solutions innovantes' }}
+    {{  'Nos formations | Intégrateur de solutions innovantes' }}
 {% endblock %}
 {% block slide %}
-    {{ include('front/includes/slide.html.twig') }}
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{ asset('build/web/static/slides/slide_formation.jpg') }})">
+        <div class="c-breadcrumbs-wrapper">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Nos formations</h3>
+                </div>
+                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                    <li><a href="{{ path('homepage') }}" class="c-font-white">{{ 'Accueil' }}</a></li>
+                    <li class="c-font-white">/</li>
+                    <li class="c-font-white">{{ 'Nos formations' }}</li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
 {% endblock %}
 {% block body %}
 <div class="c-content-box c-size-md c-bg-white">
@@ -14,23 +27,23 @@
                 <div class="c-line-center"></div>
             </div>
         </div>
-        {% for i in 1..6 %}
-        <div class="c-content-box c-overflow-hide {% if loop.index is odd %}c-bg-grey {% else %} c-bg-white {% endif %}">
+        {% if formations|length > 0 %}
+        {% for formation in formations %}
+        <div class="c-content-box c-overflow-hide c-margin-b-30 {% if loop.index is odd %}c-bg-grey {% else %} c-bg-white {% endif %}">
             <div class="c-content-product-3 c-bs-grid-reset-space">
                 <div class="row">
                     {% if loop.index is odd %}
                     <div class="col-md-7 col-sm-6 wow animated fadeInLeft">
                         <div class="c-content-overlay">
-                            <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 350px; background-image: url(http://via.placeholder.com/450x350);"></div>
+                            <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 350px; background-image: url({{ formation.assertPath|imagine_filter('thumb_550_350') }});"></div>
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-6 wow animated fadeInRight">
                         <div class="c-wrapper c-bg-green-1" style="height: 350px;">
                             <div class="c-content c-border c-border-padding c-border-padding-right">
-                                <h3 class="c-title c-font-25 c-font-white c-font-uppercase c-font-bold">{{ 'Titre de la formation' }}</h3>
-                                <p class="c-description c-font-17 c-font-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat.</p>
-                                <p class="c-description c-font-17 c-font-white">Dolor sit amet, consectetuer adipiscing elit sed diam nonummy</p>
-                                <a href="" class="btn btn-lg c-btn-white c-font-uppercase c-btn-square c-btn-border-1x">{{ 'cette formation m\'intéresse' }}</a>
+                                <small class="c-font-white">{{ formation.category.name }}</small>
+                                <h3 class="c-title c-font-25 c-font-white c-font-uppercase c-font-bold">{{ formation.title }}</h3>
+                                <p class="c-description c-font-17 c-font-white">{{ formation.content|striptags|truncate(250, true, '...')|raw }}</p>
                             </div>
                         </div>
                     </div>
@@ -38,16 +51,15 @@
                         <div class="col-md-5 col-sm-6 wow animated fadeInLeft">
                             <div class="c-wrapper c-bg-green" style="height: 350px;">
                                 <div class="c-content c-border c-border-padding c-border-padding-right">
-                                    <h3 class="c-title c-font-25 c-font-white c-font-uppercase c-font-bold">{{ 'Titre de la formation' }}</h3>
-                                    <p class="c-description c-font-17 c-font-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat.</p>
-                                    <p class="c-description c-font-17 c-font-white">Dolor sit amet, consectetuer adipiscing elit sed diam nonummy</p>
-                                    <a href="" class="btn btn-lg c-btn-white c-font-uppercase c-btn-square c-btn-border-1x">{{ 'cette formation m\'intéresse' }}</a>
+                                    <small class="c-font-white">{{ formation.category.name }}</small>
+                                    <h3 class="c-title c-font-25 c-font-white c-font-uppercase c-font-bold">{{ formation.title }}</h3>
+                                    <p class="c-description c-font-17 c-font-white">{{ formation.content|striptags|truncate(250, true, '...')|raw }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-6 wow animated fadeInRight">
                             <div class="c-content-overlay">
-                                <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 350px; background-image: url(http://via.placeholder.com/450x350);"></div>
+                                <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 350px; background-image: url({{ formation.assertPath|imagine_filter('thumb_550_350') }});"></div>
                             </div>
                         </div>
                     {% endif %}
@@ -55,9 +67,9 @@
             </div>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
 </div>
-
     <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
     <section id="about">
         <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
@@ -67,12 +79,11 @@
                     <div class="col-sm-6 wow animated fadeInLeft">
                         <!-- Begin: Title 1 component -->
                         <div class="c-content-title-1">
-                            <h3 class="c-font-uppercase c-font-bold">{{ 'De quelle solutions parlons nous ?' }}</h3>
+                            <h3 class="c-font-uppercase c-font-bold">{{ 'La solution de l’envisageable à l’indispensable' }}</h3>
                             <div class="c-line-left c-theme-bg"></div>
                         </div>
                         <!-- End-->
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy nibh euismod tincidunt ut laoreet dolore magna aluam erat volutpat. Ut wisi enim ad minim veniam quis nostrud exerci et tation diam nisl ut aliquip ex ea commodo consequat euismod tincidunt ut laoreet dolore magna aluam. </p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+                        <p>Intégrateur Sage, EBP, Ciel et diverses solutions informatiques Audit-Evolution-Conseils-Paramétrage-Formation-Assistance</p>
                     </div>
                     <div class="col-sm-6 wow animated fadeInRight">
                         <div class="c-content-client-logos-1">
@@ -84,11 +95,13 @@
                             <!-- End-->
                             <div class="c-logos">
                                 <div class="row">
-                                    {% for i in 1..6 %}
-                                        <div class="col-md-4 col-xs-6 c-logo c-logo-1">
-                                            <a href="#"><img class="c-img-pos" src="http://via.placeholder.com/180x140" alt=""/></a>
-                                        </div>
-                                    {% endfor %}
+                                    {% if partners|length > 0 %}
+                                        {% for partner in partners %}
+                                            <div class="col-md-4 col-xs-6 c-logo c-logo-1">
+                                                <a href="#"><img class="c-img-pos" src="{{ partner.assertPath|imagine_filter('thumb_180_140') }}" alt="{{ partner.name }}"/></a>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

@@ -106,7 +106,7 @@
                                 {% if services|length > 0 %}
                                     {% for service in services %}
                                         <li class="dropdown-submenu">
-                                            <a href="{{ path('service_page', { 'slug': service.slug }) }}">{{ service.title }}<span class="c-arrow c-toggler"></span></a>
+                                            <a href="{{ path('services') }}#s{{ service.slug }}">{{ service.title }}<span class="c-arrow c-toggler"></span></a>
                                         </li>
                                     {% endfor %}
                                 {% endif %}

@@ -16,6 +16,7 @@ use App\Entity\Section;
 use App\Entity\Service;
 use App\Entity\Solution;
 use App\Repository\ActivityRepository;
+use App\Repository\FormationRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\PostRepository;
 use App\Repository\SectionRepository;
@@ -144,7 +145,7 @@ class PageController extends AbstractController
     public function activityPage(ActivityRepository $activityRepository, Activity $activity, PartnerRepository $partnerRepository)
     {
         return $this->render('front/activity_page.html.twig',[
-            'activity' => $activity,
+            'activity'  => $activity,
             'partners'  => $partnerRepository->findAll()
         ]);
     }
@@ -179,10 +180,16 @@ class PageController extends AbstractController
 
     /**
      * @Route("/nos-formations", name="formations", methods={"GET"}, schemes={"%secure_channel%"})
+     * @param FormationRepository $formationRepository
+     * @param PartnerRepository $partnerRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function formations()
+    public function formations(FormationRepository $formationRepository, PartnerRepository $partnerRepository)
     {
-        return $this->render('front/formations.html.twig');
+        return $this->render('front/formations.html.twig',[
+            'formations' => $formationRepository->findAll(),
+            'partners'  => $partnerRepository->findAll()
+        ]);
     }
 
     /**
