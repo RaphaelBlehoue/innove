@@ -7,15 +7,7 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     // css entry
-    .addStyleEntry('css/app', [
-        './assets/front/style.less',
-        './assets/front/less/dark.less',
-        './assets/front/less/responsive.less',
-        './assets/front/css/swiper.css',
-        './assets/front/css/animate.css',
-        './assets/front/css/magnific-popup.css',
-        './assets/front/css/font-icons.css'
-    ])
+    .addStyleEntry('css/app', './assets/front/css/app.css')
     //.enableSassLoader()
     .enableLessLoader()
     // allows legacy applications to use $/jQuery as a global variable
@@ -107,24 +99,4 @@ Encore
 const backConfig = Encore.getWebpackConfig();
 backConfig.name = 'backConfig';
 
-Encore.reset();
-
-Encore
-    .setOutputPath('public/build/web')
-    .setPublicPath('/build/web')
-    .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
-    //.addEntry('js/script/editor', './assets/back/js/editor.js')
-    .addStyleEntry('css/custom', './assets/web/sass/demos/index/custom.scss')
-    .enableSassLoader()
-    .enableSourceMaps(!Encore.isProduction())
-    .enableSourceMaps(true)
-    .enableVersioning(Encore.isProduction())
-    .addPlugin(new CopyWebpackPlugin([
-        { from: './assets/web/static', to: 'static' }
-    ]))
-;
-const webConfig = Encore.getWebpackConfig();
-webConfig.name = 'webConfig';
-
-module.exports = [frontConfig, backConfig, webConfig];
+module.exports = [frontConfig, backConfig];

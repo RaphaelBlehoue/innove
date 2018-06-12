@@ -3,6 +3,8 @@
 parameters:
     locale: '%env(APP_LOCAL)%'
     secure_channel: '%env(SECURE_CHANNEL)%'
+    describe: "LA SOCIÉTÉ INNOVE-IT & CONSULTING Est une équipe innovante avec des talents, des compétences de l'expérience des savoir-faire et des savoirs-être engagés à réussir vos projets à court et à long termes dans le domaine des TIC. Elle est spécialisée dans les environnements systèmes: système d’information, systèmes de gestion informatisée, réseau & télécoms"
+    keywords: "Logiciels de gestion, Sage Comptabilité, Sage Paie, Ressource Humaines, Solutions d'intégration logiciels, côte d'ivoire, Sage Comptabilité I7"
 
 services:
     # default configuration for services in *this* file

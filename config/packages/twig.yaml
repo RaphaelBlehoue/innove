@@ -3,4 +3,6 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes: ['bootstrap_4_layout.html.twig']
-    #form_themes: ['form/costum_form.html.twig']
+    globals:
+        describe: '%describe%'
+        keywords: '%keywords%'

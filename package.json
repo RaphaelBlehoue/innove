@@ -31,7 +31,6 @@
         "dev-server": "encore dev-server",
         "front": "encore dev --config-name frontConfig --watch",
         "back": "encore dev --config-name backConfig --watch",
-        "web": "encore dev --config-name webConfig --watch",
         "watch": "encore dev --watch",
         "build": "encore production"
     }
