@@ -6,3 +6,6 @@ twig:
     globals:
         describe: '%describe%'
         keywords: '%keywords%'
+        contact: '%contact%'
+        cel: '%cel%'
+        info: '%info%'

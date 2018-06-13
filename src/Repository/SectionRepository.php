@@ -26,7 +26,7 @@ class SectionRepository extends ServiceEntityRepository
             ->addSelect('c')
             ->leftJoin('c.solutions', 'p')
             ->addSelect('p')
-            ->orderBy('s.name', 'ASC')
+            ->orderBy('s.position', 'ASC')
             ->getQuery()
             ->getResult();
     }

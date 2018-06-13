@@ -56,18 +56,12 @@ class Category
      */
     protected $solutions;
 
-    /**
-     * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Formation", mappedBy="category")
-     */
-    protected $formations;
     
     
     public function __construct()
     {
         $this->created = new \DateTime('now');
         $this->solutions = new ArrayCollection();
-        $this->formations = new ArrayCollection();
     }
 
     public function getId()
@@ -154,36 +148,6 @@ class Category
         return $this;
     }
 
-    /**
-     * @return Collection|Formation[]
-     */
-    public function getFormations(): Collection
-    {
-        return $this->formations;
-    }
-
-    public function addFormation(Formation $formation): self
-    {
-        if (!$this->formations->contains($formation)) {
-            $this->formations[] = $formation;
-            $formation->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFormation(Formation $formation): self
-    {
-        if ($this->formations->contains($formation)) {
-            $this->formations->removeElement($formation);
-            // set the owning side to null (unless already changed)
-            if ($formation->getCategory() === $this) {
-                $formation->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getSlug(): ?string
     {

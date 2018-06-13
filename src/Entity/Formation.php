@@ -66,10 +66,10 @@ class Formation
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="formations")
-     * @Assert\NotNull(message="Choix de la catégorie")
+     * @ORM\ManyToOne(targetEntity="App\Entity\FamilyFormer", inversedBy="formations")
+     * @Assert\NotNull(message="Choix de la famille de formations")
      */
-    protected $category;
+    protected $familyformer;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -204,14 +204,14 @@ class Formation
         return $this;
     }
 
-    public function getCategory(): ?Category
+    public function getFamilyformer(): ?FamilyFormer
     {
-        return $this->category;
+        return $this->familyformer;
     }
 
-    public function setCategory(?Category $category): self
+    public function setFamilyformer(?FamilyFormer $familyformer): self
     {
-        $this->category = $category;
+        $this->familyformer = $familyformer;
 
         return $this;
     }

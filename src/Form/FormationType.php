@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
+use App\Entity\FamilyFormer;
 use App\Entity\Formation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -17,16 +17,17 @@ class FormationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', EntityType::class, [
-                'class' => Category::class,
+            ->add('familyformer', EntityType::class, [
+                'class' => FamilyFormer::class,
                 'choice_label' => 'name',
-                'label' => 'Choix de la Sous-Catégorie',
+                'label' => 'Choix de la Famille de la formation',
                 'required' => true,
-                'attr' => ['placeholder' => 'Choix de la Sous-Catégorie', 'class' => 'col-md-6']
+                'attr' => ['placeholder' => 'Choix de la Famille de la formation', 'class' => 'col-md-6']
             ])
             ->add('imageFile', VichImageType::class, [
                 'attr'  => ['data-provide' => 'dropify'],
-                'label' => false
+                'label' => false,
+                'required' => false
             ])
             ->add('title', TextType::class, [
                 'label' => 'Titre de la formation',

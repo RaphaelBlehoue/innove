@@ -15,14 +15,14 @@
                     <thead>
                     <tr>
                         <th>{{ 'Nom' }}</th>
-                        <th>{{ 'Date de création' }}</th>
+                        <th>{{ 'position affichage' }}</th>
                         <th>actions</th>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
                         <th>{{ 'Nom' }}</th>
-                        <th>{{ 'Date de création' }}</th>
+                        <th>{{ 'position affichage' }}</th>
                         <th>actions</th>
                     </tr>
                     </tfoot>
@@ -30,7 +30,7 @@
                     {% for section in sections %}
                         <tr>
                             <td>{{ section.name }}</td>
-                            <td>{{ section.created ? section.created|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ section.position }}</td>
                             <td>
                                 <a href="{{ path('section_show', {'id': section.id}) }}" class="btn btn-primary">{{ 'Afficher' }}</a>
                                 <a href="{{ path('section_edit', {'id': section.id}) }}" class="btn btn-danger">{{ 'Modifier' }}</a>

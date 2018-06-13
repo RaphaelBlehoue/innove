@@ -16,6 +16,7 @@ use App\Entity\Section;
 use App\Entity\Service;
 use App\Entity\Solution;
 use App\Repository\ActivityRepository;
+use App\Repository\FamilyFormerRepository;
 use App\Repository\FormationRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\PostRepository;
@@ -87,7 +88,7 @@ class PageController extends AbstractController
      * @param PartnerRepository $partnerRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sectionSolutionPage(Section $section, $slug, PartnerRepository $partnerRepository)
+    public function FamilySolutionPage(Section $section, $slug, PartnerRepository $partnerRepository)
     {
         return $this->render('front/section_category_page.html.twig',[
             'section' => $section,
@@ -102,7 +103,7 @@ class PageController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/page/categories/solutions/{slug}", name="solution_page", methods={"GET"}, schemes={"%secure_channel%"})
      */
-    public function solutionPage(Category $category, $slug, PostRepository $postRepository)
+    public function SubFamilyPage(Category $category, $slug, PostRepository $postRepository)
     {
         return $this->render('front/solution__page.html.twig',[
             'category' => $category,
@@ -177,8 +178,9 @@ class PageController extends AbstractController
      */
     public function servicePage(ServiceRepository $serviceRepository, Service $service)
     {
-        dump($service);
-        return $this->render('front/service_page.html.twig');
+        return $this->render('front/service_page.html.twig', [
+            'services' => $serviceRepository->find($service)
+        ]);
     }
 
 
@@ -233,12 +235,13 @@ class PageController extends AbstractController
         return $this->render('front/blog_detail.html.twig');
     }
 
-    public function renderNav(ActivityRepository $activityRepository, SectionRepository $sectionRepository, ServiceRepository $serviceRepository)
+    public function renderNav(ActivityRepository $activityRepository, SectionRepository $sectionRepository, ServiceRepository $serviceRepository, FamilyFormerRepository $familyFormerRepository)
     {
         return $this->render('front/includes/nav_main.html.twig',[
             'activities' => $activityRepository->findAll(),
             'sections'  => $sectionRepository->getRecursiveData(),
-            'services'  => $serviceRepository->findAll()
+            'services'  => $serviceRepository->findAll(),
+            'families'   => $familyFormerRepository->getRecursiveData()
         ]);
     }
 }

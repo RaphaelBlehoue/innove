@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/section")
+ * @Route("/admin/section")
  */
 class SectionController extends Controller
 {
@@ -69,7 +69,7 @@ class SectionController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('section_edit', ['id' => $section->getId()]);
+            return $this->redirectToRoute('section_index');
         }
 
         return $this->render('section/edit.html.twig', [

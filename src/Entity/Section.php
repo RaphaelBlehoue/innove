@@ -5,11 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints AS Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SectionRepository")
+ * @UniqueEntity(fields={"position"}, message="Cette position d'affichage existe déjà, choisissez-en une autre pour continuer")
  */
 class Section
 {
@@ -25,6 +27,12 @@ class Section
      * @Assert\NotBlank(message="Entrez le nom de la section globale svp")
      */
     protected $name;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Entrez la position d'affichage du menu")
+     */
+    protected $position;
 
 
     /**
@@ -49,7 +57,6 @@ class Section
      * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="section")
      */
     protected $categories;
-
 
 
     public function __construct()
@@ -138,6 +145,18 @@ class Section
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }
