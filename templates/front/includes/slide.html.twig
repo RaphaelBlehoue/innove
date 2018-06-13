@@ -2,15 +2,17 @@
     <div class="swiper-full-screen swiper-container height-100 width-100 white-move">
         <div class="swiper-wrapper">
             <!-- start slider item -->
-            <div class="swiper-slide cover-background" style="background-image:url({{ asset('build/global/images/homepage-3-slider-img-6.jpg') }});">
+            <div class="swiper-slide cover-background" style="background-image:url({{ asset('build/front/static/slide_solution.jpg') }});">
                 <div class="opacity-extra-medium bg-black"></div>
                 <div class="container position-relative full-screen">
                     <div class="slider-typography text-center">
                         <div class="slider-text-middle-main">
                             <div class="slider-text-middle">
-                                <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom sm-margin-four-bottom xs-margin-five-bottom">we combine design, thinking and technical craft</h6>
-                                <div class="alt-font text-white text-uppercase font-weight-700 letter-spacing-minus-3 title-extra-large margin-two-bottom width-60 center-col md-width-80 sm-margin-four-bottom xs-width-90 xs-margin-five-bottom">creative thinker</div>
-                                <div class="btn-dual"><a href="transparent-header.html" class="btn btn-transparent-white btn-small xs-margin-two-all">About Company</a><a href="transparent-header.html" class="btn btn-transparent-white btn-small xs-margin-two-all">Purchase Now</a></div>
+                                <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom sm-margin-four-bottom xs-margin-five-bottom">{{ 'Facilitez la gestion des tâches quotidiennes de votre entreprise avec'|capitalize }}</h6>
+                                <div class="alt-font text-white text-uppercase font-weight-700 letter-spacing-minus-3 title-large title-line-through margin-two-bottom width-60 center-col md-width-80 sm-margin-four-bottom xs-width-90 xs-margin-five-bottom">{{ 'Nos solutions de gestion' }}</div>
+                                <div class="btn-dual">
+                                    <a href="{{ path('solutions') }}" class="btn btn-transparent-white btn-small xs-margin-two-all">{{ 'découvir' }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -18,15 +20,16 @@
             </div>
             <!-- end slider item -->
             <!-- start slider item -->
-            <div class="swiper-slide cover-background" style="background-image:url('images/homepage-3-slider-img-5.jpg');">
+            <div class="swiper-slide cover-background" style="background-image:url({{ asset('build/front/static/slide_former.jpg') }});">
                 <div class="opacity-extra-medium bg-black"></div>
                 <div class="container position-relative full-screen">
                     <div class="slider-typography text-center">
                         <div class="slider-text-middle-main">
                             <div class="slider-text-middle">
-                                <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom sm-margin-four-bottom xs-margin-five-bottom">we're a design studio that believe in the ideas</h6>
-                                <div class="alt-font text-white text-uppercase font-weight-700 letter-spacing-minus-3 title-extra-large margin-two-bottom width-60 center-col md-width-80 sm-margin-four-bottom xs-width-90 xs-margin-five-bottom">empower elevate</div>
-                                <div class="btn-dual"><a href="transparent-header.html" class="btn btn-transparent-white btn-small xs-margin-two-all">About Company</a><a href="transparent-header.html" class="btn btn-transparent-white btn-small xs-margin-two-all">Purchase Now</a></div>
+                                <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom sm-margin-four-bottom xs-margin-five-bottom">{{ 'renforcez vos capacités & la productivitez de votre entreprise'|capitalize }}</h6>
+                                <div class="alt-font text-white text-uppercase font-weight-700 letter-spacing-minus-3 title-large margin-two-bottom width-60 center-col md-width-80 sm-margin-four-bottom xs-width-90 xs-margin-five-bottom">{{ 'nos formations certifées' }}</div>
+                                <div class="btn-dual">
+                                    <a href="{{ path('family_page') }}" class="btn btn-transparent-white btn-small xs-margin-two-all">{{ 'se former' }}</a></div>
                             </div>
                         </div>
                     </div>
@@ -34,15 +37,32 @@
             </div>
             <!-- end slider item -->
             <!-- start slider item -->
-            <div class="swiper-slide cover-background" style="background-image:url('images/homepage-3-slider-img-4.jpg');">
+            <div class="swiper-slide cover-background" style="background-image:url({{ asset('build/front/static/slide_assistance.jpg') }});">
                 <div class="opacity-extra-medium bg-black"></div>
                 <div class="container position-relative full-screen">
                     <div class="slider-typography text-center">
                         <div class="slider-text-middle-main">
                             <div class="slider-text-middle">
-                                <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom sm-margin-four-bottom xs-margin-five-bottom">we're a design studio that believe in the ideas</h6>
-                                <div class="alt-font text-white text-uppercase font-weight-700 letter-spacing-minus-3 title-extra-large margin-two-bottom width-60 center-col md-width-80 sm-margin-four-bottom xs-width-90 xs-margin-five-bottom">creative design</div>
-                                <div class="btn-dual"><a href="transparent-header.html" class="btn btn-transparent-white btn-small xs-margin-two-all">About Company</a><a href="transparent-header.html" class="btn btn-transparent-white btn-small xs-margin-two-all">Purchase Now</a></div>
+                                <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom sm-margin-four-bottom xs-margin-five-bottom">{{ 'Ne perdez plus de temps, confiez-nous votre gestion'|capitalize }}</h6>
+                                <div class="alt-font text-white text-uppercase font-weight-700 letter-spacing-minus-3 title-large margin-two-bottom width-60 center-col md-width-80 sm-margin-four-bottom xs-width-90 xs-margin-five-bottom">{{ 'besoin d\'assistance ?' }}</div>
+                                <div class="btn-dual">
+                                    <a href="{{ path('services') }}" class="btn btn-transparent-white btn-small xs-margin-two-all">{{ 'oui, j\'en ai besoins' }}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide cover-background" style="background-image:url({{ asset('build/front/static/slide_contact.jpg') }});">
+                <div class="opacity-extra-medium bg-black"></div>
+                <div class="container position-relative full-screen">
+                    <div class="slider-typography text-center">
+                        <div class="slider-text-middle-main">
+                            <div class="slider-text-middle">
+                                <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom sm-margin-four-bottom xs-margin-five-bottom">{{ 'vous ne vous retrouvez pas , pas de panique'|capitalize }}</h6>
+                                <div class="alt-font text-white text-uppercase font-weight-700 letter-spacing-minus-3 title-large margin-two-bottom width-60 center-col md-width-80 sm-margin-four-bottom xs-width-90 xs-margin-five-bottom">{{ 'contactez nous pour' }}</div>
+                                <div class="btn-dual">
+                                    <a href="{{ path('contact') }}" class="btn btn-transparent-white btn-small xs-margin-two-all">{{ 'prendre rendez-vous' }}</a></div>
                             </div>
                         </div>
                     </div>

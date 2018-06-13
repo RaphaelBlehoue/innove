@@ -19,9 +19,11 @@
                 <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
                     <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos solutions' }}</div>
                     <ul class="list-unstyled">
+                        {% if sections|length > 0 %}
                         {% for section in sections %}
                             <li><a class="text-small" href="{{ path('section_category_solution_page', {'slug': section.slug }) }}" style="text-transform: uppercase">{{ section.name }}</a></li>
                         {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
                 <!-- end additional links -->
@@ -30,9 +32,11 @@
                 <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
                     <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos solutions' }}</div>
                     <ul class="list-unstyled">
+                        {% if families|length > 0 %}
                         {% for family in families %}
                             <li><a class="text-small" href="{{ path('family_formations', {'slug': family.slug}) }}" style="text-transform: uppercase">{{ family.name }}</a></li>
                         {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
                 <!-- end additional links -->
@@ -41,9 +45,11 @@
                 <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
                     <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos solutions' }}</div>
                     <ul class="list-unstyled">
+                        {% if services|length > 0 %}
                         {% for service in services %}
                             <li><a class="text-small" href="{{ path('service_page', {'slug': service.slug}) }}" style="text-transform: uppercase">{{ service.title }}</a></li>
                         {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
                 <!-- end additional links -->

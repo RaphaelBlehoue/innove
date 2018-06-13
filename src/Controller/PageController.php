@@ -184,6 +184,19 @@ class PageController extends AbstractController
         ]);
     }
 
+    /**
+     * @param FamilyFormerRepository $familyFormerRepository
+     * @param PartnerRepository $partnerRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/nos-formations", name="family_page", methods={"GET"}, schemes={"%secure_channel%"})
+     */
+    public function formations(FamilyFormerRepository $familyFormerRepository, PartnerRepository $partnerRepository)
+    {
+        return $this->render('front/formation_page.html.twig',[
+            'family' => $familyFormerRepository->findAll(),
+            'partners'  => $partnerRepository->findAll()
+        ]);
+    }
 
     /**
      * @Route("/formations/{slug}", name="family_formations", methods={"GET"}, schemes={"%secure_channel%"})
@@ -192,9 +205,9 @@ class PageController extends AbstractController
      * @param PartnerRepository $partnerRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function formations(FamilyFormer $familyFormer ,FamilyFormerRepository $familyFormerRepository, PartnerRepository $partnerRepository)
+    public function formationPage(FamilyFormer $familyFormer ,FamilyFormerRepository $familyFormerRepository, PartnerRepository $partnerRepository)
     {
-        return $this->render('front/formations.html.twig',[
+        return $this->render('front/formation_page.html.twig',[
             'family' => $familyFormerRepository->find($familyFormer),
             'partners'  => $partnerRepository->findAll()
         ]);

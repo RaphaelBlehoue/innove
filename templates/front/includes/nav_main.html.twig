@@ -56,6 +56,7 @@
                     <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
                         <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
                             <!-- start menu solution family -->
+                            {% if sections|length > 0 %}
                             {% for section in sections %}
                                 <li class="dropdown megamenu-fw">
                                     <a href="{{ path('section_category_solution_page', {'slug': section.slug }) }}">{{ section.name }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
@@ -83,6 +84,7 @@
                                     </div>
                                 </li>
                             {% endfor %}
+                            {% endif %}
                             <!-- end solution family -->
                             <!-- start menu solution family -->
                             <li class="dropdown megamenu-fw">
@@ -90,6 +92,7 @@
                                     <!-- start sub menu -->
                                     <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
                                         <ul class="equalize sm-equalize-auto">
+                                            {% if families|length > 0 %}
                                             {% for family in families %}
                                                 <!-- start sub menu column  -->
                                                 <li class="mega-menu-column col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -104,6 +107,7 @@
                                                 </li>
                                                 <!-- end sub menu column -->
                                             {% endfor %}
+                                            {% endif %}
                                             <!-- end sub menu column  -->
                                         </ul>
                                         <!-- end sub menu -->
@@ -113,9 +117,11 @@
                             <li class="dropdown simple-dropdown"><a href="{{ path('services') }}">{{ 'Assistance' }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 <!-- start sub menu -->
                                 <ul class="dropdown-menu" role="menu">
+                                    {% if services|length > 0 %}
                                     {% for service in services %}
                                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{ path('service_page', { 'slug': service.slug }) }}">{{ service.title }}</a></li>
                                     {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </li>
                         </ul>
