@@ -1,12 +1,65 @@
-<footer class="wow fadeIn">
-    <div class="padding-50px-tb xs-padding-30px-tb">
+<footer class="footer-standard">
+    <div class="footer-widget-area padding-five-tb xs-padding-30px-tb">
+        <div class="container">
+            <div class="row equalize xs-equalize-auto">
+                <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray sm-no-border-right sm-margin-30px-bottom xs-text-center">
+                    <!-- start logo -->
+                    <a href="{{ path('homepage') }}" class="margin-20px-bottom display-inline-block"><img class="footer-logo" src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" alt="{{ 'innove-it.net' }}"></a>
+                    <!-- end logo -->
+                    <p class="text-small width-95 xs-width-100" style="text-align: justify">{{ describe }}</p>
+                    <!-- start social media -->
+                    <div class="social-icon-style-8 display-inline-block vertical-align-middle">
+                        <ul class="small-icon no-margin-bottom">
+                            <li><a class="facebook" href="{{ facebook }}" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- end social media -->
+                </div>
+                <!-- start solutions links -->
+                <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
+                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos solutions' }}</div>
+                    <ul class="list-unstyled">
+                        {% for section in sections %}
+                            <li><a class="text-small" href="{{ path('section_category_solution_page', {'slug': section.slug }) }}" style="text-transform: uppercase">{{ section.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- end additional links -->
+
+                <!-- start formation links -->
+                <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
+                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos solutions' }}</div>
+                    <ul class="list-unstyled">
+                        {% for family in families %}
+                            <li><a class="text-small" href="{{ path('family_formations', {'slug': family.slug}) }}" style="text-transform: uppercase">{{ family.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- end additional links -->
+
+                <!-- start assistance links -->
+                <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
+                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos solutions' }}</div>
+                    <ul class="list-unstyled">
+                        {% for service in services %}
+                            <li><a class="text-small" href="{{ path('service_page', {'slug': service.slug}) }}" style="text-transform: uppercase">{{ service.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- end additional links -->
+
+            </div>
+        </div>
+    </div>
+    <div class="bg-light-gray padding-50px-tb text-center xs-padding-30px-tb">
         <div class="container">
             <div class="row">
-                <!-- start logo -->
-                <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                    <a href="{{ path('homepage') }}" target="_blank"><img class="footer-logo" src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" alt="innove-it.net"></a>
+                <!-- start copyright -->
+                <div class="col-md-6 col-sm-6 col-xs-12 text-left text-small xs-text-center">&copy;  {{ 'now'|localizeddate('long', 'long', null, 'UTC') }} Innove-it is Design Powered by <a href="mailto:raphaelsampan@gmail.com" target="_blank" class="text-dark-gray">Raphael Blehoue</a></div>
+                <div class="col-md-6 col-sm-6 col-xs-12 text-right text-small xs-text-center">
+                    <a href="javascript:void(0);" class="text-dark-gray">Terme & Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" class="text-dark-gray">Vie privée</a>
                 </div>
-                <!-- end logo -->
+                <!-- end copyright -->
             </div>
         </div>
     </div>

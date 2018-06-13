@@ -9,3 +9,4 @@ twig:
         contact: '%contact%'
         cel: '%cel%'
         info: '%info%'
+        facebook: '%facebook%'

@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\Activity;
 use App\Entity\Category;
+use App\Entity\FamilyFormer;
 use App\Entity\Post;
 use App\Entity\Section;
 use App\Entity\Service;
@@ -185,15 +186,16 @@ class PageController extends AbstractController
 
 
     /**
-     * @Route("/nos-formations", name="formations", methods={"GET"}, schemes={"%secure_channel%"})
-     * @param FormationRepository $formationRepository
+     * @Route("/formations/{slug}", name="family_formations", methods={"GET"}, schemes={"%secure_channel%"})
+     * @param FamilyFormer $familyFormer
+     * @param FamilyFormerRepository $familyFormerRepository
      * @param PartnerRepository $partnerRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function formations(FormationRepository $formationRepository, PartnerRepository $partnerRepository)
+    public function formations(FamilyFormer $familyFormer ,FamilyFormerRepository $familyFormerRepository, PartnerRepository $partnerRepository)
     {
         return $this->render('front/formations.html.twig',[
-            'formations' => $formationRepository->findAll(),
+            'family' => $familyFormerRepository->find($familyFormer),
             'partners'  => $partnerRepository->findAll()
         ]);
     }
@@ -235,13 +237,47 @@ class PageController extends AbstractController
         return $this->render('front/blog_detail.html.twig');
     }
 
+    /**
+     * @param ActivityRepository $activityRepository
+     * @param SectionRepository $sectionRepository
+     * @param ServiceRepository $serviceRepository
+     * @param FamilyFormerRepository $familyFormerRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function renderNav(ActivityRepository $activityRepository, SectionRepository $sectionRepository, ServiceRepository $serviceRepository, FamilyFormerRepository $familyFormerRepository)
     {
-        return $this->render('front/includes/nav_main.html.twig',[
+        return $this->render('front/includes/nav_main.html.twig', $this->getNavigationContent(
+            $activityRepository, $sectionRepository, $serviceRepository, $familyFormerRepository
+        ));
+    }
+
+    /**
+     * @param ActivityRepository $activityRepository
+     * @param SectionRepository $sectionRepository
+     * @param ServiceRepository $serviceRepository
+     * @param FamilyFormerRepository $familyFormerRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderFooter(ActivityRepository $activityRepository, SectionRepository $sectionRepository, ServiceRepository $serviceRepository, FamilyFormerRepository $familyFormerRepository)
+    {
+        return $this->render('front/includes/footer.html.twig', $this->getNavigationContent(
+            $activityRepository, $sectionRepository, $serviceRepository, $familyFormerRepository
+        ));
+    }
+
+    /**
+     * @param ActivityRepository $activityRepository
+     * @param SectionRepository $sectionRepository
+     * @param ServiceRepository $serviceRepository
+     * @param FamilyFormerRepository $familyFormerRepository
+     * @return array
+     */
+    private function getNavigationContent(ActivityRepository $activityRepository, SectionRepository $sectionRepository, ServiceRepository $serviceRepository, FamilyFormerRepository $familyFormerRepository) {
+        return [
             'activities' => $activityRepository->findAll(),
             'sections'  => $sectionRepository->getRecursiveData(),
             'services'  => $serviceRepository->findAll(),
             'families'   => $familyFormerRepository->getRecursiveData()
-        ]);
+        ];
     }
 }
