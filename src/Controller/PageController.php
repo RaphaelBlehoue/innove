@@ -235,7 +235,7 @@ class PageController extends AbstractController
 
     public function renderNav(ActivityRepository $activityRepository, SectionRepository $sectionRepository, ServiceRepository $serviceRepository)
     {
-        return $this->render('front/includes/nav.html.twig',[
+        return $this->render('front/includes/nav_main.html.twig',[
             'activities' => $activityRepository->findAll(),
             'sections'  => $sectionRepository->getRecursiveData(),
             'services'  => $serviceRepository->findAll()

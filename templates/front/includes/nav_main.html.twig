@@ -1,0 +1,65 @@
+<header>
+    <!-- start navigation -->
+    <nav class="navbar navbar-default bootsnav navbar-top header-light bg-transparent nav-box-width white-link">
+        <div class="container-fluid nav-header-container">
+            <div class="row">
+                <!-- start logo -->
+                <div class="col-md-2 col-xs-5">
+                    <a href="{{ path('homepage') }}" title="innove-it.net" class="logo"><img src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" class="logo-dark" alt="{{ 'innove-it.net' }}"><img src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" alt="{{ 'innove-it.net' }}" class="logo-light default"></a>
+                </div>
+                <!-- end logo -->
+                <div class="col-md-7 col-xs-2 width-auto pull-right accordion-menu xs-no-padding-right">
+                    <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#navbar-collapse-toggle-1">
+                        <span class="sr-only">toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
+                        <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
+                            <!-- start menu item -->
+                            {% for section in sections %}
+                                <li class="dropdown megamenu-fw">
+                                    <a href="{{ path('section_category_solution_page', {'slug': section.slug }) }}">{{ section.name }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                    <!-- start sub menu -->
+                                    <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
+                                        <ul class="equalize sm-equalize-auto">
+                                            {% for category in section.categories %}
+                                            <!-- start sub menu column  -->
+                                            <li class="mega-menu-column col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                                <!-- start sub menu item  -->
+                                                <ul>
+                                                    <li class="dropdown-header"><a href="{{ path('solution_page', {'slug' : category.slug}) }}" style="text-transform: uppercase">{{ category.name }}</a></li>
+                                                    {% for solution in category.solutions %}
+                                                    <li><a href="{{ path('solution_detail', {'slug': solution.slug }) }}">{{ solution.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                                <!-- end sub menu item  -->
+                                            </li>
+                                            <!-- end sub menu column -->
+                                            {% endfor %}
+
+                                            <!-- end sub menu column  -->
+                                        </ul>
+                                        <!-- end sub menu -->
+                                    </div>
+                                </li>
+                            {% endfor %}
+                            <!-- end menu item -->
+                            <li class="dropdown simple-dropdown"><a href="">{{ 'formations' }}</a></li>
+                            <li class="dropdown simple-dropdown"><a href="">{{ 'assistance' }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-5 width-auto">
+                    <div class="header-social-icon xs-display-none">
+                        <a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://dribbble.com/" title="Dribbble" target="_blank"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- end navigation -->
+</header>

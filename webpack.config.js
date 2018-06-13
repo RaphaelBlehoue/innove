@@ -8,10 +8,11 @@ Encore
     .enableBuildNotifications()
     // css entry
     .addStyleEntry('css/app', './assets/front/css/app.css')
+    .addEntry('js/main', './assets/front/js/main.js')
     //.enableSassLoader()
     .enableLessLoader()
     // allows legacy applications to use $/jQuery as a global variable
-    // .autoProvidejQuery()
+    //.autoProvideVariables()
     .enableSourceMaps(!Encore.isProduction())
     .enableSourceMaps(true)
     .enableVersioning(Encore.isProduction())
