@@ -18,6 +18,10 @@ class SectionType extends AbstractType
                 'label' => 'Nom de la catégories de solution',
                 'attr' => ['placeholder' => 'Entrez le nom']
             ])
+            ->add('icon', TextType::class, [
+                'label' => 'Code de l\'icon',
+                'attr' => ['placeholder' => 'Entrez le code']
+            ])
             ->add('position', TextType::class, [
                 'label' => 'Position d\'affichage dans le menu',
                 'attr' => ['placeholder' => 'La position d\'affichage dans le menu']

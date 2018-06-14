@@ -29,6 +29,11 @@ class Section
     protected $name;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $icon;
+
+    /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Entrez la position d'affichage du menu")
      */
@@ -157,6 +162,18 @@ class Section
     public function setPosition(int $position): self
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(string $icon): self
+    {
+        $this->icon = $icon;
 
         return $this;
     }

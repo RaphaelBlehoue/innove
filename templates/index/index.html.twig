@@ -9,25 +9,93 @@
 {% endblock %}
 {% block slider %}{{ include('front/includes/slide.html.twig') }}{% endblock %}
 {% block body %}
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
-    <h1>here content</h1>
+    <!-- start full width feature box -->
+    <section class="padding-55px-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
+                    <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-600">{{ 'découvrez toutes notre gammes de solutions de gestions pour votre business'|capitalize }}</h5>
+                    <p class="width-80 center-col display-inline-block xs-width-100">{{ 'Comptabilité, facturation, gestion commerciale... Innove It & Consulting vous offre tout une gamme de solutions pour gérer votre activité quotiennement' }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- start section family solutions -->
+    <section class="no-padding wow fadeIn border-color-extra-light-gray border-bottom">
+        <div class="container-fluid no-padding">
+            <div class="row equalize no-margin feature-box-14">
+                {% for section in sections %}
+                <!-- start feature box item -->
+                <div class="col-md-3 col-sm-6 col-xs-12 text-center border-right border-color-extra-light-gray display-table border-bottom wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="display-table-cell vertical-align-middle padding-fifteen-all xs-padding-30px-tb xs-no-padding-lr">
+                        <i class="{% if section|length > 0 %} {{ section.icon|default('ti-bar-chart-alt') }} {% endif %} icon-large text-deep-pink"></i>
+                        <span class="display-block alt-font font-weight-600 text-extra-dark-gray margin-25px-top margin-5px-bottom sm-margin-15px-top">{{ section.name|upper }}</span>
+                        <p class="no-margin-bottom padding-15px-bottom">{{ section.content|truncate('150', true, '...')|striptags|raw }}</p>
+                        <a class="btn btn-small btn-dark-gray btn-rounded md-margin-15px-bottom sm-display-table sm-margin-lr-auto" href="{{ path('section_category_solution_page', {'slug': section.slug }) }}">{{ 'explorer' }}</a>
+                    </div>
+                </div>
+                <!-- end feature box item -->
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- end section family solutions -->
+
+    <!-- start full width feature box -->
+    <section class="padding-55px-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
+                    <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-700">{{ 'Pourquoi utilser des solutions de gestion pour mon activité ?' }}</h5>
+                    <p class="width-80 center-col display-inline-block xs-width-100">{{ 'texte ullistratif des avantages here' }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- start section family solutions -->
+    <section class="no-padding-tb no-padding bg-light-gray wow fadeIn">
+        <div class="container-fluid no-padding">
+            <div class="row no-margin">
+                    <!-- start information item -->
+                    <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+                        <div class="feature-box-wrap">
+                            <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px" style="background: url({{ asset('build/global/images/homepage-3-parallax-img1.jpg') }})"></div>
+                            <div class="width-100 small-screen xs-height-300px display-table arrow-top">
+                                <div class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all">
+                                    <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">{{ 'Avantage d\'utlisation 1' }}.</h6>
+                                    <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+                                    <span class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+                            <div class="feature-box-wrap sm-swap-block">
+                                <div class="width-100 small-screen xs-height-300px display-table arrow-bottom">
+                                    <div class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all">
+                                        <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">{{ 'Avantage d\'utlisation 2' }}</h6>
+                                        <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+                                        <span class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+                                    </div>
+                                </div>
+                                <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px" style="background: url({{ asset('build/global/images/homepage-3-parallax-img2.jpg') }})"></div>
+                            </div>
+                        </div>
+                <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+                    <div class="feature-box-wrap">
+                        <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px" style="background: url({{ asset('build/global/images/homepage-3-parallax-img1.jpg') }})"></div>
+                        <div class="width-100 small-screen xs-height-300px display-table arrow-top">
+                            <div class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all">
+                                <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">{{ 'Avantage d\'utlisation 3' }}</h6>
+                                <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+                                <span class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end avantages section -->
+
 {% endblock %}
