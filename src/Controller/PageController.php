@@ -50,7 +50,7 @@ class PageController extends AbstractController
            'services' => $serviceRepository->findAll(),
            'activities' => $activityRepository->findAll(),
            'partners'  => $partnerRepository->findAll(),
-           'posts'     => $postRepository->getPostLimited(8)
+           'posts'     => $postRepository->getPostLimited(3)
        ]);
     }
 

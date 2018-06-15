@@ -98,4 +98,210 @@
     </section>
     <!-- end avantages section -->
 
+    <!-- start blog section -->
+    <section id="creative" class="wow fadeIn" style="background: url({{ asset('build/global/images/testimonial-bg.png') }})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
+                    <p class="alt-font font-weight-600 text-small text-uppercase text-deep-pink margin-10px-bottom">{{ 'assistance'|upper }}</p>
+                    <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-700">{{ 'nous vous assistons pour combler vos besoins'|capitalize }}</h5>
+                    <p class="width-80 padding-25px-bottom center-col display-inline-block xs-width-100">{{ 'texte ullistratif des avantages here' }}</p>
+                </div>
+            </div>
+            <div class="row equalize sm-equalize-auto">
+                <div class="col-md-12 col-xs-12">
+                    <div class="row blog-post">
+                        {% if services|length > 0 %}
+                            {% for service in services %}
+                            <!-- start blog post item -->
+                            <div class="col-md-4 col-sm-4 col-xs-12 wow fadeIn xs-margin-30px-bottom last-paragraph-no-margin padding-15px-bottom" data-wow-delay="0.2s">
+                                <div class="blog-post-images overflow-hidden margin-25px-bottom xs-margin-15px-bottom">
+                                    <a href="{{ path('service_page', {'slug': service.slug }) }}"><img src="{{ service.assertPath|imagine_filter('thumb_590_300') }}" alt="{{ service.title|capitalize }}"></a>
+                                </div>
+                                <div class="separator-line-verticle-small-thick bg-deep-pink display-inline-block vertical-align-top margin-two-half-top margin-four-right xs-display-none"></div>
+                                <div class="post-details width-90 display-inline-block xs-width-100 xs-text-center">
+                                    <a href="{{ path('service_page', {'slug': service.slug }) }}"><span class="alt-font margin-5px-bottom display-block text-extra-dark-gray font-weight-600">{{ service.title|capitalize }}</span></a>
+                                    <p>{{ service.content|striptags('<a>')|truncate(160, true, '...')|raw }}</p>
+                                </div>
+                            </div>
+                            <!-- end blog post item -->
+                            {% endfor %}
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end blog section -->
+
+    <!-- start about section -->
+    <section class="parallax" data-stellar-background-ratio="0" style="background-image:url({{ asset('build/global/images/parallax-bg6.jpg') }});">
+        <div class="opacity-full bg-extra-dark-gray"></div>
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-lg-9 col-md-10 col-sm-12 text-center center-col wow fadeIn last-paragraph-no-margin">
+                    <h4 class="alt-font text-white">{{ 'facilité votre gestion et optimiser la productivité de votre entreprise, nous incomble'|capitalize }}</h4>
+                    <p class="width-75 margin-lr-auto text-medium-gray md-width-90 xs-width-100 xs-margin-30px-bottom">{{ describe }}</p>
+                    <a href="{{ path('about') }}" class="btn btn-white btn-small text-extra-small border-radius-4 margin-45px-top xs-no-margin-top"><i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i> {{ 'notre entreprise' }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end about section -->
+
+    <!-- start formatin box section  -->
+    <section class="wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="pricing-box-style1">
+                    {% for i in 1..6 %}
+                    <!-- start price item -->
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-center sm-margin-30px-bottom wow fadeInUp">
+                        <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
+                            <div class="padding-55px-all bg-very-light-gray sm-padding-30px-all xs-padding-40px-all">
+                                <!-- start price title -->
+                                <div class="pricing-title text-center">
+                                    <i class="ti-bookmark-alt icon-large text-deep-pink display-inline-block padding-30px-all bg-white box-shadow-light border-radius-100 margin-25px-bottom"></i>
+                                </div>
+                                <!-- end price title -->
+                                <!-- start price price -->
+                                <div class="pricing-price">
+                                    <span class="alt-font text-extra-dark-gray font-weight-600 text-uppercase">{{ 'Petite entreprise' }}</span>
+                                    <h4 class="text-extra-dark-gray alt-font font-weight-600 no-margin-bottom">{{ '5 jours' }}</h4>
+                                    <div class="text-extra-small text-uppercase alt-font margin-5px-top">{{ 'Sur demande' }}</div>
+                                </div>
+                                <!-- end price price -->
+                            </div>
+                            <!-- start price features -->
+                            <div class="padding-45px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
+                                <ul class="list-style-11">
+                                    {% for i in 1..6 %}
+                                        <li>{{ 'Contenu de la formation ' ~ loop.index }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <!-- start price action -->
+                                <div class="pricing-action margin-35px-top sm-no-margin-top">
+                                    <a href="{{ path('contact') }}" class="btn btn-dark-gray btn-small text-extra-small">{{ 'avoir un devis' }}</a>
+                                </div>
+                                <!-- end price action -->
+                            </div>
+                            <!-- end price features -->
+                        </div>
+                    </div>
+                    <!-- end price item -->
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end price box section -->
+
+    <!-- start devis to action section -->
+    <section class="wow fadeIn padding-50px-tb border-top border-width-1 border-color-extra-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12 sm-margin-30px-bottom sm-text-center wow fadeInDown">
+                    <span class="alt-font text-extra-large text-extra-dark-gray margin-5px-top sm-no-margin-top display-inline-block width-100">{{ 'vous avez un besoin de formation sur mesure alors n\'attendez plus rentrez en contact avec nous'|capitalize }}</span>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 sm-text-center wow fadeInDown">
+                    <a href="{{ path('contact') }}" class="btn btn-medium btn-rounded btn-transparent-dark-gray" data-wow-delay="0.4s">{{ 'demandez un devis de formation' }} <i class="ti-arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end devis to action section -->
+
+    <!-- start feature box -->
+    <section class="wow fadeIn bg-light-gray wow fadeIn">
+        <div class="container margin-six-top md-margin-ten-top sm-no-margin-top">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12 sm-text-center sm-margin-40px-bottom xs-margin-30px-bottom">
+                    <h5 class="text-extra-dark-gray font-weight-600 alt-font no-margin">{{ 'Pourquoi travailler avec nous ?' }}</h5>
+                </div>
+                <!-- end feature box item -->
+                <!-- start feature box item -->
+                <div class="col-md-4 col-sm-6 col-xs-12 sm-text-center xs-margin-30px-bottom wow fadeIn last-paragraph-no-margin" data-wow-delay="0.2s">
+                    <div class="col-md-3 text-center xs-no-padding-lr">
+                        <h2 class="text-light-gray alt-font letter-spacing-minus-3 no-margin-bottom sm-margin-10px-bottom">01</h2>
+                    </div>
+                    <div class="col-md-9 margin-5px-top sm-text-center xs-no-padding-lr">
+                        <span class="alt-font text-medium text-extra-dark-gray margin-5px-bottom display-block">{{ 'Rapidité & promptitude' }}</span>
+                        <p class="width-80 md-width-100">Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
+                    </div>
+                </div>
+                <!-- end feature box item -->
+                <!-- start feature box item -->
+                <div class="col-md-4 col-sm-6 col-xs-12 sm-text-center wow fadeIn last-paragraph-no-margin" data-wow-delay="0.4s">
+                    <div class="col-md-3 text-center xs-no-padding-lr">
+                        <h2 class="text-light-gray alt-font letter-spacing-minus-3 no-margin-bottom sm-margin-10px-bottom">02</h2>
+                    </div>
+                    <div class="col-md-9 margin-5px-top sm-text-center xs-no-padding-lr">
+                        <span class="alt-font text-medium text-extra-dark-gray margin-5px-bottom display-block">{{ 'Productivité & professionnalisme' }}</span>
+                        <p class="width-80 md-width-100">Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
+                    </div>
+                </div>
+                <!-- end feature box item -->
+            </div>
+        </div>
+    </section>
+    <!-- end feature box section -->
+
+    <!-- start blog section -->
+    <section class="wow fadeIn hover-option4 blog-post-style3">
+        <div class="container">
+            <div class="row padding-25px-bottom">
+                <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
+                    <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-700">{{ 'astuces & informations' }}</h5>
+                </div>
+            </div>
+            <div class="row equalize xs-equalize-auto">
+                {% if posts|length > 0 %}
+                    {% for post in posts %}
+                        <!-- start blog post item -->
+                        <div class="grid-item col-md-4 col-sm-6 col-xs-12 wow fadeInUp sm-padding-30px-bottom xs-text-center">
+                            <div class="blog-post bg-light-gray inner-match-height">
+                                <div class="blog-post-images overflow-hidden position-relative">
+                                    <a href="{{ path('detail_blog', {'slug': post.slug}) }}">
+                                        <img src="{{ post.assertPath|imagine_filter('thumb_590_300') }}" alt="">
+                                        <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">+</span></div>
+                                    </a>
+                                </div>
+                                <div class="post-details padding-40px-all sm-padding-20px-all">
+                                    <a href="{{ path('detail_blog', {'slug' : post.slug }) }}" class="alt-font post-title text-medium text-extra-dark-gray width-100 display-block md-width-100 margin-15px-bottom">{{ post.title }}</a>
+                                    <p>{{ post.content|truncate('250', true, '...')|raw }}</p>
+                                    <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb sm-margin-15px-tb"></div>
+                                    <div class="author">
+                                        <span class="text-medium-gray text-uppercase text-extra-small display-inline-block sm-display-block sm-margin-10px-top">par <a href="{{ path('about') }}" class="text-medium-gray"> Admin </a>&nbsp;&nbsp;|&nbsp;&nbsp; {{ post.created|localizeddate('long', 'long', null, 'UTC') }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end blog post item -->
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- end blog section -->
+    <!-- start section -->
+    <section class="no-padding-bottom bg-light-gray wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 center-col margin-eight-bottom text-center last-paragraph-no-margin">
+                    <div class="alt-font text-deep-pink margin-10px-bottom text-uppercase text-small">{{ 'Innove-It &amp; consulting, la solution de l\'envisageable à l\'indispensable !' }}</div>
+                    <h5 class="alt-font text-extra-dark-gray font-weight-600">{{ 'Quelque soit votre domaine d\'activité, la taille de votre business, nous avons la soluion qu\il vous faut' }}</h5>
+                    <p class="center-col display-inline-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="{{ asset('build/global/images/services-img10.jpg') }}" alt=""/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section  -->
 {% endblock %}

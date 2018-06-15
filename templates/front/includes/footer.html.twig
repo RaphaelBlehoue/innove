@@ -1,19 +1,45 @@
-<footer class="footer-standard">
+<footer class="footer-classic padding-five-bottom xs-padding-30px-bottom">
+    <div class="bg-light-gray padding-50px-tb xs-padding-30px-tb">
+        <div class="container">
+            <div class="row equalize xs-equalize-auto">
+                <!-- start slogan -->
+                <div class="col-md-4 col-sm-5 col-xs-12 text-center alt-font display-table xs-text-center xs-margin-15px-bottom">
+                    <div class="display-table-cell vertical-align-middle">
+                        {{ 'Entreprise basée en Côte d\'ivoire' }}
+                    </div>
+                </div>
+                <!-- end slogan -->
+                <!-- start logo -->
+                <div class="col-md-4 col-sm-2 col-xs-12 text-center display-table xs-margin-10px-bottom">
+                    <div class="display-table-cell vertical-align-middle">
+                        <a href="{{ path('homepage') }}"><img class="footer-logo" src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" alt="{{ 'innove-it.net' }}"></a>
+                    </div>
+                </div>
+                <!-- end logo -->
+                <!-- start social media -->
+                <div class="col-md-4 col-sm-5 col-xs-12 text-center display-table xs-text-center">
+                    <div class="display-table-cell vertical-align-middle">
+                        <span class="alt-font margin-20px-right">Nous suivre sur les reseaux sociaux</span>
+                        <div class="social-icon-style-8 display-inline-block vertical-align-middle">
+                            <ul class="small-icon no-margin-bottom">
+                                <li><a class="facebook" href="{{ facebook }}" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                                <li><a class="twitter" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a class="google" href="https://plus.google.com" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a class="instagram" href="https://instagram.com/" target="_blank"><i class="fab fa-instagram no-margin-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- end social media -->
+            </div>
+        </div>
+    </div>
     <div class="footer-widget-area padding-five-tb xs-padding-30px-tb">
         <div class="container">
             <div class="row equalize xs-equalize-auto">
                 <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray sm-no-border-right sm-margin-30px-bottom xs-text-center">
-                    <!-- start logo -->
-                    <a href="{{ path('homepage') }}" class="margin-20px-bottom display-inline-block"><img class="footer-logo" src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" alt="{{ 'innove-it.net' }}"></a>
-                    <!-- end logo -->
+                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Qui sommes nous' }}</div>
                     <p class="text-small width-95 xs-width-100" style="text-align: justify">{{ describe }}</p>
-                    <!-- start social media -->
-                    <div class="social-icon-style-8 display-inline-block vertical-align-middle">
-                        <ul class="small-icon no-margin-bottom">
-                            <li><a class="facebook" href="{{ facebook }}" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- end social media -->
                 </div>
                 <!-- start solutions links -->
                 <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
@@ -30,7 +56,7 @@
 
                 <!-- start formation links -->
                 <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
-                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos solutions' }}</div>
+                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos formations' }}</div>
                     <ul class="list-unstyled">
                         {% if families|length > 0 %}
                         {% for family in families %}
@@ -43,7 +69,7 @@
 
                 <!-- start assistance links -->
                 <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
-                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Nos solutions' }}</div>
+                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-10px-bottom font-weight-600">{{ 'Assistances' }}</div>
                     <ul class="list-unstyled">
                         {% if services|length > 0 %}
                         {% for service in services %}
