@@ -18,6 +18,10 @@ class FamilyFormerType extends AbstractType
                 'label' => 'Nom de la famille de formations',
                 'attr' => ['placeholder' => 'Entrez le nom de la famille de formation']
             ])
+            ->add('pageTitle', TextType::class, [
+                'label' => 'Titre pour la page formations',
+                'attr' => ['placeholder' => 'Ex: Pourquoi se former en comptabilté ?']
+            ])
             ->add('position', TextType::class, [
                 'label' => 'Position d\'affichage dans le menu',
                 'attr' => ['placeholder' => 'La position d\'affichage dans le menu']

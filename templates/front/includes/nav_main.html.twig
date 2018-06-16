@@ -59,7 +59,7 @@
                             {% if sections|length > 0 %}
                             {% for section in sections %}
                                 <li class="dropdown megamenu-fw">
-                                    <a href="{{ path('section_category_solution_page', {'slug': section.slug }) }}">{{ section.name }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                    <a href="{{ path('family_solution_page', {'slug': section.slug }) }}">{{ section.name }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                     <!-- start sub menu -->
                                     <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
                                         <ul class="equalize sm-equalize-auto">

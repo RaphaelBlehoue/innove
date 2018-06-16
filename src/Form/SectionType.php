@@ -18,9 +18,13 @@ class SectionType extends AbstractType
                 'label' => 'Nom de la catégories de solution',
                 'attr' => ['placeholder' => 'Entrez le nom']
             ])
+            ->add('pageTitle', TextType::class, [
+                'label' => 'Titre pour la page solution',
+                'attr' => ['placeholder' => 'Ex: Pourquoi avoir une solution de comptabilté ?']
+            ])
             ->add('icon', TextType::class, [
                 'label' => 'Code de l\'icon',
-                'attr' => ['placeholder' => 'Entrez le code']
+                'attr' => ['placeholder' => 'Entrez le nom de l\'icon']
             ])
             ->add('position', TextType::class, [
                 'label' => 'Position d\'affichage dans le menu',

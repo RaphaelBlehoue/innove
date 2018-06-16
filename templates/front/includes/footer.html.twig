@@ -47,7 +47,7 @@
                     <ul class="list-unstyled">
                         {% if sections|length > 0 %}
                         {% for section in sections %}
-                            <li><a class="text-small" href="{{ path('section_category_solution_page', {'slug': section.slug }) }}" style="text-transform: uppercase">{{ section.name }}</a></li>
+                            <li><a class="text-small" href="{{ path('family_solution_page', {'slug': section.slug }) }}" style="text-transform: uppercase">{{ section.name }}</a></li>
                         {% endfor %}
                         {% endif %}
                     </ul>

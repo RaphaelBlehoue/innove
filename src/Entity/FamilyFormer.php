@@ -29,6 +29,13 @@ class FamilyFormer
     protected $name;
 
     /**
+     * @var
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Entrez Un titre pour cette page")
+     */
+    protected $page_title;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Gedmo\Slug(fields={"name", "id"}, separator="_", updatable=true)
      */
@@ -139,6 +146,18 @@ class FamilyFormer
                 $formation->setFamilyformer(null);
             }
         }
+        return $this;
+    }
+
+    public function getPageTitle(): ?string
+    {
+        return $this->page_title;
+    }
+
+    public function setPageTitle(?string $page_title): self
+    {
+        $this->page_title = $page_title;
+
         return $this;
     }
 }

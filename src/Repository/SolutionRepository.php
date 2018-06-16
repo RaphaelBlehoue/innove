@@ -19,6 +19,20 @@ class SolutionRepository extends ServiceEntityRepository
         parent::__construct($registry, Solution::class);
     }
 
+    /**
+     * @param array $categories
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getSolutionsWithCategories(array $categories) {
+        $qb = $this->createQueryBuilder('s')
+            ->leftJoin('s.category', 'c');
+        $qb->where($qb->expr()->in(
+            's.category',':categories'
+        ));
+        $qb->setParameter('categories', $categories);
+        return $qb;
+    }
+
 
 //    /**
 //     * @return Solution[] Returns an array of Solution objects

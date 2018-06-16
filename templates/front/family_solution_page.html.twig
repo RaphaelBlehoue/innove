@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{  section.0.name ~ '| Intégrateur de solutions innovantes' }}
+{% endblock %}
+{% block slider %}
+    <!-- start page title section -->
+    <section class="wow fadeIn cover-background background-position-top top-space" style="background-image:url({{ asset('build/global/images/about-banner.jpg') }});">
+        <div class="opacity-medium bg-extra-dark-gray"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title-large">
+                    <div class="display-table-cell vertical-align-middle text-center padding-30px-tb">
+                        <!-- start sub title -->
+                        <span class="display-block text-white opacity6 alt-font margin-5px-bottom">{{ 'découvrez nos solutions'|capitalize }}</span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom">{{ section.0.name |capitalize}}</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end page title section -->
+{% endblock %}
+{% block body %}
+    <!-- start full width feature box -->
+    <section class="padding-55px-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
+                    <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-600">{{ section.0.pageTitle|default('Pourquoi utiliser nos solutions de gestion')|capitalize }}</h5>
+                    <p class="width-80 center-col display-inline-block xs-width-100">{{ section.0.content|raw }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- start section family solutions -->
+
+    {% for category in section.0.categories %}
+        <!-- start feature box section -->
+        <section class="wow fadeIn no-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-6 col-sm-8 col-xs-12 center-col margin-eight-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center">
+                        <div class="alt-font text-medium-gray margin-10px-bottom text-uppercase text-small">{{ section.0.name }}</div>
+                        <h5 class="alt-font text-extra-dark-gray font-weight-600">{{ category.name|capitalize }}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for solution in category.solutions %}
+                    <!-- start feature box item -->
+                    <div class="col-md-4 col-sm-4 col-xs-12 xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin xs-text-center padding-80px-bottom">
+                        <div class="margin-ten-bottom overflow-hidden image-hover-style-1 sm-margin-20px-bottom">
+                            <a href="{{ path('solution_detail', {'slug': solution.slug }) }}"><img src="{{ solution.assertPath|imagine_filter('thumb_solution_360_240') }}" alt="{{ solution.name }}"/></a>
+                        </div>
+                        <a href="{{ path('solution_detail', {'slug': solution.slug }) }}" class="alt-font margin-5px-bottom display-block text-extra-dark-gray font-weight-600 text-uppercase text-small">{{ solution.name|capitalize }}</a>
+                        <p class="width-95 sm-width-100">{{ solution.content|striptags|raw|truncate(150, true, '...') }}</p>
+                        <div class="separator-line-horrizontal-full bg-medium-light-gray margin-20px-tb sm-margin-15px-tb"></div>
+                        <a href="#start-your-project" class="text-uppercase btn btn-small btn-dark-gray btn-rounded md-margin-15px-bottom sm-display-table sm-margin-lr-auto alt-font text-extra-dark-gray font-weight-600 text-extra-small margin-two-bottom">{{ 'Avoir un devis'}}</a>
+                        <a href="{{ path('solution_detail', {'slug': solution.slug }) }}" class="text-uppercase alt-font btn btn-small btn-dark-gray btn-rounded md-margin-15px-bottom sm-display-table sm-margin-lr-auto text-extra-dark-gray font-weight-600 text-extra-small margin-two-bottom">{{ 'en savoir plus' }} <i class="fas fa-long-arrow-alt-right margin-5px-left text-deep-pink text-medium position-relative top-2" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- end feature box item -->
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- end  feature box section -->
+    {% endfor %}
+    <!-- start section -->
+    <section class="no-padding wow fadeIn animated">
+        <div class="container-fluid">
+            <div class="row equalize sm-equalize-auto">
+                <!-- start features item -->
+                <div class="col-md-3 no-padding cover-background position-relative sm-height-500px xs-height-300px wow fadeIn" style="background: transparent url({{ asset('build/global/images/homepage-option17-image-01.jpg') }})"></div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding position-relative bg-extra-dark-gray wow fadeIn sm-text-center" data-wow-delay="0.2s">
+                    <div class="display-table width-100 height-100">
+                        <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
+                            <div class="alt-font text-medium-gray margin-10px-bottom">{{ 'Qui sommes nous'|upper }}</div>
+                            <div class="alt-font text-extra-large margin-20px-bottom text-white width-90 md-width-100 xs-margin-15px-bottom">{{ 'innove it & consulting'|upper }}</div>
+                            <p>{{ describe }}</p>
+                            <a href="{{ path('about') }}" class="btn btn-transparent-white btn-small border-radius-4"><i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i>{{ 'en savoir plus' }}</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding cover-background position-relative sm-height-500px xs-height-300px wow fadeIn" data-wow-delay="0.4s" style="background: transparent url({{ asset('build/global/images/homepage-option17-image-02.jpg') }})"></div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding position-relative bg-extra-dark-gray wow fadeIn sm-text-center" data-wow-delay="0.6s">
+                    <div class="display-table width-100 height-100">
+                        <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
+                            <div class="alt-font text-medium-gray margin-10px-bottom">{{ 'Nous Contacter'|upper }}</div>
+                            <div class="alt-font text-extra-large margin-20px-bottom text-white width-90 md-width-100 xs-margin-15px-bottom">{{ 'vous avez un besoin en particulier ?'|upper }}</div>
+                            <p>{{ 'Quelque soit votre besoin en gestion, comptabilité, Paie & RH, application web, site internet, achat de matériel informatique ... ou pour un projet projet informatique, n\'hesitez pas à nous contacter pour un rendez-vous. Quelque soit la taille de votre entreprise, nous avons la solution qu\'il vous faut dans l\'immédiat ou à long terme' }}</p>
+                            <a href="{{ path('contact') }}" class="btn btn-transparent-white btn-small border-radius-4"><i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i>{{ 'Nous contacter' }}</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features item -->
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+
+    <!-- start form section -->
+    {{ include('front/includes/form_devis.html.twig') }}
+    <!-- end form section -->
+
+    <!-- start clients slider section  -->
+    <section class="no-padding-top wow fadeIn">
+        <div class="container text-center">
+            <div class="row">
+                <div class="swiper-slider-clients swiper-container black-move wow fadeIn">
+                    <div class="swiper-wrapper">
+                        {% for partner in partners %}
+                        <!-- start slide -->
+                        <div class="swiper-slide text-center"><a href="{{ path('contact') }}"><img src="{{ partner.assertPath|imagine_filter('thumb_partner_250_250') }}" alt="{{ partner.name }}"></a></div>
+                        <!-- end slide -->
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end clients slider section -->
+{% endblock %}

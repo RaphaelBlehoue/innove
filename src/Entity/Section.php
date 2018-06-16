@@ -29,16 +29,22 @@ class Section
     protected $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Entrez Un titre pour cette page")
+     */
+    protected $page_title;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $icon;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @Assert\NotBlank(message="Entrez la position d'affichage du menu")
      */
     protected $position;
-
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -166,12 +172,24 @@ class Section
         return $this;
     }
 
+    public function getPageTitle(): ?string
+    {
+        return $this->page_title;
+    }
+
+    public function setPageTitle(?string $page_title): self
+    {
+        $this->page_title = $page_title;
+
+        return $this;
+    }
+
     public function getIcon(): ?string
     {
         return $this->icon;
     }
 
-    public function setIcon(string $icon): self
+    public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
 

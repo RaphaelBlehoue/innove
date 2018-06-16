@@ -16,7 +16,9 @@ use App\Entity\Post;
 use App\Entity\Section;
 use App\Entity\Service;
 use App\Entity\Solution;
+use App\Form\FamilyDevisType;
 use App\Repository\ActivityRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\FamilyFormerRepository;
 use App\Repository\FormationRepository;
 use App\Repository\PartnerRepository;
@@ -82,17 +84,23 @@ class PageController extends AbstractController
     }
 
     /**
-     * Page pour voir la liste des sous-catégories d'une section
-     * @Route("/page/section/categories/{slug}", name="section_category_solution_page", methods={"GET"}, schemes={"%secure_channel%"})
+     * Page pour voir la famille des solutions, sous-famille et les solutions associé
+     * @Route("/page/family/solutions/{slug}", name="family_solution_page", methods={"GET","POST"}, schemes={"%secure_channel%"})
      * @param Section $section
+     * @param SectionRepository $sectionRepository
      * @param $slug
      * @param PartnerRepository $partnerRepository
+     * @param CategoryRepository $categoryRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function FamilySolutionPage(Section $section, $slug, PartnerRepository $partnerRepository)
+    public function FamilySolutionPage(Section $section, SectionRepository $sectionRepository , $slug, PartnerRepository $partnerRepository, CategoryRepository $categoryRepository)
     {
-        return $this->render('front/section_category_page.html.twig',[
-            'section' => $section,
+        $categories = $categoryRepository->getAllCategoriesIdBySection($section);
+        $categories_array_id = $this->getEntityGivenId($categories);
+        $form = $this->createForm(FamilyDevisType::class, $categories_array_id, ['categories' => $categories]);
+        return $this->render('front/family_solution_page.html.twig',[
+            'form' => $form->createView(),
+            'section' => $sectionRepository->getRecursiveData($section),
             'partners'  => $partnerRepository->findAll()
         ]);
     }
@@ -115,6 +123,7 @@ class PageController extends AbstractController
     /**
      * @param Solution $solution
      * @param $slug
+     * @param PartnerRepository $partnerRepository
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/page/solutions/{slug}", name="solution_detail", methods={"GET"}, schemes={"%secure_channel%"})
      */
@@ -292,5 +301,17 @@ class PageController extends AbstractController
             'services'  => $serviceRepository->findAll(),
             'families'   => $familyFormerRepository->getRecursiveData()
         ];
+    }
+
+    /**
+     * @param $data
+     * @return array
+     */
+    private function getEntityGivenId( array $data) {
+        $result = [];
+        foreach ($data as $d) {
+            $result[$d->getId()] = $d->getId();
+        }
+        return $result;
     }
 }

@@ -19,16 +19,23 @@ class SectionRepository extends ServiceEntityRepository
         parent::__construct($registry, Section::class);
     }
 
-    public function getRecursiveData()
+    /**
+     * @param null $entity_id
+     * @return mixed
+     */
+    public function getRecursiveData($entity_id = null)
     {
-        return $this->createQueryBuilder('s')
-            ->leftJoin('s.categories', 'c')
+        $qb = $this->createQueryBuilder('s');
+        $qb->leftJoin('s.categories', 'c')
             ->addSelect('c')
             ->leftJoin('c.solutions', 'p')
-            ->addSelect('p')
-            ->orderBy('s.position', 'ASC')
-            ->getQuery()
-            ->getResult();
+            ->addSelect('p');
+        if ($entity_id !== null) {
+            $qb->where($qb->expr()->eq('s.id', ':entity_id'))
+                ->setParameter('entity_id', $entity_id);
+        }
+        $qb->orderBy('s.position', 'ASC');
+        return $qb->getQuery()->getResult();
     }
 
 //    /**

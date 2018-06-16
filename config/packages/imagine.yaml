@@ -65,3 +65,23 @@ liip_imagine:
                     size:          [870, 521]
                     mode:          outbound
                     allow_upscale: true
+        thumb_solution_360_240:
+            jpeg_quality:          95
+            png_compression_level: 8
+            filters:
+                auto_rotate: ~
+                strip: ~
+                thumbnail:
+                    size:          [360, 240]
+                    mode:          outbound
+                    allow_upscale: true
+        thumb_partner_250_250:
+            jpeg_quality:          95
+            png_compression_level: 8
+            filters:
+                auto_rotate: ~
+                strip: ~
+                thumbnail:
+                    size:          [250, 250]
+                    mode:          outbound
+                    allow_upscale: true

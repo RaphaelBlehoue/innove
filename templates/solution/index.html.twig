@@ -15,6 +15,7 @@
                     <thead>
                         <tr>
                             <th>{{ 'Nom' }}</th>
+                            <th>{{ 'Sous-famille' }}</th>
                             <th>Created</th>
                             <th>actions</th>
                         </tr>
@@ -22,6 +23,7 @@
                     <tfoot>
                         <tr>
                             <th>{{ 'Nom' }}</th>
+                            <th>{{ 'Sous-famille' }}</th>
                             <th>Created</th>
                             <th>actions</th>
                         </tr>
@@ -30,6 +32,7 @@
                     {% for solution in solutions %}
                         <tr>
                             <td>{{ solution.name }}</td>
+                            <td>{{ solution.category.name }}</td>
                             <td>{{ solution.created ? solution.created|date('Y-m-d H:i:s') : '' }}</td>
                             <td>
                                 <a href="{{ path('solution_show', {'id': solution.id}) }}" class="btn btn-primary">{{ 'Afficher' }}</a>

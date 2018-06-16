@@ -19,6 +19,19 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
+
+    /**
+     * @param $section
+     * @return mixed
+     */
+    public function getAllCategoriesIdBySection($section) {
+        $qb = $this->createQueryBuilder('c')
+            ->leftJoin('c.section', 's')
+            ->where('c.section = :section')
+            ->setParameter('section', $section);
+        return $qb->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */

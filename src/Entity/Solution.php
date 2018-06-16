@@ -52,7 +52,7 @@ class Solution
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Entrez le nom")
+     * @Assert\NotBlank(message="Entrez le nom de la solution")
      */
     protected $name;
 

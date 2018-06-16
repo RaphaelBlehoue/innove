@@ -31,7 +31,7 @@
                         <i class="{% if section|length > 0 %} {{ section.icon|default('ti-bar-chart-alt') }} {% endif %} icon-large text-deep-pink"></i>
                         <span class="display-block alt-font font-weight-600 text-extra-dark-gray margin-25px-top margin-5px-bottom sm-margin-15px-top">{{ section.name|upper }}</span>
                         <p class="no-margin-bottom padding-15px-bottom">{{ section.content|truncate('150', true, '...')|striptags|raw }}</p>
-                        <a class="btn btn-small btn-dark-gray btn-rounded md-margin-15px-bottom sm-display-table sm-margin-lr-auto" href="{{ path('section_category_solution_page', {'slug': section.slug }) }}">{{ 'explorer' }}</a>
+                        <a class="btn btn-small btn-dark-gray btn-rounded md-margin-15px-bottom sm-display-table sm-margin-lr-auto" href="{{ path('family_solution_page', {'slug': section.slug }) }}">{{ 'explorer' }}</a>
                     </div>
                 </div>
                 <!-- end feature box item -->
