@@ -6,10 +6,11 @@
                 <p>{{ 'Appelez les numéro suivant ' ~ cel ~ ' remplissez les champs suivants, Nous vous contacterons rapidement' }}</p>
             </div>
         </div>
-        {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+        {{ form_start(form) }}
         <div class="row col-md-offset-2">
             <div class="col-md-10">
-                <div id="success-project-contact-form" class="no-margin-lr"></div>
+                <div id="success-project-contact-form" class="no-margin-lr">
+                </div>
             </div>
             <div class="col-md-10">
                 <div class="col-md-6">{{ form_row(form.service) }}</div>

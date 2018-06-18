@@ -1,4 +1,11 @@
-Bonjour,
-Merci d'enregister mon adresse Email : {{ email }} dans vos contacts
-J'aimerai recevoir des newsletters de votre part.
-Thanks!
+{% block subject %}
+    default subject
+{% endblock %}
+ 
+{% block body_text %}
+    default text
+{% endblock %}
+ 
+{% block body_html %}
+    <p>default body</p>
+{% endblock %}

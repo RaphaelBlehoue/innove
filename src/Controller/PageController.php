@@ -17,16 +17,16 @@ use App\Entity\Section;
 use App\Entity\Service;
 use App\Entity\Solution;
 use App\Form\FamilyDevisType;
+use App\Lib\MailManager;
 use App\Repository\ActivityRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\FamilyFormerRepository;
-use App\Repository\FormationRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\PostRepository;
 use App\Repository\SectionRepository;
 use App\Repository\ServiceRepository;
-use App\Repository\SolutionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -36,13 +36,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
 
-
     /**
      * @Route("/", name="homepage", methods={"GET"}, schemes={"%secure_channel%"})
      * @param ServiceRepository $serviceRepository
      * @param ActivityRepository $activityRepository
      * @param PartnerRepository $partnerRepository
      * @param PostRepository $postRepository
+     * @param SectionRepository $sectionRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(ServiceRepository $serviceRepository, ActivityRepository $activityRepository, PartnerRepository $partnerRepository, PostRepository $postRepository, SectionRepository $sectionRepository)
@@ -84,20 +84,48 @@ class PageController extends AbstractController
     }
 
     /**
-     * Page pour voir la famille des solutions, sous-famille et les solutions associé
+     * Page pour Voir la famille des solutions, sous-famille et les solutions associé
      * @Route("/page/family/solutions/{slug}", name="family_solution_page", methods={"GET","POST"}, schemes={"%secure_channel%"})
      * @param Section $section
      * @param SectionRepository $sectionRepository
      * @param $slug
      * @param PartnerRepository $partnerRepository
      * @param CategoryRepository $categoryRepository
+     * @param Request $request
+     * @param MailManager $mailer
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
-    public function FamilySolutionPage(Section $section, SectionRepository $sectionRepository , $slug, PartnerRepository $partnerRepository, CategoryRepository $categoryRepository)
+    public function FamilySolutionPage(Section $section, SectionRepository $sectionRepository , $slug, PartnerRepository $partnerRepository, CategoryRepository $categoryRepository, Request $request, MailManager $mailer)
     {
         $categories = $categoryRepository->getAllCategoriesIdBySection($section);
         $categories_array_id = $this->getEntityGivenId($categories);
-        $form = $this->createForm(FamilyDevisType::class, $categories_array_id, ['categories' => $categories]);
+
+        $form = $this->createForm(
+            FamilyDevisType::class,
+            $categories_array_id,
+            ['categories' => $categories]
+        );
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $mailData = $this->dataDevisConstructor($data);
+            $template = 'devis';
+            $to = getenv('APP_TO');
+            $bcc = $mailData['email'];
+            $fromName = $mailData['lastname'].' '.$mailData['firstname'];
+            $mail = $mailData['email'];
+            $mailer->sendEmail($template, $mailData, $to, $mail, $fromName, $bcc);
+            $this->addFlash(
+                'success',
+                ' Nous avons votre demande de devis d\'une de nos solutions par mail. Nos services reviendrons vers vous d\'ici peu. NB: Vous pouvez consulter l\'exemplaire de votre demande par mail, nous vous remercions pour votre confiance'
+            );
+            return $this->redirectToRoute('family_solution_page', ['slug' => $section->getSlug()]);
+        }
+
         return $this->render('front/family_solution_page.html.twig',[
             'form' => $form->createView(),
             'section' => $sectionRepository->getRecursiveData($section),
@@ -313,5 +341,26 @@ class PageController extends AbstractController
             $result[$d->getId()] = $d->getId();
         }
         return $result;
+    }
+
+    /**
+     * @param $data
+     * @return array
+     */
+    private function dataDevisConstructor($data)
+    {
+        return $mailData = [
+            'firstname' => $data["firstname"],
+            'lastname'  => $data["lastname"],
+            'compagny'  => $data["compagny"],
+            'phone'     => $data["phone"],
+            'email'     => $data["email"],
+            'qte'       => $data["qte"],
+            'poste'     => $data["poste"],
+            'service'   => $data["service"],
+            'type'   => $data["type"],
+            'solution'  => $data["solution"]->getName(),
+            'family'    => $data["solution"]->getCategory()->getName()
+        ];
     }
 }
