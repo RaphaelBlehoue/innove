@@ -169,6 +169,7 @@
                                         Valeurs
                                 </td>
                         </tr>
+                        {% if family|length > 0 %}
                         <tr class="item">
                                 <td>
                                         {{ 'Domaine' }}
@@ -178,6 +179,7 @@
                                         {{ family }}
                                 </td>
                         </tr>
+                        {% endif %}
                         <tr class="item">
                                 <td>
                                         {{ 'Solution demandée' }}

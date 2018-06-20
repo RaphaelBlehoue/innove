@@ -2,56 +2,85 @@
 {% block title %}
     {{  solution.name ~ '| Intégrateur de solutions innovantes' }}
 {% endblock %}
-{% block slide %}
-    <div class="c-layout-breadcrumbs-1 c-bgimage-full c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{ asset('build/web/static/slides/slide_solutions.jpg') }})">
-        <div class="c-breadcrumbs-wrapper">
-            <div class="container">
-                <div class="c-page-title c-pull-left">
-                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Nos solutions</h3>
-                </div>
-                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                    <li><a href="{{ path('homepage') }}" class="c-font-white">{{ 'Accueil' }}</a></li>
-                    <li class="c-font-white">/</li>
-                    <li class="c-font-white">{{ solution.name }}</li>
-                </ul>
-            </div>
-        </div>
-    </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-{% endblock %}
-{% block body %}
-    <div class="c-content-box c-no-padding c-overflow-hide c-bs-grid-reset-space c-theme-bg">
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="c-content-product-4">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="c-content c-align-right c-font-white">
-                            <h3 class="c-title c-font-bold c-font-35 c-font-white">{{ solution.name }}</h3>
-                            <p class="c-description c-font-20 c-font-white">{{ solution.content|truncate(700, true, '...')|raw }}</p>
-                        </div>
+{% block slider %}
+    <!-- start page title section -->
+    <section class="no-padding wow fadeIn cover-background background-position-top top-space" style="background-image:url({{ asset('build/global/images/about-banner.jpg') }});">
+        <div class="opacity-medium bg-extra-dark-gray"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title-large">
+                    <div class="display-table-cell vertical-align-middle text-center padding-30px-tb">
+                        <!-- start sub title -->
+                        <span class="display-block text-white opacity6 alt-font margin-5px-bottom">{{ solution.category.name|capitalize }}</span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom">{{ solution.name |upper}}</h1>
+                        <!-- end page title -->
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="c-content-product-4">
-                    <div class="c-side-image" style="background-image: url({{ solution.assertPath|imagine_filter('thumb_530_330') }});"></div>
+        </div>
+    </section>
+    <!-- end page title section -->
+{% endblock %}
+{% block body %}
+    <!-- start page title section -->
+    <section class="no-margin wow fadeIn bg-light-gray padding-35px-tb page-title-small top-space">
+        <div class="container">
+            <div class="row equalize xs-equalize-auto">
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
+                    <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+                        <!-- start page title -->
+                        <h1 class="alt-font text-extra-dark-gray font-weight-600 no-margin-bottom text-uppercase">{{ 'Nos solutions' }}</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 display-table text-right xs-margin-15px-top">
+                    <div class="display-table-cell vertical-align-middle breadcrumb text-small alt-font">
+                        <!-- breadcrumb -->
+                        <ul class="xs-text-center">
+                            <li><a href="{{ path('homepage') }}" class="text-dark-gray">{{ 'accueil'|capitalize }}</a></li>
+                            <li class="text-dark-gray">{{ solution.name }}</li>
+                        </ul>
+                        <!-- end breadcrumb -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- BEGIN: CONTENT/les secteurs dans lesquels nous intervenons -->
-    <div class="c-content-box c-size-md c-bg-grey-1">
+    </section>
+    <!-- end page title section -->
+    {{ include('flash_messages.html.twig') }}
+    <!-- start section -->
+    <section class="wow fadeIn">
         <div class="container">
-            <div class="c-content-feature-10">
-                <!-- Begin: Title 1 component -->
-                <div class="c-content-title-1">
-                    <h3 class="c-font-uppercase c-center c-font-bold">{{ 'Documentation' }}</h3>
-                    <div class="c-line-center c-theme-bg"></div>
+            <div class="row equalize sm-equalize-auto">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 display-table sm-margin-30px-bottom wow fadeInLeft">
+                    <div class="display-table-cell vertical-align-middle">
+                        <img src="{{ solution.assertPath|imagine_filter('thumb_590_300') }}" class="width-100" alt="" />
+                    </div>
                 </div>
-                <!-- End-->
+                <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 display-table col-lg-offset-1 wow fadeInRight">
+                    <div class="display-table-cell vertical-align-middle">
+                        <h5 class="alt-font text-extra-dark-gray font-weight-600 margin-30px-bottom"><small>{{ solution.category.name|upper }}</small> <br/> {{ solution.name|upper }}</h5>
+                        <p>{{ solution.content|raw }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start help section -->
+    {% if solution.reader|length > 0 %}
+    <section class="wow fadeIn no-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12 text-center center-col">
+                    <h2 class="alt-font font-weight-700 letter-spacing-minus-1 text-extra-dark-gray">{{ 'documentation'|capitalize }}</h2>
+                </div>
                 <div class="row">
                     <div class="c-content-blog-post-card-1-grid">
                         <div class="row">
-                            <div class="col-md-8 col-sm-6 col-md-offset-4">
+                            <div class="col-md-8 col-sm-6 col-md-offset-3">
                                 {{ solution.reader|raw }}
                             </div>
                         </div>
@@ -59,59 +88,67 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- BEGIN: CONTENT/DEVIS -->
-    <div class="c-content-box c-size-md c-bg-parallax" style="background-image: url({{ asset('build/web/static/contact_bg.jpg') }})">
-        <div class="container">
-            <div class="c-content-bar-4">
-                <h3 class="c-font-uppercase c-font-bold">{{ 'Cette solution m\'intéresse' }}</h3>
-                <div class="c-actions">
-                    <a href="{{ path('contact') }}" class="btn btn-md c-btn-green-1 c-btn-uppercase c-btn-square c-btn-bold c-margin-b-100">{{ 'Demandez un devis' }}</a>
+    </section>
+    {% endif %}
+    <!-- end help section -->
+    <!-- start section -->
+    <section class="wow fadeIn animated">
+        <div class="container-fluid">
+            <div class="row equalize sm-equalize-auto">
+                <!-- start features item -->
+                <div class="col-md-3 no-padding cover-background position-relative sm-height-500px xs-height-300px wow fadeIn" style="background: transparent url({{ asset('build/global/images/homepage-option17-image-01.jpg') }})"></div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding position-relative bg-extra-dark-gray wow fadeIn sm-text-center" data-wow-delay="0.2s">
+                    <div class="display-table width-100 height-100">
+                        <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
+                            <div class="alt-font text-medium-gray margin-10px-bottom">{{ 'Qui sommes nous'|upper }}</div>
+                            <div class="alt-font text-extra-large margin-20px-bottom text-white width-90 md-width-100 xs-margin-15px-bottom">{{ 'innove it & consulting'|upper }}</div>
+                            <p>{{ describe }}</p>
+                            <a href="{{ path('about') }}" class="btn btn-transparent-white btn-small border-radius-4"><i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i>{{ 'en savoir plus' }}</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding cover-background position-relative sm-height-500px xs-height-300px wow fadeIn" data-wow-delay="0.4s" style="background: transparent url({{ asset('build/global/images/homepage-option17-image-02.jpg') }})"></div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding position-relative bg-extra-dark-gray wow fadeIn sm-text-center" data-wow-delay="0.6s">
+                    <div class="display-table width-100 height-100">
+                        <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
+                            <div class="alt-font text-medium-gray margin-10px-bottom">{{ 'Nous Contacter'|upper }}</div>
+                            <div class="alt-font text-extra-large margin-20px-bottom text-white width-90 md-width-100 xs-margin-15px-bottom">{{ 'vous avez un besoin en particulier ?'|upper }}</div>
+                            <p>{{ 'Quelque soit votre besoin en gestion, comptabilité, Paie & RH, application web, site internet, achat de matériel informatique ... ou pour un projet projet informatique, n\'hesitez pas à nous contacter pour un rendez-vous. Quelque soit la taille de votre entreprise, nous avons la solution qu\'il vous faut dans l\'immédiat ou à long terme' }}</p>
+                            <a href="{{ path('contact') }}" class="btn btn-transparent-white btn-small border-radius-4"><i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i>{{ 'Nous contacter' }}</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features item -->
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+
+    <!-- start form section -->
+    {{ include('front/includes/devis_solution.html.twig') }}
+    <!-- end form section -->
+
+    <!-- start clients slider section  -->
+    <section class="no-padding-top wow fadeIn">
+        <div class="container text-center">
+            <div class="row">
+                <div class="swiper-slider-clients swiper-container black-move wow fadeIn">
+                    <div class="swiper-wrapper">
+                        {% for partner in partners %}
+                            <!-- start slide -->
+                            <div class="swiper-slide text-center"><a href="{{ path('contact') }}"><img src="{{ partner.assertPath|imagine_filter('thumb_partner_250_250') }}" alt="{{ partner.name }}"></a></div>
+                            <!-- end slide -->
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- END: CONTENT/BARS/BAR-5 -->
-
-    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
-    <section id="about">
-        <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
-        <div class="c-content-box c-size-md c-bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 wow animated fadeInLeft">
-                        <!-- Begin: Title 1 component -->
-                        <div class="c-content-title-1">
-                            <h3 class="c-font-uppercase c-font-bold">{{ 'La solution de l’envisageable à l’indispensable' }}</h3>
-                            <div class="c-line-left c-theme-bg"></div>
-                        </div>
-                        <!-- End-->
-                        <p>Intégrateur Sage, EBP, Ciel et diverses solutions informatiques Audit-Evolution-Conseils-Paramétrage-Formation-Assistance</p>
-                    </div>
-                    <div class="col-sm-6 wow animated fadeInRight">
-                        <div class="c-content-client-logos-1">
-                            <!-- Begin: Title 1 component -->
-                            <div class="c-content-title-1">
-                                <h3 class="c-font-uppercase c-font-bold">{{ 'Partenaires certifiées' }}</h3>
-                                <div class="c-line-left c-theme-bg"></div>
-                            </div>
-                            <!-- End-->
-                            <div class="c-logos">
-                                <div class="row">
-                                    {% if partners|length > 0 %}
-                                        {% for partner in partners %}
-                                            <div class="col-md-4 col-xs-6 c-logo c-logo-1">
-                                                <a href="#"><img class="c-img-pos" src="{{ partner.assertPath|imagine_filter('thumb_180_140') }}" alt="{{ partner.name }}"/></a>
-                                            </div>
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- END: CONTENT/MISC/ABOUT-1 -->
     </section>
-    <!-- END: CONTENT/SOLUTION QUE NOUS OFFRONS -->
+    <!-- end clients slider section -->
 {% endblock %}

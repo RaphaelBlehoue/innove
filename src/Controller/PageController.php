@@ -17,6 +17,7 @@ use App\Entity\Section;
 use App\Entity\Service;
 use App\Entity\Solution;
 use App\Form\FamilyDevisType;
+use App\Form\SolutionDevisType;
 use App\Lib\MailManager;
 use App\Repository\ActivityRepository;
 use App\Repository\CategoryRepository;
@@ -69,7 +70,7 @@ class PageController extends AbstractController
     }
 
     /**
-     * Page pour voir toute les Categories de solution
+     * Page pour toutes les solutions
      * @Route("/nos-solutions", name="solutions", methods={"GET"}, schemes={"%secure_channel%"})
      * @param SectionRepository $sectionRepository
      * @param PartnerRepository $partnerRepository
@@ -77,7 +78,9 @@ class PageController extends AbstractController
      */
     public function solution(SectionRepository $sectionRepository, PartnerRepository $partnerRepository)
     {
+        $form = $this->createForm(SolutionDevisType::class);
         return $this->render('front/solutions.html.twig',[
+            'form' => $form->createView(),
             'sections' => $sectionRepository->findAll(),
             'partners'  => $partnerRepository->findAll()
         ]);
@@ -113,16 +116,14 @@ class PageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $mailData = $this->dataDevisConstructor($data);
+            dump($mailData); die;
             $template = 'devis';
             $to = getenv('APP_TO');
             $bcc = $mailData['email'];
             $fromName = $mailData['lastname'].' '.$mailData['firstname'];
             $mail = $mailData['email'];
             $mailer->sendEmail($template, $mailData, $to, $mail, $fromName, $bcc);
-            $this->addFlash(
-                'success',
-                ' Nous avons votre demande de devis d\'une de nos solutions par mail. Nos services reviendrons vers vous d\'ici peu. NB: Vous pouvez consulter l\'exemplaire de votre demande par mail, nous vous remercions pour votre confiance'
-            );
+            $this->flashMessage();
             return $this->redirectToRoute('family_solution_page', ['slug' => $section->getSlug()]);
         }
 
@@ -132,6 +133,44 @@ class PageController extends AbstractController
             'partners'  => $partnerRepository->findAll()
         ]);
     }
+
+    /**
+     * @param Solution $solution
+     * @param $slug
+     * @param PartnerRepository $partnerRepository
+     * @param Request $request
+     * @param MailManager $mailer
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     * @Route("/page/solutions/{slug}", name="solution_detail", methods={"GET","POST"}, schemes={"%secure_channel%"})
+     */
+    public function solutionDetail(Solution $solution, $slug, PartnerRepository $partnerRepository, Request $request, MailManager $mailer)
+    {
+        $form = $this->createForm(SolutionDevisType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $mailData = $this->dataDevisConstructor($data);
+            dump($mailData); die;
+            $template = 'devis';
+            $to = getenv('APP_TO');
+            $bcc = $mailData['email'];
+            $fromName = $mailData['lastname'].' '.$mailData['firstname'];
+            $mail = $mailData['email'];
+            $mailer->sendEmail($template, $mailData, $to, $mail, $fromName, $bcc);
+            $this->flashMessage();
+            return $this->redirectToRoute('solution_detail', ['slug' => $solution->getSlug()]);
+        }
+        return $this->render('front/solutions_detail_page.html.twig',[
+            'form' => $form->createView(),
+            'solution' => $solution,
+            'partners'  => $partnerRepository->findAll()
+        ]);
+    }
+
+
 
     /**
      * @param Category $category
@@ -148,20 +187,6 @@ class PageController extends AbstractController
         ]);
     }
 
-    /**
-     * @param Solution $solution
-     * @param $slug
-     * @param PartnerRepository $partnerRepository
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/page/solutions/{slug}", name="solution_detail", methods={"GET"}, schemes={"%secure_channel%"})
-     */
-    public function solutionDetail(Solution $solution, $slug, PartnerRepository $partnerRepository)
-    {
-        return $this->render('front/solutions_detail_page.html.twig',[
-            'solution' => $solution,
-            'partners'  => $partnerRepository->findAll()
-        ]);
-    }
 
     /**
      * Page pour voir tout les secteurs d'activité
@@ -343,24 +368,34 @@ class PageController extends AbstractController
         return $result;
     }
 
-    /**
-     * @param $data
-     * @return array
-     */
+
     private function dataDevisConstructor($data)
     {
-        return $mailData = [
-            'firstname' => $data["firstname"],
-            'lastname'  => $data["lastname"],
-            'compagny'  => $data["compagny"],
-            'phone'     => $data["phone"],
-            'email'     => $data["email"],
-            'qte'       => $data["qte"],
-            'poste'     => $data["poste"],
-            'service'   => $data["service"],
-            'type'   => $data["type"],
-            'solution'  => $data["solution"]->getName(),
-            'family'    => $data["solution"]->getCategory()->getName()
+         $data_mail = [
+            'firstname' => (($data["firstname"] === null) ? null : $data["firstname"]),
+            'lastname'  => (($data["lastname"] === null) ? null : $data["lastname"]),
+            'compagny'  => (($data["compagny"] === null) ? null : $data["compagny"]),
+            'phone'     => (($data["phone"] === null) ? null : $data["phone"]),
+            'email'     => (($data["email"] === null) ? null : $data["email"]),
+            'qte'       => (($data["qte"] === null) ? null : $data["qte"]),
+            'poste'     => (($data["poste"] === null) ? null : $data["poste"]),
+            'service'   => (($data["service"] === null) ? null : $data["service"]),
+            'type'   => (($data["type"] === null) ? null : $data["type"])
         ];
+         if ($data['solution']) {
+             $data_mail['solution'] = (($data["solution"]->getName() === null) ? null : $data["solution"]->getName());
+         }
+        if ($data['family']) {
+            $data_mail['family'] = (($data["solution"]->getCategory()->getName() === null) ? null : $data["solution"]->getCategory()->getName());
+        }
+         return $data_mail;
+    }
+
+
+    private function flashMessage() {
+        return $this->addFlash(
+            'success',
+            ' Nous avons votre demande de devis d\'une de nos solutions par mail. Nos services reviendrons vers vous d\'ici peu. NB: Vous pouvez consulter l\'exemplaire de votre demande par mail, nous vous remercions pour votre confiance'
+        );
     }
 }
