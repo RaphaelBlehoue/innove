@@ -10,3 +10,4 @@ twig:
         cel: '%cel%'
         info: '%info%'
         facebook: '%facebook%'
+        address: '%address%'

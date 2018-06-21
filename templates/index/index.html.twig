@@ -116,11 +116,11 @@
                             <!-- start blog post item -->
                             <div class="col-md-4 col-sm-4 col-xs-12 wow fadeIn xs-margin-30px-bottom last-paragraph-no-margin padding-15px-bottom" data-wow-delay="0.2s">
                                 <div class="blog-post-images overflow-hidden margin-25px-bottom xs-margin-15px-bottom">
-                                    <a href="{{ path('service_page', {'slug': service.slug }) }}"><img src="{{ service.assertPath|imagine_filter('thumb_590_300') }}" alt="{{ service.title|capitalize }}"></a>
+                                    <a href="{{ path('services') }}#{{ service.slug }}"><img src="{{ service.assertPath|imagine_filter('thumb_590_300') }}" alt="{{ service.title|capitalize }}"></a>
                                 </div>
                                 <div class="separator-line-verticle-small-thick bg-deep-pink display-inline-block vertical-align-top margin-two-half-top margin-four-right xs-display-none"></div>
                                 <div class="post-details width-90 display-inline-block xs-width-100 xs-text-center">
-                                    <a href="{{ path('service_page', {'slug': service.slug }) }}"><span class="alt-font margin-5px-bottom display-block text-extra-dark-gray font-weight-600">{{ service.title|capitalize }}</span></a>
+                                    <a href="{{ path('services') }}#{{ service.slug }}"><span class="alt-font margin-5px-bottom display-block text-extra-dark-gray font-weight-600">{{ service.title|capitalize }}</span></a>
                                     <p>{{ service.content|striptags('<a>')|truncate(160, true, '...')|raw }}</p>
                                 </div>
                             </div>

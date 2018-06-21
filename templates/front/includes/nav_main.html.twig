@@ -114,15 +114,8 @@
                                     </div>
                                 </li>
                             <!-- end solution family -->
-                            <li class="dropdown simple-dropdown"><a href="{{ path('services') }}">{{ 'Assistance' }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                            <li class="dropdown simple-dropdown"><a href="{{ path('services') }}">{{ 'Assistance' }}</a>
                                 <!-- start sub menu -->
-                                <ul class="dropdown-menu" role="menu">
-                                    {% if services|length > 0 %}
-                                    {% for service in services %}
-                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{ path('service_page', { 'slug': service.slug }) }}">{{ service.title }}</a></li>
-                                    {% endfor %}
-                                    {% endif %}
-                                </ul>
                             </li>
                         </ul>
                     </div>

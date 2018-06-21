@@ -11,6 +11,7 @@ parameters:
     info: 'supports@innove-it.net'
     facebook: 'https://web.facebook.com/INNOVE.IT.Consulting/'
     message: 'ok'
+    address: "Cocody cité des arts, Abidjan, Côte d'ivoire"
 services:
     # default configuration for services in *this* file
     _defaults:

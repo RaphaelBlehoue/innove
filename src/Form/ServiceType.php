@@ -25,7 +25,7 @@ class ServiceType extends AbstractType
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Description du service',
-                'attr'  => ['placeholder' => 'Entrez le contenu ici', 'class' => 'editor']
+                'attr'  => ['placeholder' => 'Entrez le contenu ici']
             ])
         ;
     }

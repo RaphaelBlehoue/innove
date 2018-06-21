@@ -2,65 +2,148 @@
 {% block title %}
     {{  'Nos services | Intégrateur de solutions innovantes' }}
 {% endblock %}
-{% block slide %}
-    <div class="c-layout-breadcrumbs-1 c-bgimage-full c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url({{ asset('build/web/static/slides/slide_service.jpg') }})">
-        <div class="c-breadcrumbs-wrapper">
-            <div class="container">
-                <div class="c-page-title c-pull-left">
-                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Ce que nous offrons comme services</h3>
-                </div>
-                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                    <li><a href="{{ path('homepage') }}" class="c-font-white">{{ 'Accueil' }}</a></li>
-                    <li class="c-font-white">/</li>
-                    <li class="c-font-white">{{ 'Nos services' }}</li>
-                </ul>
-            </div>
-        </div>
-    </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-{% endblock %}
-{% block body %}
-    <!-- BEGIN: CONTENT/SERVICE QUE NOUS OFFRONS -->
-    <div class="c-content-box c-size-md c-bg-white">
+{% block slider %}
+    <!-- start page title section -->
+    <section class="no-padding wow fadeIn cover-background background-position-top top-space" style="background-image:url({{ asset('build/global/images/about-banner.jpg') }});">
+        <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">
-            <div class="c-content-feature-2-grid" data-auto-height="true" data-mode="base-height">
-                <div class="c-content-title-1">
-                    <h3 class="c-font-uppercase c-center c-font-bold">{{ 'Ce que nous vous offrons comme services' }}</h3>
-                    <div class="c-line-center"></div>
-                </div>
-                <div class="row">
-                    <div class="c-content-blog-post-card-1-grid">
-                        <div class="row">
-                            {% for service in services %}
-                                <div class="col-md-6 col-sm-4" id="s{{ service.slug }}">
-                                    <div class="c-content-feature-2  c-shadow" data-height="height">
-                                        <h3 class="c-font-uppercase c-font-bold c-theme-font c-center c-title c-margin-b-30">{{ service.title }}</h3>
-                                        <p>{{ service.content|raw}}</p>
-                                        <div class="c-center c-margin-t-50">
-                                            <a href="{{ path('contact') }}" class="btn btn-sm c-btn-green-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">{{  'je suis intéressé' }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title-large">
+                    <div class="display-table-cell vertical-align-middle text-center padding-30px-tb">
+                        <!-- start sub title -->
+                        <span class="display-block text-white opacity6 alt-font margin-5px-bottom">{{ 'Nous vous assistons 24h/24h' }}</span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom">{{'Assistances'}}</h1>
+                        <!-- end page title -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- END: CONTENT/SERVICES QUE NOUS OFFRONS -->
-    <!-- BEGIN: CONTENT/DEVIS -->
-    <div class="c-content-box c-size-md c-bg-parallax" style="background-image: url({{ asset('build/web/static/contact_bg.jpg') }})">
-        <div class="container">
-            <div class="c-content-bar-4">
-                <h3 class="c-font-uppercase c-font-bold">{{ 'Besoin d\'un service pour votre entreprise ?' }}</h3>
-                <div class="c-actions">
-                    <a href="{{ path('contact') }}" class="btn btn-md c-btn-green-1 c-btn-uppercase c-btn-square c-btn-bold c-margin-b-100">{{ 'cliquez ici pour nous appelez' }}</a>
+    </section>
+    <!-- end page title section -->
+{% endblock %}
+{% block body %}
+        <!-- start page title section -->
+        <section class="no-margin wow fadeIn bg-light-gray padding-35px-tb page-title-small top-space">
+            <div class="container">
+                <div class="row equalize xs-equalize-auto">
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
+                        <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+                            <!-- start page title -->
+                            <h1 class="alt-font text-extra-dark-gray font-weight-600 no-margin-bottom text-uppercase">{{'Nos services'|capitalize}}</h1>
+                            <!-- end page title -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 display-table text-right xs-margin-15px-top">
+                        <div class="display-table-cell vertical-align-middle breadcrumb text-small alt-font">
+                            <!-- breadcrumb -->
+                            <ul class="xs-text-center">
+                                <li><a href="{{ path('homepage') }}" class="text-dark-gray">{{'Accueil'}}</a></li>
+                                <li class="text-dark-gray">{{'Assistances'|capitalize}}</li>
+                            </ul>
+                            <!-- end breadcrumb -->
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- END: CONTENT/BARS/BAR-5 -->
+        </section>
+        <!-- end page title section -->
+        <!-- start services style 02 section -->
+        <section class="wow fadeIn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-100px-bottom xs-margin-40px-bottom">
+                        <div class="position-relative overflow-hidden width-100">
+                            <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase">{{'ce que nous offrons comme services'|capitalize}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for service in services %}
+                        <!-- start services item -->
+                        <div class="col-md-3 col-sm-6 col-xs-12 sm-margin-four-bottom xs-margin-eight-bottom wow fadeInUp last-paragraph-no-margin" id="{{ service.slug }}">
+                            <div class="bg-white box-shadow-light text-center padding-eighteen-tb feature-box-8 position-relative z-index-5">
+                                <div class="display-inline-block margin-20px-bottom"><i class="icon-desktop text-white icon-round-small bg-deep-pink"></i></div>
+                                <div class="alt-font text-extra-dark-gray font-weight-600 margin-10px-bottom">{{ service.title }}</div>
+                                <p class="width-75 md-width-90 center-col">{{ service.content|truncate('350', true, '...')|raw}}</p>
+                                <div class="feature-box-overlay bg-deep-pink"></div>
+                            </div>
+                        </div>
+                        <!-- end services item -->
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- end services style 02 section -->
 
+        <section class="wow fadeIn bg-light-gray padding-100px-tb sm-padding-60px-tb xs-padding-30px-tb top-space">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title-medium">
+                        <div class="display-table-cell vertical-align-middle text-center">
+                            <!-- start page title -->
+                            <h1 class="alt-font text-extra-dark-gray font-weight-600 no-margin">{{'besoins d\'assistances ?'|upper}}</h1>
+                            <!-- end page title -->
+                            <!-- start sub title -->
+                            <span class="display-block margin-10px-top alt-font">{{ 'Quelque soit votre domaine d\'activité, la taille de votre business, nous avons la soluion qu\'il vous faut. Alors N\'hesitez plus rentrez en contact avec nous.' }}</span>
+                            <!-- end sub title -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end page title section -->
+
+        <!-- start contact section -->
+        <section class="no-padding bg-extra-dark-gray">
+            <div class="container-fluid">
+                <div class="row equalize sm-equalize-auto">
+                    <div class="col-md-6 col-sm-12 no-padding cover-background sm-height-450px xs-height-350px wow fadeInLeft" style="background: url({{asset('build/global/images/contact-img2.jpg')}})"></div>
+                    <div class="col-md-6 col-sm-12 no-padding col-2-nth wow fadeInRight">
+                        <!-- start contact item -->
+                        <div class="col-md-6 col-sm-6 col-xs-12 display-table bg-extra-dark-gray height-350px last-paragraph-no-margin">
+                            <div class="display-table-cell vertical-align-middle text-center">
+                                <i class="icon-map text-deep-pink icon-medium margin-25px-bottom"></i>
+                                <div class="text-white text-uppercase alt-font font-weight-600 margin-5px-bottom">Notre Adresse</div>
+                                <p class="width-60 md-width-80 center-col text-medium">{{ address }}</p>
+                            </div>
+                        </div>
+                        <!-- end contact item -->
+                        <!-- start contact item -->
+                        <div class="col-md-6 col-sm-6 col-xs-12 display-table bg-black height-350px last-paragraph-no-margin">
+                            <div class="display-table-cell vertical-align-middle text-center">
+                                <i class="icon-chat text-deep-pink icon-medium margin-25px-bottom"></i>
+                                <div class="text-white text-uppercase alt-font font-weight-600 margin-5px-bottom">Appelez-nous</div>
+                                <p class="center-col text-medium no-margin">{{contact}}</p>
+                                <p class="center-col text-medium">{{cel}}</p>
+                            </div>
+                        </div>
+                        <!-- end contact item -->
+                        <!-- start contact item -->
+                        <div class="col-md-6 col-sm-6 col-xs-12 display-table bg-black height-350px last-paragraph-no-margin">
+                            <div class="display-table-cell vertical-align-middle text-center">
+                                <i class="icon-envelope text-deep-pink icon-medium margin-25px-bottom"></i>
+                                <div class="text-white text-uppercase alt-font font-weight-600 margin-5px-bottom">Email</div>
+                                <p class="center-col text-medium no-margin"><a href="mailto:{{ info }}">{{ info }}</a></p>
+                            </div>
+                        </div>
+                        <!-- end contact item -->
+                        <!-- start contact item -->
+                        <div class="col-md-6 col-sm-6 col-xs-12 display-table bg-extra-dark-gray height-350px last-paragraph-no-margin">
+                            <div class="display-table-cell vertical-align-middle text-center">
+                                <i class="icon-clock text-deep-pink icon-medium margin-25px-bottom"></i>
+                                <div class="text-white text-uppercase alt-font font-weight-600 margin-5px-bottom">Ouvertures</div>
+                                <p class="center-col text-medium no-margin">Week-end - 8h à 20h</p>
+                                <p class="center-col text-medium">Jours ouvrables - 7h à 22h</p>
+                            </div>
+                        </div>
+                        <!-- end contact item -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end contact section -->
 {% endblock %}
 
 {% block javascripts %}

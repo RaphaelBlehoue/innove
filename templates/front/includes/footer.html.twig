@@ -60,7 +60,7 @@
                     <ul class="list-unstyled">
                         {% if families|length > 0 %}
                         {% for family in families %}
-                            <li><a class="text-small" href="{{ path('family_formations', {'slug': family.slug}) }}" style="text-transform: uppercase">{{ family.name }}</a></li>
+                            <li><a class="text-small" href="{{ path('family_former_page', {'slug': family.slug}) }}" style="text-transform: uppercase">{{ family.name }}</a></li>
                         {% endfor %}
                         {% endif %}
                     </ul>
@@ -73,7 +73,7 @@
                     <ul class="list-unstyled">
                         {% if services|length > 0 %}
                         {% for service in services %}
-                            <li><a class="text-small" href="{{ path('service_page', {'slug': service.slug}) }}" style="text-transform: uppercase">{{ service.title }}</a></li>
+                            <li><a class="text-small" href="{{ path('services') }}#{{ service.slug }}" style="text-transform: uppercase">{{ service.title }}</a></li>
                         {% endfor %}
                         {% endif %}
                     </ul>

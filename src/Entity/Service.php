@@ -49,7 +49,6 @@ class Service
      *     maxSize="3M",
      *     mimeTypes={"image/png", "image/jpeg", "image/jpg"}
      * )
-     * @Assert\NotBlank(message="Uplodez l'image d'arrière plan")
      * @Vich\UploadableField(mapping="service_image", fileNameProperty="imageName", size="imageSize")
      * @var File $imageFile
      */
