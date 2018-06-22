@@ -4,7 +4,7 @@ parameters:
     locale: '%env(APP_LOCAL)%'
     to: '%env(APP_TO)%'
     secure_channel: '%env(SECURE_CHANNEL)%'
-    describe: "LA SOCIÉTÉ INNOVE-IT & CONSULTING Est une équipe innovante avec des talents, des compétences de l'expérience des savoir-faire et des savoirs-être engagés à réussir vos projets à court et à long termes dans le domaine des TIC. Elle est spécialisée dans les environnements systèmes: système d’information, systèmes de gestion informatisée, réseau & télécoms"
+    describe: "LA SOCIÉTÉ INNOVE-IT & CONSULTING dispose d'une équipe innovante avec des talents, des compétences de l'expérience des savoir-faire et des savoirs-être engagés à réussir vos projets à court et à long termes dans le domaine des TIC. Elle est spécialisée dans les environnements systèmes: système d’information, systèmes de gestion informatisée, réseau & télécoms"
     keywords: "Logiciels de gestion, Sage Comptabilité, Sage Paie, Ressource Humaines, Solutions d'intégration logiciels, côte d'ivoire, Sage Comptabilité I7"
     contact: 'Tel :+225 24 00 03 12'
     cel: 'cel: +225 07 55 78 87 / +225 04 79 77 79'

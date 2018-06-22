@@ -9,7 +9,7 @@
 {% endblock %}
 {% block slider %}{{ include('front/includes/slide.html.twig') }}{% endblock %}
 {% block body %}
-    <!-- start full width feature box -->
+    <!-- start Title Family  box -->
     <section class="padding-55px-bottom">
         <div class="container">
             <div class="row">
@@ -20,6 +20,8 @@
             </div>
         </div>
     </section>
+    <!-- end Title Family  box -->
+
     <!-- start section family solutions -->
     <section class="no-padding wow fadeIn border-color-extra-light-gray border-bottom">
         <div class="container-fluid no-padding">
@@ -41,18 +43,19 @@
     </section>
     <!-- end section family solutions -->
 
-    <!-- start full width feature box -->
+    <!-- start Title Avantage box -->
     <section class="padding-55px-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
                     <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-700">{{ 'Pourquoi utilser des solutions de gestion pour mon activité ?' }}</h5>
-                    <p class="width-80 center-col display-inline-block xs-width-100">{{ 'texte ullistratif des avantages here' }}</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- start section family solutions -->
+    <!-- end Title Avantage box -->
+
+    <!-- start avantages section -->
     <section class="no-padding-tb no-padding bg-light-gray wow fadeIn">
         <div class="container-fluid no-padding">
             <div class="row no-margin">
@@ -98,14 +101,14 @@
     </section>
     <!-- end avantages section -->
 
-    <!-- start blog section -->
+    <!-- start Services section -->
     <section id="creative" class="wow fadeIn" style="background: url({{ asset('build/global/images/testimonial-bg.png') }})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
                     <p class="alt-font font-weight-600 text-small text-uppercase text-deep-pink margin-10px-bottom">{{ 'assistance'|upper }}</p>
                     <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-700">{{ 'nous vous assistons pour combler vos besoins'|capitalize }}</h5>
-                    <p class="width-80 padding-25px-bottom center-col display-inline-block xs-width-100">{{ 'texte ullistratif des avantages here' }}</p>
+                    <p class="width-80 padding-25px-bottom center-col display-inline-block xs-width-100">{{ 'ce que nous offrons comme service' }}</p>
                 </div>
             </div>
             <div class="row equalize sm-equalize-auto">
@@ -133,7 +136,7 @@
             </div>
         </div>
     </section>
-    <!-- end blog section -->
+    <!-- end Services section -->
 
     <!-- start about section -->
     <section class="parallax" data-stellar-background-ratio="0" style="background-image:url({{ asset('build/global/images/parallax-bg6.jpg') }});">
@@ -150,7 +153,7 @@
     </section>
     <!-- end about section -->
 
-    <!-- start formatin box section  -->
+    <!-- start formation box section  -->
     <section class="wow fadeIn">
         <div class="container">
             <div class="row">
@@ -195,9 +198,9 @@
             </div>
         </div>
     </section>
-    <!-- end price box section -->
+    <!-- end formation box section -->
 
-    <!-- start devis to action section -->
+    <!-- start to action devis formation section -->
     <section class="wow fadeIn padding-50px-tb border-top border-width-1 border-color-extra-light-gray">
         <div class="container">
             <div class="row">
@@ -210,10 +213,10 @@
             </div>
         </div>
     </section>
-    <!-- end devis to action section -->
+    <!-- end  to action devis formation section -->
 
-    <!-- start feature box -->
-    <section class="wow fadeIn bg-light-gray wow fadeIn">
+    <!-- start why work with us box -->
+    <section class="big-section wow fadeIn parallax wow fadeIn bg-light-gray wow fadeIn" data-stellar-background-ratio="0.4" style="background-image:url({{ asset('build/global/images/parallax-bg30.jpg') }});">
         <div class="container margin-six-top md-margin-ten-top sm-no-margin-top">
             <div class="row">
                 <div class="col-md-4 col-sm-12 col-xs-12 sm-text-center sm-margin-40px-bottom xs-margin-30px-bottom">
@@ -223,29 +226,27 @@
                 <!-- start feature box item -->
                 <div class="col-md-4 col-sm-6 col-xs-12 sm-text-center xs-margin-30px-bottom wow fadeIn last-paragraph-no-margin" data-wow-delay="0.2s">
                     <div class="col-md-3 text-center xs-no-padding-lr">
-                        <h2 class="text-light-gray alt-font letter-spacing-minus-3 no-margin-bottom sm-margin-10px-bottom">01</h2>
+                        <h2 class="text-deep-pink alt-font letter-spacing-minus-3 no-margin-bottom sm-margin-10px-bottom">01</h2>
                     </div>
                     <div class="col-md-9 margin-5px-top sm-text-center xs-no-padding-lr">
-                        <span class="alt-font text-medium text-extra-dark-gray margin-5px-bottom display-block">{{ 'Rapidité & promptitude' }}</span>
-                        <p class="width-80 md-width-100">Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
+                        <span class="alt-font text-medium text-extra-dark-gray margin-5px-bottom display-block">{{ 'Rapidité d\'exécusion & promptitude' }}</span>
                     </div>
                 </div>
                 <!-- end feature box item -->
                 <!-- start feature box item -->
                 <div class="col-md-4 col-sm-6 col-xs-12 sm-text-center wow fadeIn last-paragraph-no-margin" data-wow-delay="0.4s">
                     <div class="col-md-3 text-center xs-no-padding-lr">
-                        <h2 class="text-light-gray alt-font letter-spacing-minus-3 no-margin-bottom sm-margin-10px-bottom">02</h2>
+                        <h2 class="text-deep-pink alt-font letter-spacing-minus-3 no-margin-bottom sm-margin-10px-bottom">02</h2>
                     </div>
                     <div class="col-md-9 margin-5px-top sm-text-center xs-no-padding-lr">
                         <span class="alt-font text-medium text-extra-dark-gray margin-5px-bottom display-block">{{ 'Productivité & professionnalisme' }}</span>
-                        <p class="width-80 md-width-100">Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
                     </div>
                 </div>
                 <!-- end feature box item -->
             </div>
         </div>
     </section>
-    <!-- end feature box section -->
+    <!-- end why work with us box -->
 
     <!-- start blog section -->
     <section class="wow fadeIn hover-option4 blog-post-style3">
@@ -284,14 +285,15 @@
         </div>
     </section>
     <!-- end blog section -->
+
     <!-- start section -->
     <section class="no-padding-bottom bg-light-gray wow fadeIn">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 center-col margin-eight-bottom text-center last-paragraph-no-margin">
                     <div class="alt-font text-deep-pink margin-10px-bottom text-uppercase text-small">{{ 'Innove-It &amp; consulting, la solution de l\'envisageable à l\'indispensable !' }}</div>
-                    <h5 class="alt-font text-extra-dark-gray font-weight-600">{{ 'Quelque soit votre domaine d\'activité, la taille de votre business, nous avons la soluion qu\il vous faut' }}</h5>
-                    <p class="center-col display-inline-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <h5 class="alt-font text-extra-dark-gray font-weight-600">{{ 'Quelque soit votre domaine d\'activité, la taille de votre business, nous avons la soluion qu\'il vous faut' }}</h5>
+                    <p class="center-col display-inline-block">{{ "Nous disposons d'une équipe innovante avec des talents, des compétences, de l'expérience des savoir-faire et des savoirs-être engagés à réussir vos projets à court et à long termes dans le domaine des TIC. Elle est spécialisée dans les environnements systèmes: système d’information, systèmes de gestion informatisée, réseau & télécoms." }}</p>
                 </div>
             </div>
         </div>

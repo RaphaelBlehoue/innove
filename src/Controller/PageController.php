@@ -60,12 +60,15 @@ class PageController extends AbstractController
     /**
      * @Route("/about-us", name="about", methods={"GET"}, schemes={"%secure_channel%"})
      * @param PartnerRepository $partnerRepository
+     * @param ServiceRepository $serviceRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function about(PartnerRepository $partnerRepository)
+    public function about(PartnerRepository $partnerRepository, ServiceRepository $serviceRepository, PostRepository $postRepository)
     {
         return $this->render('front/about.html.twig',[
-            'partners'  => $partnerRepository->findAll()
+            'partners'  => $partnerRepository->findAll(),
+            'services'  => $serviceRepository->findAll(),
+            'posts'     => $postRepository->getPostLimited(3)
         ]);
     }
 
