@@ -66,7 +66,7 @@
                             <div class="bg-white box-shadow-light text-center padding-eighteen-tb feature-box-8 position-relative z-index-5">
                                 <div class="display-inline-block margin-20px-bottom"><i class="icon-desktop text-white icon-round-small bg-deep-pink"></i></div>
                                 <div class="alt-font text-extra-dark-gray font-weight-600 margin-10px-bottom">{{ service.title }}</div>
-                                <p class="width-75 md-width-90 center-col">{{ service.content|truncate('350', true, '...')|raw}}</p>
+                                <p class="width-75 md-width-90 center-col" style="text-align:justify">{{ service.content|truncate('350', true, '...')|raw}}</p>
                                 <div class="feature-box-overlay bg-deep-pink"></div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                             <div class="display-table-cell vertical-align-middle text-center">
                                 <i class="icon-map text-deep-pink icon-medium margin-25px-bottom"></i>
                                 <div class="text-white text-uppercase alt-font font-weight-600 margin-5px-bottom">Notre Adresse</div>
-                                <p class="width-60 md-width-80 center-col text-medium">{{ address }}</p>
+                                <p class="width-60 md-width-80 center-col text-medium">{{ address }} <br/> {{localisation}}</p>
                             </div>
                         </div>
                         <!-- end contact item -->

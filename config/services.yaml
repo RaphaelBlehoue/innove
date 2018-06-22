@@ -9,9 +9,14 @@ parameters:
     contact: 'Tel :+225 24 00 03 12'
     cel: 'cel: +225 07 55 78 87 / +225 04 79 77 79'
     info: 'supports@innove-it.net'
-    facebook: 'https://web.facebook.com/INNOVE.IT.Consulting/'
+    info2: 'info@innove-it.net'
+    facebook: 'https://facebook.com/INNOVE.IT.Consulting/'
+    google: 'https://google.com/'
+    twitter: 'https://twitter.com'
+    linkedin: 'https://linkedin.com'
     message: 'ok'
-    address: "Cocody cité des arts, Abidjan, Côte d'ivoire"
+    address: "Cocody cité des arts"
+    localisation: "Abidjan, Côte d'ivoire"
 services:
     # default configuration for services in *this* file
     _defaults:

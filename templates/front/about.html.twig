@@ -1,47 +1,89 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    {{  'Nos formations | Intégrateur de solutions innovantes' }}
+    {{  'Qui sommes nous | Intégrateur de solutions innovantes' }}
 {% endblock %}
-{% block slide %}
-    <div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold">
+{% block slider %}
+    <!-- start page title section -->
+    <section class="wow fadeIn cover-background background-position-top top-space" style="background-image:url({{ asset('build/global/images/about-banner.jpg') }});">
+        <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">
-            <div class="c-page-title c-pull-left">
-                <h3 class="c-font-uppercase c-font-sbold">{{ 'Qui sommes nous' }}</h3>
-            </div>
-            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                <li><a href="{{ path('homepage') }}">{{ 'Accueil' }}</a></li>
-                <li>/</li>
-                <li class="c-state_active">{{ 'La société' }}</li>
-            </ul>
-        </div>
-    </div>
-{% endblock %}
-{% block body %}
-    <div class="c-content-box c-size-md c-no-padding c-bg-white">
-        <div class="c-content-feature-4">
-            <div class="c-bg-parallax c-feature-bg c-content-right c-arrow c-border-left-white" style="background-image: url({{ asset('build/web/static/home_about.jpg') }})"></div>
-            <div class="c-content-area c-content-left"></div>
-            <div class="container">
-                <div class="c-feature-content c-left">
-                    <div class="c-content-v-center">
-                        <div class="c-wrapper">
-                            <div class="c-body">
-                                <div class="c-content-title-1 wow animate fadeInDown">
-                                    <h3 class="c-font-uppercase c-font-bold c-left">{{ 'La société' }}</h3>
-                                    <div class="c-line-left"></div>
-                                </div>
-                                <div class="c-content">
-                                    <p class="c-margin-b-30 c-left wow animate fadeInDown" style="text-align: justify">
-                                        La société INNOVE-IT&CONSULTING, est une équipe innovante avec des talents, des compétences, de l'expérience des savoir-faire et des savoirs-être engagés à réussir vos projets à court et à long termes dans le domaine des TIC. Elle est spécialisée dans les environnements systèmes: système d’information, systèmes de gestion informatisée, réseau & télécoms.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title-large">
+                    <div class="display-table-cell vertical-align-middle text-center padding-30px-tb">
+                        <!-- start sub title -->
+                        <span class="display-block text-white opacity6 alt-font margin-5px-bottom">{{ 'Qui sommes nous' }}</span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom">{{ 'innove IT & Consulting' }}</h1>
+                        <!-- end page title -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- end page title section -->
+{% endblock %}
+{% block body %}
+    <!-- start story section -->
+    <section class="wow fadeIn animated animated">
+        <div class="container">
+            <div class="row equalize sm-equalize-auto">
+                <div class="col-md-5 col-sm-12 col-xs-12 text-center sm-margin-30px-bottom wow fadeInLeft">
+                    <div class="display-table width-100 height-100">
+                        <div class="display-table-cell vertical-align-middle width-100 height-100">
+                            <img src="{{ asset('build/global/images/about-img3.jpg') }}" alt="{{ 'Qui sommes nous' }}" class="border-radius-6 width-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-12 col-xs-12 wow fadeInRight" data-wow-delay="0.2s">
+                    <div class="display-table width-100 height-100">
+                        <div class="display-table-cell vertical-align-middle padding-twelve-lr sm-text-center sm-no-padding width-100">
+                            <span class="text-deep-pink alt-font margin-10px-bottom display-inline-block text-medium">Don’t worry, you’re in safe hands.</span>
+                            <h6 class="alt-font text-extra-dark-gray">La solution de l’envisageable à l’indispensable</h6>
+                            <p>Nous disposons d'une équipe innovante avec des talents, des compétences, de l'expérience des savoir-faire et des savoirs-être engagés à réussir vos projets à court et à long termes dans le domaine des TIC. Elle est spécialisée dans les environnements systèmes: système d’information, systèmes de gestion informatisée, réseau & télécoms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider-full bg-extra-light-gray margin-seven-bottom margin-eight-top"></div>
+            <!-- start feature box -->
+            <div class="row">
+               {% for i in 1..4 %}
+                <!-- start feature box item -->
+                <div class="col-md-4 col-sm-4 col-xs-12 xs-margin-15px-bottom xs-text-center wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="col-md-3 col-sm-4 col-xs-12 no-padding-left xs-no-padding-lr pull-left xs-margin-15px-bottom">
+                        <i class="icon-book-open text-medium-gray icon-extra-medium top-6"></i>
+                    </div>
+                    <div class="col-md-9 col-sm-8 col-xs-12 no-padding">
+                        <span class="margin-5px-bottom text-extra-dark-gray alt-font display-block font-weight-600">SEO Marketing</span>
+                        <p class="width-75 md-width-100">Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
+                    </div>
+                </div>
+                <!-- end feature box item -->
+               {% endfor %}
+            </div>
+            <!-- start feature box -->
+        </div>
+    </section>
+    <!-- end story section -->
+    <!-- start clients slider section  -->
+    <section class="no-padding-top wow fadeIn">
+        <div class="container text-center">
+            <div class="row">
+                <div class="swiper-slider-clients swiper-container black-move wow fadeIn">
+                    <div class="swiper-wrapper">
+                        {% for partner in partners %}
+                            <!-- start slide -->
+                            <div class="swiper-slide text-center"><a href="{{ path('contact') }}"><img src="{{ partner.assertPath|imagine_filter('thumb_partner_250_250') }}" alt="{{ partner.name }}"></a></div>
+                            <!-- end slide -->
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end clients slider section -->
+
     <div class="c-content-box c-size-md c-no-padding c-bg-dark">
         <div class="c-content-feature-4">
             <div class="c-bg-parallax c-feature-bg c-content-left c-arrow c-border-right-dark" style="background-image: url({{ asset('build/web/static/home_about.jpg') }})"></div>
