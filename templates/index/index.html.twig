@@ -153,52 +153,53 @@
     </section>
     <!-- end about section -->
 
-    <!-- start formation box section  -->
-    <section class="wow fadeIn">
+    <!-- start Formation table style 02 section -->
+    <section class="wow fadeIn bg-light-gray">
         <div class="container">
             <div class="row">
-                <div class="pricing-box-style1">
-                    {% for i in 1..6 %}
-                    <!-- start price item -->
-                    <div class="col-md-4 col-sm-4 col-xs-12 text-center sm-margin-30px-bottom wow fadeInUp">
-                        <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                            <div class="padding-55px-all bg-very-light-gray sm-padding-30px-all xs-padding-40px-all">
-                                <!-- start price title -->
-                                <div class="pricing-title text-center">
-                                    <i class="ti-bookmark-alt icon-large text-deep-pink display-inline-block padding-30px-all bg-white box-shadow-light border-radius-100 margin-25px-bottom"></i>
-                                </div>
-                                <!-- end price title -->
-                                <!-- start price price -->
-                                <div class="pricing-price">
-                                    <span class="alt-font text-extra-dark-gray font-weight-600 text-uppercase">{{ 'Petite entreprise' }}</span>
-                                    <h4 class="text-extra-dark-gray alt-font font-weight-600 no-margin-bottom">{{ '5 jours' }}</h4>
-                                    <div class="text-extra-small text-uppercase alt-font margin-5px-top">{{ 'Sur demande' }}</div>
-                                </div>
-                                <!-- end price price -->
-                            </div>
-                            <!-- start price features -->
-                            <div class="padding-45px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                <ul class="list-style-11">
-                                    {% for i in 1..6 %}
-                                        <li>{{ 'Contenu de la formation ' ~ loop.index }}</li>
-                                    {% endfor %}
-                                </ul>
-                                <!-- start price action -->
-                                <div class="pricing-action margin-35px-top sm-no-margin-top">
-                                    <a href="{{ path('contact') }}" class="btn btn-dark-gray btn-small text-extra-small">{{ 'avoir un devis' }}</a>
-                                </div>
-                                <!-- end price action -->
-                            </div>
-                            <!-- end price features -->
-                        </div>
+                <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-100px-bottom xs-margin-40px-bottom">
+                    <div class="position-relative overflow-hidden width-100">
+                        <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase">Nos formations</span>
                     </div>
-                    <!-- end price item -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="pricing-box-style1">
+                    {% for i in 1..4 %}
+                        <!-- start pricing item -->
+                        <div class="col-md-3 col-sm-6 col-xs-12 text-center sm-margin-30px-bottom wow fadeInUp">
+                            <div class="pricing-box border-all border-width-1 border-color-extra-light-gray bg-white">
+                                <div class="bg-extra-dark-gray padding-10px-tb alt-font text-white font-weight-600 text-uppercase">{{ 'Sage moyens de paiement' }}</div>
+                                <div class="bg-light-gray padding-35px-all">
+                                    <h4 class="text-extra-dark-gray font-weight-500 no-margin-bottom">{{ 'sur devis' }}</h4>
+                                    <div class="text-extra-small text-uppercase margin-5px-top">{{ 'comptabilité' }}</div>
+                                </div>
+                                <!-- start pricing features -->
+                                <div class="padding-30px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
+                                    <ul class="list-style-11">
+                                        <li>1 GB Photos</li>
+                                        <li>Secure Online Transfer</li>
+                                        <li>Basic Styles</li>
+                                        <li>No Customer Service</li>
+                                        <li>Manual Backup</li>
+                                    </ul>
+                                    <!-- start pricing action -->
+                                    <div class="pricing-action margin-35px-top sm-no-margin-top">
+                                        <a href="pricing-table.html#" class="btn btn-transparent-dark-gray btn-very-small text-extra-small">Choose Plan</a>
+                                    </div>
+                                    <!-- end pricing action -->
+                                </div>
+                                <!-- end pricing features -->
+                            </div>
+                        </div>
+                        <!-- end pricing item -->
                     {% endfor %}
                 </div>
             </div>
         </div>
     </section>
-    <!-- end formation box section -->
+    <!-- end Formation table style 02 section -->
+
 
     <!-- start to action devis formation section -->
     <section class="wow fadeIn padding-50px-tb border-top border-width-1 border-color-extra-light-gray">
