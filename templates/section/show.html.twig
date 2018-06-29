@@ -16,6 +16,10 @@
                         <td>{{ section.name }}</td>
                     </tr>
                     <tr>
+                        <th>{{ 'Description' }}</th>
+                        <td>{{ section.content }}</td>
+                    </tr>
+                    <tr>
                         <th>{{ 'Date de creation' }}</th>
                         <td>{{ section.created ? section.created|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>

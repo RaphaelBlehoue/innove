@@ -27,7 +27,7 @@ class FamilyFormerRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('f')
             ->leftJoin('f.formations', 'ff')
             ->addSelect('ff')
-            ->orderBy('f.position', 'ASC')
+            ->orderBy('f.id', 'ASC')
             ->getQuery()
             ->getResult();
     }
