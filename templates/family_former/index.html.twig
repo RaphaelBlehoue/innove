@@ -15,14 +15,12 @@
                     <thead>
                         <tr>
                             <th>{{ 'Titre' }}</th>
-                            <th>{{ 'position affichage' }}</th>
                             <th>actions</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>{{ 'Titre' }}</th>
-                            <th>{{ 'position affichage' }}</th>
                             <th>actions</th>
                         </tr>
                     </tfoot>
@@ -30,7 +28,6 @@
                     {% for family_former in family_formers %}
                         <tr>
                             <td>{{ family_former.name }}</td>
-                            <td>{{ family_former.position }}</td>
                             <td>
                                 <a href="{{ path('family_former_show', {'id': family_former.id}) }}" class="btn btn-primary">{{ 'Afficher' }}</a>
                                 <a href="{{ path('family_former_edit', {'id': family_former.id}) }}" class="btn btn-danger">{{ 'Modifier' }}</a>

@@ -34,12 +34,6 @@ class Category
     protected $slug;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     * @Assert\NotBlank(message="Entrez la description")
-     */
-    protected $content;
-
-    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $created;
@@ -89,18 +83,6 @@ class Category
     public function setCreated(?\DateTimeInterface $created): self
     {
         $this->created = $created;
-
-        return $this;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(?string $content): self
-    {
-        $this->content = $content;
 
         return $this;
     }

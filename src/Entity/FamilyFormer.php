@@ -6,12 +6,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FamilyFormerRepository")
- * @UniqueEntity(fields={"position"}, message="Cette position d'affichage existe déjà, choisissez-en une autre pour continuer")
  */
 class FamilyFormer
 {
@@ -29,29 +27,10 @@ class FamilyFormer
     protected $name;
 
     /**
-     * @var
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="Entrez Un titre pour cette page")
-     */
-    protected $page_title;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Gedmo\Slug(fields={"name", "id"}, separator="_", updatable=true)
      */
     protected $slug;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     * @Assert\NotBlank(message="Entrez la position d'affichage")
-     */
-    protected $position;
-
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $content;
 
     /**
      * @var
@@ -64,7 +43,6 @@ class FamilyFormer
     {
         $this->formations = new ArrayCollection();
     }
-
 
     public function getId()
     {
@@ -95,29 +73,6 @@ class FamilyFormer
         return $this;
     }
 
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(?int $position): self
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(?string $content): self
-    {
-        $this->content = $content;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Formation[]
@@ -146,18 +101,6 @@ class FamilyFormer
                 $formation->setFamilyformer(null);
             }
         }
-        return $this;
-    }
-
-    public function getPageTitle(): ?string
-    {
-        return $this->page_title;
-    }
-
-    public function setPageTitle(?string $page_title): self
-    {
-        $this->page_title = $page_title;
-
         return $this;
     }
 }

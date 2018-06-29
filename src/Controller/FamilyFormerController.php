@@ -22,7 +22,8 @@ class FamilyFormerController extends Controller
      */
     public function index(FamilyFormerRepository $familyFormerRepository): Response
     {
-        return $this->render('family_former/index.html.twig', ['family_formers' => $familyFormerRepository->findAll()]);
+        return $this->render('family_former/index.html.twig', [
+            'family_formers' => $familyFormerRepository->findAll()]);
     }
 
     /**

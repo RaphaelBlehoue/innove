@@ -52,6 +52,8 @@ class SectionController extends Controller
 
     /**
      * @Route("/{id}", name="section_show", methods="GET")
+     * @param Section $section
+     * @return Response
      */
     public function show(Section $section): Response
     {
@@ -60,6 +62,9 @@ class SectionController extends Controller
 
     /**
      * @Route("/{id}/edit", name="section_edit", methods="GET|POST")
+     * @param Request $request
+     * @param Section $section
+     * @return Response
      */
     public function edit(Request $request, Section $section): Response
     {

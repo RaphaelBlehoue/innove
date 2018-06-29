@@ -17,6 +17,8 @@ class CategoryController extends Controller
 {
     /**
      * @Route("/", name="category_index", methods="GET")
+     * @param CategoryRepository $categoryRepository
+     * @return Response
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -25,6 +27,8 @@ class CategoryController extends Controller
 
     /**
      * @Route("/new", name="category_new", methods="GET|POST")
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -48,6 +52,8 @@ class CategoryController extends Controller
 
     /**
      * @Route("/{id}", name="category_show", methods="GET")
+     * @param Category $category
+     * @return Response
      */
     public function show(Category $category): Response
     {
@@ -56,6 +62,9 @@ class CategoryController extends Controller
 
     /**
      * @Route("/{id}/edit", name="category_edit", methods="GET|POST")
+     * @param Request $request
+     * @param Category $category
+     * @return Response
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -65,7 +74,7 @@ class CategoryController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('category_edit', ['id' => $category->getId()]);
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render('category/edit.html.twig', [
@@ -76,6 +85,9 @@ class CategoryController extends Controller
 
     /**
      * @Route("/{id}", name="category_delete", methods="DELETE")
+     * @param Request $request
+     * @param Category $category
+     * @return Response
      */
     public function delete(Request $request, Category $category): Response
     {
