@@ -100,7 +100,7 @@
                                                     <ul>
                                                         <li class="dropdown-header">{{ family.name }}</li>
                                                         {% for formation in family.formations %}
-                                                            <li><a href="">{{ formation.title }}</a></li>
+                                                            <li><a href="{{ path('family_former') }}#{{ formation.slug }}">{{ formation.title }}</a></li>
                                                         {% endfor %}
                                                     </ul>
                                                     <!-- end sub menu item  -->

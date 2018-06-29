@@ -44,16 +44,18 @@ class PageController extends AbstractController
      * @param PartnerRepository $partnerRepository
      * @param PostRepository $postRepository
      * @param SectionRepository $sectionRepository
+     * @param FamilyFormerRepository $familyFormerRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(ServiceRepository $serviceRepository, ActivityRepository $activityRepository, PartnerRepository $partnerRepository, PostRepository $postRepository, SectionRepository $sectionRepository)
+    public function index(ServiceRepository $serviceRepository, ActivityRepository $activityRepository, PartnerRepository $partnerRepository, PostRepository $postRepository, SectionRepository $sectionRepository, FamilyFormerRepository $familyFormerRepository)
     {
        return $this->render('index/index.html.twig',[
            'sections' => $sectionRepository->findAll(),
            'services' => $serviceRepository->findAll(),
            'activities' => $activityRepository->findAll(),
            'partners'  => $partnerRepository->findAll(),
-           'posts'     => $postRepository->getPostLimited(3)
+           'posts'     => $postRepository->getPostLimited(3),
+           'formers'   => $familyFormerRepository->findAll()
        ]);
     }
 
@@ -61,6 +63,7 @@ class PageController extends AbstractController
      * @Route("/about-us", name="about", methods={"GET"}, schemes={"%secure_channel%"})
      * @param PartnerRepository $partnerRepository
      * @param ServiceRepository $serviceRepository
+     * @param PostRepository $postRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function about(PartnerRepository $partnerRepository, ServiceRepository $serviceRepository, PostRepository $postRepository)
@@ -182,34 +185,7 @@ class PageController extends AbstractController
     public function FamilyFormer(FamilyFormerRepository $familyFormerRepository, PartnerRepository $partnerRepository)
     {
         return $this->render('front/family_former.html.twig',[
-            'family' => $familyFormerRepository->findAll(),
-            'partners'  => $partnerRepository->findAll()
-        ]);
-    }
-
-    /**
-     * @Route("/pages/family/{slug}", name="family_former_page", methods={"GET"}, schemes={"%secure_channel%"})
-     * @param FamilyFormer $familyFormer
-     * @param $slug
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function FamilyFormerPage(FamilyFormer $familyFormer, $slug)
-    {
-        dump($familyFormer);
-        return $this->render('front/family_former_page.html.twig');
-    }
-
-    /**
-     * @Route("/pages/family/formations/{slug}", name="family_former_page_detail", methods={"GET"}, schemes={"%secure_channel%"})
-     * @param FamilyFormer $familyFormer
-     * @param FamilyFormerRepository $familyFormerRepository
-     * @param PartnerRepository $partnerRepository
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function FamilyFormerPageDetail(FamilyFormer $familyFormer ,FamilyFormerRepository $familyFormerRepository, PartnerRepository $partnerRepository)
-    {
-        return $this->render('front/family_former_page_detail.html.twig',[
-            'family' => $familyFormerRepository->find($familyFormer),
+            'families' => $familyFormerRepository->findAll(),
             'partners'  => $partnerRepository->findAll()
         ]);
     }

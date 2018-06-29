@@ -60,7 +60,7 @@
                     <ul class="list-unstyled">
                         {% if families|length > 0 %}
                         {% for family in families %}
-                            <li><a class="text-small" href="{{ path('family_former_page', {'slug': family.slug}) }}" style="text-transform: uppercase">{{ family.name }}</a></li>
+                            <li><a class="text-small" href="{{ path('family_former')}}" style="text-transform: uppercase">{{ family.name }}</a></li>
                         {% endfor %}
                         {% endif %}
                     </ul>

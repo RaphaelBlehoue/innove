@@ -165,27 +165,20 @@
             </div>
             <div class="row">
                 <div class="pricing-box-style1">
-                    {% for i in 1..4 %}
+                    {% for former in formers %}
                         <!-- start pricing item -->
                         <div class="col-md-3 col-sm-6 col-xs-12 text-center sm-margin-30px-bottom wow fadeInUp">
                             <div class="pricing-box border-all border-width-1 border-color-extra-light-gray bg-white">
-                                <div class="bg-extra-dark-gray padding-10px-tb alt-font text-white font-weight-600 text-uppercase">{{ 'Sage moyens de paiement' }}</div>
+                                <div class="bg-extra-dark-gray padding-10px-tb alt-font text-white font-weight-600 text-uppercase">{{ 'Formations' }}</div>
                                 <div class="bg-light-gray padding-35px-all">
-                                    <h4 class="text-extra-dark-gray font-weight-500 no-margin-bottom">{{ 'sur devis' }}</h4>
-                                    <div class="text-extra-small text-uppercase margin-5px-top">{{ 'comptabilité' }}</div>
+                                    <div class="text-extra-small text-uppercase margin-5px-top">{{ 'Section:' }}</div>
+                                    <h6 class="text-extra-dark-gray font-weight-500 no-margin-bottom">{{ former.name }}</h6>
                                 </div>
                                 <!-- start pricing features -->
                                 <div class="padding-30px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                    <ul class="list-style-11">
-                                        <li>1 GB Photos</li>
-                                        <li>Secure Online Transfer</li>
-                                        <li>Basic Styles</li>
-                                        <li>No Customer Service</li>
-                                        <li>Manual Backup</li>
-                                    </ul>
                                     <!-- start pricing action -->
                                     <div class="pricing-action margin-35px-top sm-no-margin-top">
-                                        <a href="pricing-table.html#" class="btn btn-transparent-dark-gray btn-very-small text-extra-small">Choose Plan</a>
+                                        <a href="{{ path('family_former') }}#{{ former.sluggit sta }}" class="btn btn-transparent-dark-gray btn-very-small text-extra-small">{{ 'Voir le contenu' }}</a>
                                     </div>
                                     <!-- end pricing action -->
                                 </div>

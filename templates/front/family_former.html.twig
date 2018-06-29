@@ -1,10 +1,138 @@
 {% extends 'base.html.twig' %}
-
-{% block body %}
-
-{% endblock %}
-
 {% block title %}
-
+    {{ 'Nos formations| Intégrateur de solutions innovantes' }}
 {% endblock %}
+{% block slider %}
+    <!-- start page title section -->
+    <section class="wow fadeIn cover-background background-position-top top-space" style="background-image:url({{ asset('build/global/images/about-banner.jpg') }});">
+        <div class="opacity-medium bg-extra-dark-gray"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title-large">
+                    <div class="display-table-cell vertical-align-middle text-center padding-30px-tb">
+                        <!-- start sub title -->
+                        <span class="display-block text-white opacity6 alt-font margin-5px-bottom">{{ 'découvrez nos solutions'|capitalize }}</span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom">{{ 'Nos formations' |upper}}</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end page title section -->
+{% endblock %}
+{% block body %}
+    {{ include('flash_messages.html.twig') }}
+    <!-- start full width feature box -->
+    <section class="padding-55px-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
+                    <p class="alt-font text-extra-dark-gray text-uppercase font-weight-600"> {{ 'La formation étant un élèment majeur du dévéloppement d\'une entreprise, nous vous proposons des formations sur mesure en fonction de vos besions' }} </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- start section family solutions -->
+    {{ include('flash_messages.html.twig') }}
+    {% for family in families %}
+        <!-- start feature box section -->
+        <section class="wow fadeIn no-padding" style="margin-top: 40px;" id="{{ family.slug }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-6 col-sm-8 col-xs-12 center-col sm-margin-20px-bottom xs-margin-10px-bottom sm-margin-30px-top xs-margin-20px-top text-center xs-padding-15px-top sm-padding-10px-top">
+                        <h5 class="alt-font text-extra-dark-gray font-weight-600">
+                            {{ family.name|upper }}
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for former in family.formations %}
+                        <div class="col-md-3 col-sm-6 col-xs-12 text-center sm-margin-30px-bottom wow fadeInUp" id="{{ former.slug }}">
+                            <div class="pricing-box border-all border-width-1 border-color-extra-light-gray bg-white">
+                                <div class="bg-extra-dark-gray padding-10px-tb alt-font text-white font-weight-600 text-uppercase">{{ 'Formations' }}</div>
+                                <div class="bg-light-gray padding-35px-all">
+                                    <div class="text-extra-small text-uppercase margin-5px-top">{{ 'section:' }}</div>
+                                    <h6 class="text-extra-dark-gray font-weight-500 no-margin-bottom">{{ former.title }}</h6>
+                                    <div class="text-extra-small text-uppercase margin-5px-top">{{ 'Prix sur demande de devis' }}</div>
+                                </div>
+                                <!-- start pricing features -->
+                                <div class="padding-30px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
+                                    <!-- start pricing action -->
+                                    <div class="pricing-action margin-35px-top sm-no-margin-top">
+                                        <a href="#devis" class="btn btn-transparent-dark-gray btn-very-small text-extra-small">{{ 'Demandez un devis' }}</a>
+                                    </div>
+                                    <!-- end pricing action -->
+                                </div>
+                                <!-- end pricing features -->
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- end  feature box section -->
+    {% endfor %}
+    <!-- start section -->
+    <section class="no-padding wow fadeIn animated">
+        <div class="container-fluid">
+            <div class="row equalize sm-equalize-auto">
+                <!-- start features item -->
+                <div class="col-md-3 no-padding cover-background position-relative sm-height-500px xs-height-300px wow fadeIn" style="background: transparent url({{ asset('build/global/images/homepage-option17-image-01.jpg') }})"></div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding position-relative bg-extra-dark-gray wow fadeIn sm-text-center" data-wow-delay="0.2s">
+                    <div class="display-table width-100 height-100">
+                        <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
+                            <div class="alt-font text-medium-gray margin-10px-bottom">{{ 'Qui sommes nous'|upper }}</div>
+                            <div class="alt-font text-extra-large margin-20px-bottom text-white width-90 md-width-100 xs-margin-15px-bottom">{{ 'innove it & consulting'|upper }}</div>
+                            <p>{{ describe }}</p>
+                            <a href="{{ path('about') }}" class="btn btn-transparent-white btn-small border-radius-4"><i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i>{{ 'en savoir plus' }}</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding cover-background position-relative sm-height-500px xs-height-300px wow fadeIn" data-wow-delay="0.4s" style="background: transparent url({{ asset('build/global/images/homepage-option17-image-02.jpg') }})"></div>
+                <!-- end features item -->
+                <!-- start features item -->
+                <div class="col-md-3 no-padding position-relative bg-extra-dark-gray wow fadeIn sm-text-center" data-wow-delay="0.6s">
+                    <div class="display-table width-100 height-100">
+                        <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
+                            <div class="alt-font text-medium-gray margin-10px-bottom">{{ 'Nous Contacter'|upper }}</div>
+                            <div class="alt-font text-extra-large margin-20px-bottom text-white width-90 md-width-100 xs-margin-15px-bottom">{{ 'vous avez un besoin en particulier ?'|upper }}</div>
+                            <p>{{ 'Quelque soit votre besoin en gestion, comptabilité, Paie & RH, application web, site internet, achat de matériel informatique ... ou pour un projet projet informatique, n\'hesitez pas à nous contacter pour un rendez-vous. Quelque soit la taille de votre entreprise, nous avons la solution qu\'il vous faut dans l\'immédiat ou à long terme' }}</p>
+                            <a href="{{ path('contact') }}" class="btn btn-transparent-white btn-small border-radius-4"><i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i>{{ 'Nous contacter' }}</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features item -->
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
 
+    <!-- start form section -->
+    {{ include('front/includes/formation_devis.html.twig') }}
+    <!-- end form section -->
+
+    <!-- start clients slider section  -->
+    <section class="no-padding-top wow fadeIn">
+        <div class="container text-center">
+            <div class="row">
+                <div class="swiper-slider-clients swiper-container black-move wow fadeIn">
+                    <div class="swiper-wrapper">
+                        {% for partner in partners %}
+                            <!-- start slide -->
+                            <div class="swiper-slide text-center"><a href="{{ path('contact') }}"><img src="{{ partner.assertPath|imagine_filter('thumb_partner_250_250') }}" alt="{{ partner.name }}"></a></div>
+                            <!-- end slide -->
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end clients slider section -->
+{% endblock %}
