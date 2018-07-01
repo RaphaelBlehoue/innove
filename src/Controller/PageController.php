@@ -9,14 +9,12 @@
 namespace App\Controller;
 
 
-use App\Entity\Activity;
 use App\Entity\Category;
-use App\Entity\FamilyFormer;
 use App\Entity\Post;
 use App\Entity\Section;
-use App\Entity\Service;
 use App\Entity\Solution;
 use App\Form\FamilyDevisType;
+use App\Form\FormationDevisType;
 use App\Form\SolutionDevisType;
 use App\Lib\MailManager;
 use App\Repository\ActivityRepository;
@@ -91,7 +89,7 @@ class PageController extends AbstractController
     }
 
     /**
-     * Page pour Voir la famille des solutions, sous-famille et les solutions associé
+     * Page pour Voirs les familles des solutions, sous-familles et les solutions associé
      * @Route("/page/family/solutions/{slug}", name="family_solution_page", methods={"GET","POST"}, schemes={"%secure_channel%"})
      * @param Section $section
      * @param SectionRepository $sectionRepository
@@ -120,7 +118,6 @@ class PageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $mailData = $this->dataDevisConstructor($data);
-            dump($mailData); die;
             $template = 'devis';
             $to = getenv('APP_TO');
             $bcc = $mailData['email'];
@@ -128,7 +125,7 @@ class PageController extends AbstractController
             $mail = $mailData['email'];
             $mailer->sendEmail($template, $mailData, $to, $mail, $fromName, $bcc);
             $this->flashMessage();
-            return $this->redirectToRoute('family_solution_page', ['slug' => $section->getSlug()]);
+            return $this->redirectToRoute('family_solution_page', ['slug' => $section->getSlug().'#start-your-project']);
         }
 
         return $this->render('front/family_solution_page.html.twig',[
@@ -157,7 +154,6 @@ class PageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $mailData = $this->dataDevisConstructor($data);
-            dump($mailData); die;
             $template = 'devis';
             $to = getenv('APP_TO');
             $bcc = $mailData['email'];
@@ -165,7 +161,6 @@ class PageController extends AbstractController
             $mail = $mailData['email'];
             $mailer->sendEmail($template, $mailData, $to, $mail, $fromName, $bcc);
             $this->flashMessage();
-            return $this->redirectToRoute('solution_detail', ['slug' => $solution->getSlug()]);
         }
         return $this->render('front/solutions_detail_page.html.twig',[
             'form' => $form->createView(),
@@ -175,16 +170,35 @@ class PageController extends AbstractController
     }
 
 
-
     /**
+     * @param Request $request
      * @param FamilyFormerRepository $familyFormerRepository
      * @param PartnerRepository $partnerRepository
+     * @param MailManager $mailer
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/nos-formations", name="family_former", methods={"GET"}, schemes={"%secure_channel%"})
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     * @Route("/nos-formations", name="family_former", methods={"GET","POST"}, schemes={"%secure_channel%"})
      */
-    public function FamilyFormer(FamilyFormerRepository $familyFormerRepository, PartnerRepository $partnerRepository)
+    public function FamilyFormer(Request $request,FamilyFormerRepository $familyFormerRepository, PartnerRepository $partnerRepository, MailManager $mailer)
     {
+        $form = $this->createForm(FormationDevisType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $mailData = $this->dataDevisFormation($data);
+            $template = 'formation';
+            $to = getenv('APP_TO');
+            $bcc = $mailData['email'];
+            $fromName = $mailData['lastname'].' '.$mailData['firstname'];
+            $mail = $mailData['email'];
+            $mailer->sendEmail($template, $mailData, $to, $mail, $fromName, $bcc);
+            $this->flashMessageFormation();
+            return $this->redirectToRoute('family_former');
+        }
         return $this->render('front/family_former.html.twig',[
+            'form' => $form->createView(),
             'families' => $familyFormerRepository->findAll(),
             'partners'  => $partnerRepository->findAll()
         ]);
@@ -192,7 +206,7 @@ class PageController extends AbstractController
 
 
     /**
-     * Page pour voir tout les services
+     * Page pour Voire tout les services
      * @Route("/nos-services", name="services", methods={"GET"}, schemes={"%secure_channel%"})
      * @param ServiceRepository $serviceRepository
      * @return \Symfony\Component\HttpFoundation\Response
@@ -314,6 +328,24 @@ class PageController extends AbstractController
         return $result;
     }
 
+    /**
+     * @param $data
+     * @return array
+     */
+    private function dataDevisFormation($data)
+    {
+        $mail_data = [
+            'firstname' => (($data["firstname"] === null) ? null : $data["firstname"]),
+            'formation' => (($data["formation"]->getTitle() === null) ? null : $data["formation"]->getTitle()),
+            'lastname'  => (($data["lastname"] === null) ? null : $data["lastname"]),
+            'compagny'  => (($data["compagny"] === null) ? null : $data["compagny"]),
+            'phone'     => (($data["phone"] === null) ? null : $data["phone"]),
+            'email'     => (($data["email"] === null) ? null : $data["email"]),
+            'poste'     => (($data["poste"] === null) ? null : $data["poste"]),
+            'type'   => (($data["type"] === null) ? null : $data["type"])
+        ];
+        return $mail_data;
+    }
 
     private function dataDevisConstructor($data)
     {
@@ -329,11 +361,8 @@ class PageController extends AbstractController
             'type'   => (($data["type"] === null) ? null : $data["type"])
         ];
          if ($data['solution']) {
-             $data_mail['solution'] = (($data["solution"]->getName() === null) ? null : $data["solution"]->getName());
+             $data_mail['solution'] = (($data["solution"] === null) ? null : $data["solution"]);
          }
-        if ($data['family']) {
-            $data_mail['family'] = (($data["solution"]->getCategory()->getName() === null) ? null : $data["solution"]->getCategory()->getName());
-        }
          return $data_mail;
     }
 
@@ -341,7 +370,14 @@ class PageController extends AbstractController
     private function flashMessage() {
         return $this->addFlash(
             'success',
-            ' Nous avons votre demande de devis d\'une de nos solutions par mail. Nos services reviendrons vers vous d\'ici peu. NB: Vous pouvez consulter l\'exemplaire de votre demande par mail, nous vous remercions pour votre confiance'
+            ' Nous avons réçu votre demande de devis d\'une de nos solutions par mail. Nos services reviendrons vers vous d\'ici peu. NB: Vous pouvez consulter l\'exemplaire de votre demande par mail (vérifier dans les spams si possible), nous vous remercions pour votre confiance'
+        );
+    }
+
+    private function flashMessageFormation() {
+        return $this->addFlash(
+            'success',
+            ' Nous avons réçu votre demande de devis d\'une de formation par mail. Nos services reviendrons vers vous d\'ici peu. NB: Vous pouvez consulter l\'exemplaire de votre demande par mail (vérifier dans les spams si possible) , nous vous remercions pour votre confiance'
         );
     }
 }

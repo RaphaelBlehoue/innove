@@ -2,9 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Formation;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,20 +14,24 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class SolutionDevisType extends AbstractType
+class FormationDevisType extends AbstractType
 {
     public  $type = [
-        'Base' => 'Base', 'Pack'=>'Pack', 'Pack plus' => 'Pack plus'
-    ];
-
-    public $service = [
-        'Achat' => 'Achat', 'Mise à jour' => 'Mise à jour'
+        'GRANDE ENTREPRISE' => 'GRANDE ENTREPRISE',
+        'ORGANISATION' => 'ORGANISATION/ONG/ASSOCIATION',
+        'PME' => 'PME'
     ];
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('solution', HiddenType::class)
+            ->add('formation', EntityType::class, [
+                'class' => Formation::class,
+                'choice_label' => 'title',
+                'label' => 'Choix de la formation',
+                'required' => true,
+                'attr' => ['placeholder' => 'Choix de la formation', 'class' => 'col-md-6']
+            ])
             ->add('email', TextType::class,[
                 'label' => 'ADRESSE EMAIL',
                 'attr' => ["class" => "big-input", "placeholder" => "Entrez une adresse email"],
@@ -68,16 +73,8 @@ class SolutionDevisType extends AbstractType
                     new NotBlank(['message' => 'Votre numéro de téléphone s\'il vous plait'])
                 ]
             ])
-            ->add('qte', NumberType::class, [
-                'label' => 'QUANTITE',
-                'attr' => ["class" => "big-input", "placeholder" => "Entrez la quantité"],
-                'required' => 'true',
-                'constraints' => [
-                    new NotBlank(['message' => 'Entrez la quantité s\'il vous plait'])
-                ]
-            ])
             ->add('poste', NumberType::class, [
-                'label' => 'NOMBRE DE POSTE',
+                'label' => 'NOMBRE DE PERSONNE',
                 'attr' => ["class" => "big-input", "placeholder" => "Entrez le nombre de poste"],
                 'required' => 'true',
                 'scale' => 0,
@@ -85,22 +82,13 @@ class SolutionDevisType extends AbstractType
                     new NotBlank(['message' => 'Entrez le nombre de poste'])
                 ]
             ])
-            ->add('service', ChoiceType::class, [
-                'label' => 'SERVICE DEMANDE',
-                'attr' => ["class" => "big-input", "placeholder" => "Choix du service associé"],
-                'required' => 'true',
-                'choices' => $this->service,
-                'constraints' => [
-                    new NotBlank(['message' => 'Faite le choix du type de services'])
-                ]
-            ])
             ->add('type', ChoiceType::class, [
-                'label' => 'TYPE D\'OFFRE',
+                'label' => 'Type de votre organisation',
                 'attr' => ["class" => "big-input", "placeholder" => "Choix du type"],
                 'required' => 'true',
                 'choices' => $this->type,
                 'constraints' => [
-                    new NotBlank(['message' => 'Faite le choix du type de pack'])
+                    new NotBlank(['message' => 'Faites le choix du type de pack'])
                 ]
             ])
             ->add('envoyer', SubmitType::class, [
@@ -112,9 +100,7 @@ class SolutionDevisType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'catId' => null,
-            'solution' => null,
-            'family' => null
+            'formation' => null
         ]);
     }
 }

@@ -1,0 +1,38 @@
+<section class="wow fadeIn" id="devis_formation">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 center-col margin-eight-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
+                <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase">{{ 'obtenir un devis pour une formation' }}</h5>
+                <p>{{ 'Appelez les numéro suivant ' ~ cel ~ ' remplissez les champs suivants, Nous vous contacterons rapidement' }}</p>
+            </div>
+        </div>
+        {{ include('flash_messages.html.twig') }}
+        {{ form_start(form) }}
+        <div class="row col-md-offset-2">
+            <div class="col-md-10">
+                <div id="success-project-contact-form" class="no-margin-lr">
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="col-md-6">{{ form_row(form.formation) }}</div>
+                <div class="col-md-6">{{ form_row(form.type) }}</div>
+            </div>
+            <div class="col-md-10">
+                <div class="col-md-6"> {{ form_row(form.email) }}</div>
+                <div class="col-md-6">{{ form_row(form.phone) }}</div>
+            </div>
+            <div class="col-md-10">
+                <div class="col-md-6"> {{ form_row(form.lastname) }}</div>
+                <div class="col-md-6"> {{ form_row(form.firstname) }}</div>
+            </div>
+            <div class="col-md-10">
+                <div class="col-md-6">{{ form_row(form.compagny) }}</div>
+                <div class="col-md-6">{{ form_row(form.poste) }}</div>
+            </div>
+            <div class="col-md-6 col-md-offset-4">
+                {{ form_row(form.envoyer) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</section>

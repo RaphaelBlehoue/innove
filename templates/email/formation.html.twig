@@ -1,6 +1,6 @@
 <!doctype html>
 {% block subject %}
-    {{ 'Demande de devis ' ~ solution ~ ' | Provenance Site internet' }}
+    {{ 'Demande de devis ' ~ formation ~ ' | Provenance Site internet' }}
 {% endblock %}
 
 {% block body_text %}
@@ -8,10 +8,9 @@
         Name: {{ firstname }} {{ lastname }}
         Phone Number: {{ phone }}
         Email address: {{ email }}
-        Solution : {{ solution }}
-        Quantité : {{ qte }}
-        Nombre de poste : {{ poste }}
-        Pack : {{ service }}
+        Formation : {{ formation }}
+        Nombre de personne : {{ poste }}
+        Type : {{ type }}
     {% endautoescape %}
 {% endblock %}
 
@@ -20,7 +19,7 @@
         <html>
         <head>
                 <meta charset="utf-8">
-                <title> {{ 'Demande de devis ' ~ solution ~ ' | Provenance Site internet' }}</title>
+                <title> {{ 'Demande de devis ' ~ formation ~ ' | Provenance Site internet' }}</title>
 
                 <style>
                         .invoice-box {
@@ -130,7 +129,7 @@
 
                                                         <td>
                                                                 Demande #: {{ random() }}<br>
-                                                                Date: {{ 'now'|date('d m Y') }}<br>
+                                                                Date: {{ 'now'|date('d /m /Y') }}<br>
                                                         </td>
                                                 </tr>
                                         </table>
@@ -170,43 +169,25 @@
                         </tr>
                         <tr class="item">
                                 <td>
-                                        {{ 'Solution demandée' }}
+                                        {{ 'Formation demandée' }}
                                 </td>
 
                                 <td>
-                                        {{ solution }}
+                                        {{ formation }}
                                 </td>
                         </tr>
                         <tr class="item">
                                 <td>
-                                        {{ 'Type de pack' }}
+                                        {{ 'Type' }}
                                 </td>
 
                                 <td>
                                         {{ type }}
                                 </td>
                         </tr>
-                        <tr class="item">
-                                <td>
-                                        {{ 'Service demandé' }}
-                                </td>
-
-                                <td>
-                                        {{ service }}
-                                </td>
-                        </tr>
-                        <tr class="item">
-                                <td>
-                                        {{ 'Quantité' }}
-                                </td>
-
-                                <td>
-                                        {{ qte }}
-                                </td>
-                        </tr>
                         <tr class="item last">
                                 <td>
-                                        {{ 'Nombre de poste' }}
+                                        {{ 'Nombre de personne' }}
                                 </td>
 
                                 <td>

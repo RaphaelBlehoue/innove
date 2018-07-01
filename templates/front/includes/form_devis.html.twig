@@ -6,6 +6,7 @@
                 <p>{{ 'Appelez les numéro suivant ' ~ cel ~ ' remplissez les champs suivants, Nous vous contacterons rapidement' }}</p>
             </div>
         </div>
+        {{ include('flash_messages.html.twig') }}
         {{ form_start(form) }}
         <div class="row col-md-offset-2">
             <div class="col-md-10">
