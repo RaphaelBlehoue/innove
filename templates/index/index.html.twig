@@ -23,7 +23,7 @@
     <!-- end Title Family  box -->
 
     <!-- start section family solutions -->
-    <section class="no-padding wow fadeIn border-color-extra-light-gray border-bottom">
+    <section class="no-padding wow fadeIn border-color-extra-light-gray border-bottom" id="section_solution">
         <div class="container-fluid no-padding">
             <div class="row equalize no-margin feature-box-14">
                 {% for section in sections %}
@@ -242,43 +242,45 @@
     </section>
     <!-- end why work with us box -->
 
-    <!-- start blog section -->
-    <section class="wow fadeIn hover-option4 blog-post-style3">
-        <div class="container">
-            <div class="row padding-25px-bottom">
-                <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
-                    <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-700">{{ 'astuces & informations' }}</h5>
+    {% if posts|length > 0 %}
+        <!-- start blog section -->
+        <section class="wow fadeIn hover-option4 blog-post-style3">
+            <div class="container">
+                <div class="row padding-25px-bottom">
+                    <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
+                        <h5 class="alt-font text-extra-dark-gray text-uppercase font-weight-700">{{ 'astuces & informations' }}</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="row equalize xs-equalize-auto">
-                {% if posts|length > 0 %}
-                    {% for post in posts %}
-                        <!-- start blog post item -->
-                        <div class="grid-item col-md-4 col-sm-6 col-xs-12 wow fadeInUp sm-padding-30px-bottom xs-text-center">
-                            <div class="blog-post bg-light-gray inner-match-height">
-                                <div class="blog-post-images overflow-hidden position-relative">
-                                    <a href="{{ path('detail_blog', {'slug': post.slug}) }}">
-                                        <img src="{{ post.assertPath|imagine_filter('thumb_590_300') }}" alt="">
-                                        <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">+</span></div>
-                                    </a>
-                                </div>
-                                <div class="post-details padding-40px-all sm-padding-20px-all">
-                                    <a href="{{ path('detail_blog', {'slug' : post.slug }) }}" class="alt-font post-title text-medium text-extra-dark-gray width-100 display-block md-width-100 margin-15px-bottom">{{ post.title }}</a>
-                                    <p>{{ post.content|truncate('250', true, '...')|raw }}</p>
-                                    <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb sm-margin-15px-tb"></div>
-                                    <div class="author">
-                                        <span class="text-medium-gray text-uppercase text-extra-small display-inline-block sm-display-block sm-margin-10px-top">par <a href="{{ path('about') }}" class="text-medium-gray"> Admin </a>&nbsp;&nbsp;|&nbsp;&nbsp; {{ post.created|localizeddate('long', 'long', null, 'UTC') }}</span>
+                <div class="row equalize xs-equalize-auto">
+                    {% if posts|length > 0 %}
+                        {% for post in posts %}
+                            <!-- start blog post item -->
+                            <div class="grid-item col-md-4 col-sm-6 col-xs-12 wow fadeInUp sm-padding-30px-bottom xs-text-center">
+                                <div class="blog-post bg-light-gray inner-match-height">
+                                    <div class="blog-post-images overflow-hidden position-relative">
+                                        <a href="{{ path('detail_blog', {'slug': post.slug}) }}">
+                                            <img src="{{ post.assertPath|imagine_filter('thumb_590_300') }}" alt="">
+                                            <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">+</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="post-details padding-40px-all sm-padding-20px-all">
+                                        <a href="{{ path('detail_blog', {'slug' : post.slug }) }}" class="alt-font post-title text-medium text-extra-dark-gray width-100 display-block md-width-100 margin-15px-bottom">{{ post.title }}</a>
+                                        <p>{{ post.content|truncate('250', true, '...')|raw }}</p>
+                                        <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb sm-margin-15px-tb"></div>
+                                        <div class="author">
+                                            <span class="text-medium-gray text-uppercase text-extra-small display-inline-block sm-display-block sm-margin-10px-top">par <a href="{{ path('about') }}" class="text-medium-gray"> Admin </a>&nbsp;&nbsp;|&nbsp;&nbsp; {{ post.created|localizeddate('long', 'long', null, 'UTC') }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- end blog post item -->
-                    {% endfor %}
-                {% endif %}
+                            <!-- end blog post item -->
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
-        </div>
-    </section>
-    <!-- end blog section -->
+        </section>
+        <!-- end blog section -->
+    {% endif %}
 
     <!-- start section -->
     <section class="no-padding-bottom bg-light-gray wow fadeIn">
