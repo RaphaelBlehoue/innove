@@ -1,6 +1,6 @@
 <header class="header-with-topbar fixed-topbar">
     <!-- topbar -->
-    <div class="top-header-area bg-black padding-5px-tb">
+    <div class="top-header-area bg-black">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 text-uppercase alt-font xs-no-padding-lr xs-text-center">
@@ -37,62 +37,65 @@
         </div>
     </div>
     <!-- end topbar -->
+
     <!-- start navigation -->
-    <nav class="navbar navbar-default bootsnav navbar-fixed-top header-light-transparent bg-transparent nav-box-width">
-        <div class="container-fluid nav-header-container">
+    <nav class="navbar navbar-default bootsnav bg-transparent navbar-brand-top nav-box-width">
+        <div class="container nav-header-container text-center">
             <div class="row">
                 <!-- start logo -->
-                <div class="col-md-2 col-xs-5">
-                    <a href="{{ path('homepage') }}" title="innove-it.net" class="logo"><img src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" class="logo-dark" alt="{{ 'innove-it.net' }}"><img src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" alt="{{ 'innove-it.net' }}" class="logo-light default"></a>
+                <div class="col-md-12 col-sm-4 col-xs-5 navbar-brand">
+                    <a href="{{ path('homepage') }}" title="innove-it.net" class="logo">
+                        <img src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" class="logo-dark" alt="{{ 'innove-it.net' }}">
+                        <img src="{{ asset('build/front/static/logo_web.png') }}" data-rjs="{{ asset('build/front/static/logo@2x.png') }}" alt="{{ 'innove-it.net' }}" class="logo-light default">
+                    </a>
                 </div>
                 <!-- end logo -->
-                <div class="col-md-10 col-xs-2 width-auto pull-right accordion-menu xs-no-padding-right">
+                <div class="col-md-12 col-sm-8 col-xs-2 sm-width-auto accordion-menu">
                     <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#navbar-collapse-toggle-1">
                         <span class="sr-only">toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
-                        <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
+                    <div class="navbar-collapse collapse display-inline-block" id="navbar-collapse-toggle-1">                        <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
                             <!-- start menu solution family -->
                             {% if sections|length > 0 %}
-                            {% for section in sections %}
-                                <li class="dropdown megamenu-fw">
-                                    <a href="{{ path('family_solution_page', {'slug': section.slug }) }}">{{ section.name }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <!-- start sub menu -->
-                                    <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
-                                        <ul class="equalize sm-equalize-auto">
-                                            {% for category in section.categories %}
-                                            <!-- start sub menu column  -->
-                                            <li class="mega-menu-column col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <!-- start sub menu item  -->
-                                                <ul>
-                                                    <li class="dropdown-header">{{ category.name }}</li>
-                                                    {% for solution in category.solutions %}
-                                                    <li><a href="{{ path('solution_detail', {'slug': solution.slug }) }}">{{ solution.name }}</a></li>
-                                                    {% endfor %}
-                                                </ul>
-                                                <!-- end sub menu item  -->
-                                            </li>
-                                            <!-- end sub menu column -->
-                                            {% endfor %}
+                                {% for section in sections %}
+                                    <li class="dropdown megamenu-fw">
+                                        <a href="{{ path('family_solution_page', {'slug': section.slug }) }}">{{ section.name }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                        <!-- start sub menu -->
+                                        <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
+                                            <ul class="equalize sm-equalize-auto">
+                                                {% for category in section.categories %}
+                                                    <!-- start sub menu column  -->
+                                                    <li class="mega-menu-column col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                                        <!-- start sub menu item  -->
+                                                        <ul>
+                                                            <li class="dropdown-header">{{ category.name }}</li>
+                                                            {% for solution in category.solutions %}
+                                                                <li><a href="{{ path('solution_detail', {'slug': solution.slug }) }}">{{ solution.name }}</a></li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                        <!-- end sub menu item  -->
+                                                    </li>
+                                                    <!-- end sub menu column -->
+                                                {% endfor %}
 
-                                            <!-- end sub menu column  -->
-                                        </ul>
-                                        <!-- end sub menu -->
-                                    </div>
-                                </li>
-                            {% endfor %}
+                                                <!-- end sub menu column  -->
+                                            </ul>
+                                            <!-- end sub menu -->
+                                        </div>
+                                    </li>
+                                {% endfor %}
                             {% endif %}
                             <!-- end solution family -->
                             <!-- start menu solution family -->
                             <li class="dropdown megamenu-fw">
-                                    <a href="">{{ 'formations' }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <!-- start sub menu -->
-                                    <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
-                                        <ul class="equalize sm-equalize-auto">
-                                            {% if families|length > 0 %}
+                                <a href="">{{ 'formations' }}</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                <!-- start sub menu -->
+                                <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
+                                    <ul class="equalize sm-equalize-auto">
+                                        {% if families|length > 0 %}
                                             {% for family in families %}
                                                 <!-- start sub menu column  -->
                                                 <li class="mega-menu-column col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -107,12 +110,12 @@
                                                 </li>
                                                 <!-- end sub menu column -->
                                             {% endfor %}
-                                            {% endif %}
-                                            <!-- end sub menu column  -->
-                                        </ul>
-                                        <!-- end sub menu -->
-                                    </div>
-                                </li>
+                                        {% endif %}
+                                        <!-- end sub menu column  -->
+                                    </ul>
+                                    <!-- end sub menu -->
+                                </div>
+                            </li>
                             <!-- end solution family -->
                             <li class="dropdown simple-dropdown"><a href="{{ path('services') }}">{{ 'Assistance' }}</a>
                                 <!-- start sub menu -->
