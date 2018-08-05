@@ -25,6 +25,12 @@ class Formation
     protected $title;
 
     /**
+     * @ORM\Column(type="text")
+     * @Assert\NotNull(message="Veuillez entrez un contenu")
+     */
+    protected $content;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Gedmo\Slug(fields={"title", "id"}, separator="_", updatable=false)
      */
@@ -62,6 +68,18 @@ class Formation
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
         return $this;
     }
 

@@ -6,6 +6,7 @@ use App\Entity\FamilyFormer;
 use App\Entity\Formation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,6 +22,10 @@ class FormationType extends AbstractType
                 'label' => 'Choix de la Famille de la formation',
                 'required' => true,
                 'attr' => ['placeholder' => 'Choix de la Famille de la formation', 'class' => 'col-md-6']
+            ])
+            ->add('content', TextareaType::class, [
+                'label' => 'Description de la formation',
+                'attr'  => ['placeholder' => 'Entrez le contenu ici', 'class' => 'editor']
             ])
             ->add('title', TextType::class, [
                 'label' => 'Titre de la formation',

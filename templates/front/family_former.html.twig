@@ -53,15 +53,39 @@
                             <div class="pricing-box border-all border-width-1 border-color-extra-light-gray bg-white">
                                 <div class="bg-extra-dark-gray padding-10px-tb alt-font text-white font-weight-600 text-uppercase">{{ 'Formations' }}</div>
                                 <div class="bg-light-gray padding-35px-all">
-                                    <div class="text-extra-small text-uppercase margin-5px-top">{{ 'section:' }}</div>
-                                    <h6 class="text-extra-dark-gray font-weight-500 no-margin-bottom">{{ former.title }}</h6>
-                                    <div class="text-extra-small text-uppercase margin-5px-top">{{ 'Prix sur demande de devis' }}</div>
+                                    <div class="text-extra-small text-uppercase margin-5px-top">
+                                        {{ 'section:' }}
+                                    </div>
+                                    <h6 class="text-extra-dark-gray font-weight-500 no-margin-bottom">
+                                        {{ former.title }}
+                                    </h6>
+                                    <div class="text-extra-small text-uppercase margin-5px-top">
+                                        {{ 'Prix sur demande de devis' }}
+                                    </div>
                                 </div>
+                                {% if former.content|length > 0 %}
+                                <div class="row">
+                                    <div class="col-lg-9 col-md-9 col-sm-10 col-xs-12 center-col text-center">
+                                        <!-- start modal pop-up -->
+                                        <div id="modal-popup{{ former.slug }}" class="white-popup-block mfp-hide col-lg-7 col-md-7 col-sm-7 col-xs-11 center-col bg-white text-center modal-popup-main padding-50px-all">
+                                            <span class="text-extra-dark-gray text-uppercase alt-font text-extra-large font-weight-600 margin-15px-bottom display-block">{{ former.title }}</span>
+                                            <p class="margin-four">{{ former.content|raw }}</p>
+                                            <a class="btn btn-medium btn-rounded btn-dark-gray popup-modal-dismiss" href="#">{{ 'Retourner' }}</a>
+                                        </div>
+                                        <!-- end modal pop-up -->
+                                    </div>
+                                </div>
+                                {% endif %}
                                 <!-- start pricing features -->
                                 <div class="padding-30px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action margin-35px-top sm-no-margin-top">
-                                        <a href="#devis_formation" class="btn btn-transparent-dark-gray btn-very-small text-extra-small">{{ 'Demandez un devis' }}</a>
+                                        <a href="#devis_formation" class="btn btn-transparent-dark-gray btn-very-small text-extra-small">{{ 'Avoir un devis' }}
+                                        </a>
+                                        {% if former.content|length > 0 %}
+                                            <a href="#modal-popup{{ former.slug }}" data-wow-delay="0.6s" class="btn btn-transparent-dark-gray btn-very-small text-extra-small modal-popup wow fadeInUp">{{ 'info+' }}
+                                            </a>
+                                        {% endif %}
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -74,6 +98,7 @@
         </section>
         <!-- end  feature box section -->
     {% endfor %}
+
     <!-- start section -->
     <section class="no-padding wow fadeIn animated">
         <div class="container-fluid">

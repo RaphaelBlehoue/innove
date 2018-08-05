@@ -24,57 +24,8 @@
     <!-- end page title section -->
 {% endblock %}
 {% block body %}
-    <!-- start about agency -->
-    <section class="wow fadeIn bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-sm-11 col-xs-12 center-col text-center wow fadeInUp margin-eight-bottom">
-                    <div class="alt-font text-medium-gray margin-5px-bottom text-uppercase text-small">{{ 'Notre Objectif & Pourquoi travailler avec nous' }}</div>
-                    <h6 class="font-weight-300 text-extra-dark-gray no-margin-bottom"><strong class="font-weight-400">{{ 'Bonne gestion financière, communication & Productivité ...' }}</strong></h6>
-                    <p>{{ "Nous vous propose ainsi de combiner le professionnaliste et l'originalité avec l'intégration de solutions informatiques pour optimiser et rendre fluide votre gestion ; l’audit et le conseil en informatique et télécom pour vous guider ; la création de site internet pour votre communication et votre visibilité et la conception d'applications orientées web extranets, intranets, aux applications métiers souples et évolutifs, pour optimiser votre productivité" }}</p>
-                </div>
-            </div>
-            <div class="row equalize xs-equalize-auto">
-                <!-- start features box item -->
-                <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp">
-                    <div class="bg-white text-center">
-                        <img src="{{ asset('build/global/images/latest-blog6.jpg') }}" alt="">
-                        <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-                            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">{{ 'Avantage 1' }}</span>
-                            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- end feature box item -->
-                <!-- start features box item -->
-                <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="bg-white text-center">
-                        <img src="{{ asset('build/global/images/latest-blog5.jpg') }}" alt="">
-                        <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-                            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">{{ 'Avantage 2' }}</span>
-                            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- end feature box item -->
-                <!-- start features box item -->
-                <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-no-margin-bottom wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="bg-white text-center">
-                        <img src="{{ asset('build/global/images/latest-blog7.jpg') }}" alt="">
-                        <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-                            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">{{ 'Avantage 3' }}</span>
-                            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- end feature box item -->
-            </div>
-        </div>
-    </section>
-    <!-- end about agency section -->
-
     <!-- start story section -->
-    <section class="wow fadeIn animated animated">
+    <section class="wow fadeIn no-padding-bottom animated animated">
         <div class="container">
             <div class="row equalize sm-equalize-auto">
                 <div class="col-md-5 col-sm-12 col-xs-12 text-center sm-margin-30px-bottom wow fadeInLeft">
@@ -95,45 +46,80 @@
                 </div>
             </div>
             <div class="divider-full bg-extra-light-gray margin-seven-bottom margin-eight-top"></div>
-            <!-- start feature box -->
-            <div class="row">
-               {% for service in services %}
-                <!-- start feature box item -->
-                <div class="col-md-3 col-sm-3 col-xs-12 xs-margin-15px-bottom xs-text-center wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="col-md-3 col-sm-4 col-xs-12 no-padding-left xs-no-padding-lr pull-left xs-margin-15px-bottom">
-                        <i class="icon-book-open text-medium-gray icon-extra-medium top-6"></i>
-                    </div>
-                    <div class="col-md-9 col-sm-8 col-xs-12 no-padding">
-                        <a href="{{ path('services') }}#services"><span class="margin-5px-bottom text-extra-dark-gray alt-font display-block font-weight-600">{{ service.title|capitalize }}</span></a>
-                        <p class="width-75 md-width-100">{{ service.content|truncate(90, true, '...') }}</p>
-                    </div>
-                </div>
-                <!-- end feature box item -->
-               {% endfor %}
-            </div>
-            <!-- start feature box -->
         </div>
     </section>
     <!-- end story section -->
 
-    <!-- start Team work section -->
-    <section class="no-padding wow fadeIn bg-extra-dark-gray" id="services">
+    <!-- start hero section -->
+    <section class="no-padding-bottom no-padding-top wow fadeIn" id="section-down">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-9 center-col margin-six-bottom text-center last-paragraph-no-margin">
+                    <div class="alt-font text-deep-pink margin-10px-bottom text-uppercase text-small">{{ 'Notre equipe' }}</div>
+                    <h5 class="alt-font text-extra-dark-gray font-weight-600">{{ 'Passionnés et déterminés, nous partageons un objectif commun: la satisfaction de nos clients' }}</h5>
+                    <p class="width-80 center-col display-inline-block xs-width-100">Elle regroupe aussi tous les acteurs des NTIC: développeurs, webdesigners, intégrateurs, administrateur système, tous encadrés par des chefs de projets diplômés d'enseignement supérieur (Ingénieurs, DESS, MBA...) vous proposant des prestations de services différenciées tout en  mettant les Hommes au centre de son modèle économique</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid wow fadeIn">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="{{ asset('build/global/images/services-img11.jpg') }}" alt=""/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end banner section -->
+
+    <!-- start avantages section -->
+    <section class="no-padding-tb no-padding bg-light-gray wow fadeIn">
         <div class="container-fluid no-padding">
-            <div class="row equalize sm-equalize-auto no-margin">
-                <div class="col-md-6 col-sm-12 col-xs-12 position-relative sm-height-550px xs-height-350px cover-background wow slideInLeft" data-wow-duration="900ms" style="background-image: url({{ asset('build/global/images/homepage-9-parallax-img4.jpg') }});"></div>
-                <div class="col-md-6 col-sm-12 col-xs-12 display-table wow slideInRight last-paragraph-no-margin" data-wow-duration="900ms">
-                    <div class="display-table-cell vertical-align-middle padding-fifteen-all sm-padding-ten-all xs-padding-30px-all sm-text-center">
-                        <span class="text-medium margin-20px-bottom sm-margin-15px-bottom display-block alt-font xs-margin-15px-bottom">{{ 'Notre equipe' }}</span>
-                        <h4 class="alt-font text-light-gray">{{ 'Teamwork builds trust and the trust build growth.
-' }}</h4>
-                        <p class="width-80 md-width-100 xs-width-100">Elle regroupe aussi tous les acteurs des NTIC: développeurs, webdesigners, intégrateurs, administrateur système, tous encadrés par des chefs de projets diplômés d'enseignement supérieur (Ingénieurs, DESS, MBA...) vous proposant des prestations de services différenciées tout en  mettant les Hommes au centre de son modèle économique</p>
-                        <a href="{{ path('contact') }}" class="btn btn-small btn-white btn-rounded margin-35px-top sm-margin-25px-top">{{ 'Ameliorez ou commencez votre business avec nous' }}</a>
+            <div class="row no-margin">
+                <!-- start information item -->
+                <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+                    <div class="feature-box-wrap">
+                        <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px" style="background: url({{ asset('build/front/static/avt1.jpg') }})"></div>
+                        <div class="width-100 small-screen xs-height-300px display-table arrow-top">
+                            <div class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all">
+                                <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">{{ 'UN BON CONSEIL  POUR INFORMER!'|upper }}.</h6>
+                                <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">{{ 'Vous aurez un avis externe, indépendant et neutre sur les voix techniques et stratégiques relatifs à la Fiabilité de votre logiciel de gestion, et de la sécurité de votre système d’information.' }}</p>
+                                <span class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+                    <div class="feature-box-wrap sm-swap-block">
+                        <div class="width-100 small-screen xs-height-300px display-table arrow-bottom">
+                            <div class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all">
+                                <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">{{ 'UNE FORMATION POINTUE POUR RASSURER !'|upper }}</h6>
+                                <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">{{ 'Votre personnel sera formé convenablement pour vous produire des informations fiables.
+Nous vous proposons des formations sur mesures, couvrant divers volets et s’adaptant au contexte de votre entreprise ainsi  qu’à vos besoins métier.
+' }}</p>
+                                <span class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+                            </div>
+                        </div>
+                        <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px" style="background: url({{ asset('build/front/static/avt2.jpg') }})"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+                    <div class="feature-box-wrap">
+                        <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px" style="background: url({{ asset('build/front/static/avt3.jpg')}})"></div>
+                        <div class="width-100 small-screen xs-height-300px display-table arrow-top">
+                            <div class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all">
+                                <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">{{ 'UNE BONNE INTEGRATION POUR ORGANISER !'|upper }}</h6>
+                                <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">{{ 'Votre système d’information doit répondre aux contraintes techniques, organisationnelles, fonctionnelles, légales et règlementaires de votre entreprise, ainsi qu’aux exigences des utilisateurs.
+Nous vous accompagnons dans la mise en place et le développement d’un système sécurisé, performant, en phase avec les besoins de votre entreprise et en respectant vos normes de conformités.
+' }}</p>
+                                <span class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end Team work section -->
+    <!-- end avantages section -->
 
     <!-- start clients slider section  -->
     <section class="no-padding-bottom wow fadeIn">
