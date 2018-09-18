@@ -24,10 +24,6 @@ class SolutionType extends AbstractType
                 'required' => true,
                 'attr' => ['placeholder' => 'Choix de la Sous-Catégorie', 'class' => 'col-md-6']
             ])
-            ->add('imageFile', VichImageType::class, [
-                'attr'  => ['data-provide' => 'dropify'],
-                'label' => false
-            ])
             ->add('name', TextType::class, [
                 'label' => 'Nom de la solution',
                 'attr' => ['placeholder' => 'Entrez la solution']
