@@ -51,16 +51,13 @@
                     <!-- start feature box item -->
                     <div class="col-md-4 col-sm-4 col-xs-12 xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin xs-text-center padding-80px-bottom">
                             <div class="pricing-box border-all border-width-1 border-color-extra-light-gray bg-white">
-                                <div class="bg-extra-dark-gray padding-10px-tb alt-font text-white font-weight-600 text-uppercase">
-                                    <a href="{{ path('solution_detail', {'slug': solution.slug }) }}" class="alt-font margin-5px-bottom display-block text-extra-dark-gray font-weight-600 text-uppercase text-small">{{ solution.name|capitalize }}</a>
-                                </div>
-                                <div class="bg-light-gray padding-35px-all">
-                                    <h6 class="text-extra-dark-gray font-weight-500 no-margin-bottom">
-                                        <a href="{{ path('solution_detail', {'slug': solution.slug }) }}" class="alt-font margin-5px-bottom display-block text-extra-dark-gray font-weight-600 text-uppercase text-small">{{ solution.name|capitalize }}</a>
-                                    </h6>
+                                <div class="bg-light-gray bg-black padding-35px-all">
+                                    <h4 class="text-extra-dark-gray font-weight-500 no-margin-bottom text-center">
+                                        {{ solution.name|capitalize }}                                    
+                                    </h4>
                                 </div>
                             </div>
-                        <p class="width-95 sm-width-100">{{ solution.content|striptags|raw|truncate(150, true, '...') }}</p>
+                        <p class="width-95 sm-width-100">{{ solution.content|striptags|truncate(150, false, '...')|raw }}</p>
                         <div class="separator-line-horrizontal-full bg-medium-light-gray margin-20px-tb sm-margin-15px-tb"></div>
                         <a href="#start-your-project" class="text-uppercase btn btn-small btn-dark-gray btn-rounded md-margin-15px-bottom sm-display-table sm-margin-lr-auto alt-font text-extra-dark-gray font-weight-600 text-extra-small margin-two-bottom">{{ 'Avoir un devis'}}</a>
                         <a href="{{ path('solution_detail', {'slug': solution.slug }) }}" class="text-uppercase alt-font btn btn-small btn-dark-gray btn-rounded md-margin-15px-bottom sm-display-table sm-margin-lr-auto text-extra-dark-gray font-weight-600 text-extra-small margin-two-bottom">{{ 'en savoir plus' }} <i class="fas fa-long-arrow-alt-right margin-5px-left text-deep-pink text-medium position-relative top-2" aria-hidden="true"></i></a>
