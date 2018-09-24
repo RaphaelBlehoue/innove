@@ -39,7 +39,11 @@
                     <div class="display-table-cell vertical-align-middle breadcrumb text-small alt-font">
                         <!-- breadcrumb -->
                         <ul class="xs-text-center">
-                            <li><a href="{{ path('homepage') }}" class="text-dark-gray">{{ 'accueil'|capitalize }}</a></li>
+                            <li>
+                                <a href="{{ path('homepage') }}" class="text-dark-gray">
+                                    {{ 'accueil'|capitalize }}
+                                </a>
+                            </li>
                             <li class="text-dark-gray">{{ solution.name }}</li>
                         </ul>
                         <!-- end breadcrumb -->
@@ -49,20 +53,27 @@
         </div>
     </section>
     <!-- end page title section -->
-    <!-- start section -->
-
-    <section class="padding-55px-bottom fadeIn">
+    <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
-                    <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase">{{ solution.name }}<br/></h5>
-                    <p class="width-80 center-col display-inline-block xs-width-100 text-justify">
-                        {{ solution.content|raw }}
-                    </p>
-                </div>
+                <main class="col-md-offset-2 col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom">
+                    <!-- start post item -->
+                    <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content margin-30px-bottom xs-margin-10px-bottom xs-text-center">
+                        <div class="blog-text border-all display-inline-block width-100">
+                            <div class="content padding-50px-all xs-padding-20px-all">
+                                <a href="#" class="text-extra-dark-gray text-uppercase alt-font text-large font-weight-600 margin-15px-bottom display-block">
+                                    {{ solution.name }}
+                                </a>
+                                <p class="text-justify">{{ solution.content|raw }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end post item -->
+                </main>
             </div>
         </div>
     </section>
+    <!-- end blog content section -->
 
     <!-- start help section -->
     {% if solution.reader|length > 0 %}

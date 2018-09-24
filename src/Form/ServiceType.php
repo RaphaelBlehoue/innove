@@ -19,10 +19,6 @@ class ServiceType extends AbstractType
                 'label' => 'Nom du service',
                 'attr' => ['placeholder' => 'Entrez le nom ici']
             ])
-            ->add('imageFile', VichImageType::class, [
-                'attr'  => ['data-provide' => 'dropify'],
-                'label' => false
-            ])
             ->add('content', TextareaType::class, [
                 'label' => 'Description du service',
                 'attr'  => ['placeholder' => 'Entrez le contenu ici']
