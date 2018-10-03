@@ -40,7 +40,7 @@ class MailManager
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function sendEmail($template, $parameters, $to, $from, $fromName = null, $Bcc = null)
+    public function sendEmail($template, $parameters, $to, $from = array(), $Bcc = null, $reply)
     {
         $template = $this->twig->loadTemplate('email/'. $template.'.html.twig');
         $subject = $template->renderBlock('subject', $parameters);
@@ -48,8 +48,9 @@ class MailManager
         $body_text = $template->renderBlock('body_text', $parameters);
         try {
             $message = (new \Swift_Message($subject))
-                ->setFrom($from, $fromName)
+                ->setFrom($from)
                 ->setTo($to)
+                ->setReplyTo($reply)
                 ->setBcc($Bcc)
                 ->setCharset('utf-8')
                 ->setBody($body_html, 'text/html')

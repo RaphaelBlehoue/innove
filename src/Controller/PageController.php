@@ -155,11 +155,12 @@ class PageController extends AbstractController
             $data = $form->getData();
             $mailData = $this->dataDevisConstructor($data);
             $template = 'devis';
-            $to = getenv('APP_TO');
             $bcc = $mailData['email'];
             $fromName = $mailData['lastname'].' '.$mailData['firstname'];
             $mail = $mailData['email'];
-            $mailer->sendEmail($template, $mailData, $to, $mail, $fromName, $bcc);
+            $to = getenv('APP_TO');
+            $from = [$to => $fromName];
+            $mailer->sendEmail($template, $mailData, $to, $from, $bcc, $mail);
             $this->flashMessage();
         }
         return $this->render('front/solutions_detail_page.html.twig',[
@@ -189,11 +190,12 @@ class PageController extends AbstractController
             $data = $form->getData();
             $mailData = $this->dataDevisFormation($data);
             $template = 'formation';
-            $to = getenv('APP_TO');
             $bcc = $mailData['email'];
             $fromName = $mailData['lastname'].' '.$mailData['firstname'];
             $mail = $mailData['email'];
-            $mailer->sendEmail($template, $mailData, $to, $mail, $fromName, $bcc);
+            $to = getenv('APP_TO');
+            $from = [$to => $fromName];
+            $mailer->sendEmail($template, $mailData, $to, $from, $bcc, $mail);
             $this->flashMessageFormation();
             return $this->redirectToRoute('family_former');
         }
